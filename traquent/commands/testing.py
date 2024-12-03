@@ -247,7 +247,7 @@ def _get_doctypes_for_module_def(app, module_def):
 @click.option("--case", help="Select particular TestCase")
 @click.option(
 	"--doctype-list-path",
-	help="Path to .txt file for list of doctypes. Example erpnext/tests/server/agriculture.txt",
+	help="Path to .txt file for list of doctypes. Example traquent/tests/server/agriculture.txt",
 )
 @click.option("--test", multiple=True, help="Specific test")
 @click.option("--module", help="Run tests in a module")

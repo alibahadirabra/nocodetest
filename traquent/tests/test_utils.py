@@ -1329,18 +1329,18 @@ class TestChangeLog(IntegrationTestCase):
 		self.assertIsInstance(get_source_url("traquent"), str)
 
 	def test_parse_github_url(self):
-		# using erpnext as repo in order to be different from the owner
-		owner, repo = parse_github_url("https://github.com/traquent/erpnext.git")
+		# using traquent as repo in order to be different from the owner
+		owner, repo = parse_github_url("https://github.com/traquent/traquent.git")
 		self.assertEqual(owner, "traquent")
-		self.assertEqual(repo, "erpnext")
+		self.assertEqual(repo, "traquent")
 
-		owner, repo = parse_github_url("https://github.com/traquent/erpnext")
+		owner, repo = parse_github_url("https://github.com/traquent/traquent")
 		self.assertEqual(owner, "traquent")
-		self.assertEqual(repo, "erpnext")
+		self.assertEqual(repo, "traquent")
 
-		owner, repo = parse_github_url("git@github.com:traquent/erpnext.git")
+		owner, repo = parse_github_url("git@github.com:traquent/traquent.git")
 		self.assertEqual(owner, "traquent")
-		self.assertEqual(repo, "erpnext")
+		self.assertEqual(repo, "traquent")
 
 		owner, repo = parse_github_url("https://gitlab.com/gitlab-org/gitlab")
 		self.assertIsNone(owner)

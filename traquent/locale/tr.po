@@ -9296,7 +9296,7 @@ msgstr "Klasör adını girin"
 #. Description of the 'Static Parameters' (Table) field in DocType 'SMS
 #. Settings'
 #: traquent/core/doctype/sms_settings/sms_settings.json
-msgid "Enter static url parameters here (Eg. sender=ERPNext, username=ERPNext, password=1234 etc.)"
+msgid "Enter static url parameters here (Eg. sender=traquent, username=traquent, password=1234 etc.)"
 msgstr ""
 
 #. Description of the 'Message Parameter' (Data) field in DocType 'SMS
@@ -9371,8 +9371,8 @@ msgid "Error Message"
 msgstr "Hata Mesajı"
 
 #: traquent/public/js/traquent/form/print_utils.js:128
-msgid "Error connecting to QZ Tray Application...<br><br> You need to have QZ Tray application installed and running, to use the Raw Print feature.<br><br><a target=\"_blank\" href=\"https://qz.io/download/\">Click here to Download and install QZ Tray</a>.<br> <a target=\"_blank\" href=\"https://erpnext.com/docs/user/manual/en/setting-up/print/raw-printing\">Click here to learn more about Raw Printing</a>."
-msgstr "QZ Tray Uygulamasına bağlanırken hata oluştu...<br><br> Raw Yazdırma özelliğini kullanmak için QZ Tray uygulamasının yüklü ve çalışır durumda olması gerekir.<br><br><a target=\"_blank\" href=\"https://qz.io/download/\">QZ Tray'i indirmek ve yüklemek için buraya tıklayın</a>.<br> <a target=\"_blank\" href=\"https://erpnext.com/docs/user/manual/en/setting-up/print/raw-printing\">Raw Yazdırma hakkında daha fazla bilgi edinmek için buraya tıklayın</a>."
+msgid "Error connecting to QZ Tray Application...<br><br> You need to have QZ Tray application installed and running, to use the Raw Print feature.<br><br><a target=\"_blank\" href=\"https://qz.io/download/\">Click here to Download and install QZ Tray</a>.<br> <a target=\"_blank\" href=\"https://traquent.com/docs/user/manual/en/setting-up/print/raw-printing\">Click here to learn more about Raw Printing</a>."
+msgstr "QZ Tray Uygulamasına bağlanırken hata oluştu...<br><br> Raw Yazdırma özelliğini kullanmak için QZ Tray uygulamasının yüklü ve çalışır durumda olması gerekir.<br><br><a target=\"_blank\" href=\"https://qz.io/download/\">QZ Tray'i indirmek ve yüklemek için buraya tıklayın</a>.<br> <a target=\"_blank\" href=\"https://traquent.com/docs/user/manual/en/setting-up/print/raw-printing\">Raw Yazdırma hakkında daha fazla bilgi edinmek için buraya tıklayın</a>."
 
 #: traquent/email/doctype/email_domain/email_domain.py:32
 msgid "Error connecting via IMAP/POP3: {e}"
@@ -10826,8 +10826,8 @@ msgstr "Yardım için <a href=\"https://traquentframework.com/docs/user/en/guide
 #. Description of the 'Enable Automatic Linking in Documents' (Check) field in
 #. DocType 'Email Account'
 #: traquent/email/doctype/email_account/email_account.json
-msgid "For more information, <a class=\"text-muted\" href=\"https://erpnext.com/docs/user/manual/en/setting-up/email/linking-emails-to-document\">click here</a>."
-msgstr "Daha Fazla Bilgi İçin, <a class=\"text-muted\" href=\"https://erpnext.com/docs/user/manual/en/setting-up/email/linking-emails-to-document\">Tıklayın</a>."
+msgid "For more information, <a class=\"text-muted\" href=\"https://traquent.com/docs/user/manual/en/setting-up/email/linking-emails-to-document\">click here</a>."
+msgstr "Daha Fazla Bilgi İçin, <a class=\"text-muted\" href=\"https://traquent.com/docs/user/manual/en/setting-up/email/linking-emails-to-document\">Tıklayın</a>."
 
 #: traquent/integrations/doctype/google_settings/google_settings.js:7
 msgid "For more information, {0}."
@@ -25007,8 +25007,8 @@ msgstr "Alt para birimi. Örneğin \"Kuruş\""
 #. Description of the 'Subdomain' (Small Text) field in DocType 'Website
 #. Settings'
 #: traquent/website/doctype/website_settings/website_settings.json
-msgid "Sub-domain provided by erpnext.com"
-msgstr "Alt alan adı erpnext.com tarafından sağlanmıştır"
+msgid "Sub-domain provided by traquent.com"
+msgstr "Alt alan adı traquent.com tarafından sağlanmıştır"
 
 #. Label of the subdomain (Small Text) field in DocType 'Website Settings'
 #: traquent/website/doctype/website_settings/website_settings.json
@@ -28234,7 +28234,7 @@ msgstr "Kullanıcı İzinleri, kullanıcıları belirli kayıtlarla sınırlamak
 msgid "User Permissions created successfully"
 msgstr "Kullanıcı İzinleri başarıyla oluşturuldu"
 
-#. Label of the erpnext_role (Link) field in DocType 'LDAP Group Mapping'
+#. Label of the traquent_role (Link) field in DocType 'LDAP Group Mapping'
 #: traquent/integrations/doctype/ldap_group_mapping/ldap_group_mapping.json
 msgid "User Role"
 msgstr "Kullanıcı Rolü"

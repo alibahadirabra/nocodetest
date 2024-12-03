@@ -9294,7 +9294,7 @@ msgstr "Ange Mapp Namn"
 #. Description of the 'Static Parameters' (Table) field in DocType 'SMS
 #. Settings'
 #: traquent/core/doctype/sms_settings/sms_settings.json
-msgid "Enter static url parameters here (Eg. sender=ERPNext, username=ERPNext, password=1234 etc.)"
+msgid "Enter static url parameters here (Eg. sender=traquent, username=traquent, password=1234 etc.)"
 msgstr "Ange statiska url parametrar här (T.ex.. Avsändare = System, användarnamn = System, lösenord = 1234 osv.)"
 
 #. Description of the 'Message Parameter' (Data) field in DocType 'SMS
@@ -9369,8 +9369,8 @@ msgid "Error Message"
 msgstr "Fel Meddelande"
 
 #: traquent/public/js/traquent/form/print_utils.js:128
-msgid "Error connecting to QZ Tray Application...<br><br> You need to have QZ Tray application installed and running, to use the Raw Print feature.<br><br><a target=\"_blank\" href=\"https://qz.io/download/\">Click here to Download and install QZ Tray</a>.<br> <a target=\"_blank\" href=\"https://erpnext.com/docs/user/manual/en/setting-up/print/raw-printing\">Click here to learn more about Raw Printing</a>."
-msgstr "Fel vid anslutning till QZ Aktivitet Fält... <br><br> Du måste ha QZ Aktivitet Fält App installerad och igång för att kunna använda Direkt Utskrift funktion. <br><br> <a href=\"https://qz.io/download/\" target=\"_blank\">Klicka här för att ladda ner och installera QZ App</a> . <br> <a href=\"https://erpnext.com/docs/user/manual/en/setting-up/print/raw-printing\" target=\"_blank\">Klicka här för att lära dig mer om Direkt Utskrift</a>."
+msgid "Error connecting to QZ Tray Application...<br><br> You need to have QZ Tray application installed and running, to use the Raw Print feature.<br><br><a target=\"_blank\" href=\"https://qz.io/download/\">Click here to Download and install QZ Tray</a>.<br> <a target=\"_blank\" href=\"https://traquent.com/docs/user/manual/en/setting-up/print/raw-printing\">Click here to learn more about Raw Printing</a>."
+msgstr "Fel vid anslutning till QZ Aktivitet Fält... <br><br> Du måste ha QZ Aktivitet Fält App installerad och igång för att kunna använda Direkt Utskrift funktion. <br><br> <a href=\"https://qz.io/download/\" target=\"_blank\">Klicka här för att ladda ner och installera QZ App</a> . <br> <a href=\"https://traquent.com/docs/user/manual/en/setting-up/print/raw-printing\" target=\"_blank\">Klicka här för att lära dig mer om Direkt Utskrift</a>."
 
 #: traquent/email/doctype/email_domain/email_domain.py:32
 msgid "Error connecting via IMAP/POP3: {e}"
@@ -10823,8 +10823,8 @@ msgstr "För mer information <a href=\"https://traquentframework.com/docs/user/e
 #. Description of the 'Enable Automatic Linking in Documents' (Check) field in
 #. DocType 'Email Account'
 #: traquent/email/doctype/email_account/email_account.json
-msgid "For more information, <a class=\"text-muted\" href=\"https://erpnext.com/docs/user/manual/en/setting-up/email/linking-emails-to-document\">click here</a>."
-msgstr "För mer information, <a class=\"text-muted\" href=\"https://erpnext.com/docs/user/manual/en/setting-up/email/linking-emails-to-document\">klicka här</a> ."
+msgid "For more information, <a class=\"text-muted\" href=\"https://traquent.com/docs/user/manual/en/setting-up/email/linking-emails-to-document\">click here</a>."
+msgstr "För mer information, <a class=\"text-muted\" href=\"https://traquent.com/docs/user/manual/en/setting-up/email/linking-emails-to-document\">klicka här</a> ."
 
 #: traquent/integrations/doctype/google_settings/google_settings.js:7
 msgid "For more information, {0}."
@@ -25002,8 +25002,8 @@ msgstr "Under valuta. För t.ex. 'Öre'"
 #. Description of the 'Subdomain' (Small Text) field in DocType 'Website
 #. Settings'
 #: traquent/website/doctype/website_settings/website_settings.json
-msgid "Sub-domain provided by erpnext.com"
-msgstr "Underdomän tillhandahålls av erpnext.com"
+msgid "Sub-domain provided by traquent.com"
+msgstr "Underdomän tillhandahålls av traquent.com"
 
 #. Label of the subdomain (Small Text) field in DocType 'Website Settings'
 #: traquent/website/doctype/website_settings/website_settings.json
@@ -28232,7 +28232,7 @@ msgstr "Användarbehörigheter används för att begränsa användare till speci
 msgid "User Permissions created successfully"
 msgstr "Användare Rättigheter skapade"
 
-#. Label of the erpnext_role (Link) field in DocType 'LDAP Group Mapping'
+#. Label of the traquent_role (Link) field in DocType 'LDAP Group Mapping'
 #: traquent/integrations/doctype/ldap_group_mapping/ldap_group_mapping.json
 msgid "User Role"
 msgstr "Användare Roll"

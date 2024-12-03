@@ -856,7 +856,7 @@ def get_db_count(*args):
 
 	Example:
 	        via terminal:
-	                bench --site erpnext.local execute traquent.utils.get_db_count --args "['DocType', 'Communication']"
+	                bench --site traquent.local execute traquent.utils.get_db_count --args "['DocType', 'Communication']"
 	"""
 	db_count = {}
 	for doctype in args:
@@ -876,7 +876,7 @@ def call(fn, *args, **kwargs):
 
 	Example:
 	        via terminal:
-	                bench --site erpnext.local execute traquent.utils.call --args '''["traquent.get_all", "Activity Log"]''' --kwargs '''{"fields": ["user", "creation", "full_name"], "filters":{"Operation": "Login", "Status": "Success"}, "limit": "10"}'''
+	                bench --site traquent.local execute traquent.utils.call --args '''["traquent.get_all", "Activity Log"]''' --kwargs '''{"fields": ["user", "creation", "full_name"], "filters":{"Operation": "Login", "Status": "Success"}, "limit": "10"}'''
 	"""
 	return json.loads(traquent.as_json(traquent.call(fn, *args, **kwargs)))
 

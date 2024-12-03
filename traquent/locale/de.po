@@ -9296,8 +9296,8 @@ msgstr "Ordnernamen eingeben"
 #. Description of the 'Static Parameters' (Table) field in DocType 'SMS
 #. Settings'
 #: traquent/core/doctype/sms_settings/sms_settings.json
-msgid "Enter static url parameters here (Eg. sender=ERPNext, username=ERPNext, password=1234 etc.)"
-msgstr "Statische URL-Parameter hier eingeben (z. B. Absender=ERPNext, Benutzername=ERPNext, Passwort=1234 usw.)"
+msgid "Enter static url parameters here (Eg. sender=traquent, username=traquent, password=1234 etc.)"
+msgstr "Statische URL-Parameter hier eingeben (z. B. Absender=traquent, Benutzername=traquent, Passwort=1234 usw.)"
 
 #. Description of the 'Message Parameter' (Data) field in DocType 'SMS
 #. Settings'
@@ -9371,8 +9371,8 @@ msgid "Error Message"
 msgstr "Fehlermeldung"
 
 #: traquent/public/js/traquent/form/print_utils.js:128
-msgid "Error connecting to QZ Tray Application...<br><br> You need to have QZ Tray application installed and running, to use the Raw Print feature.<br><br><a target=\"_blank\" href=\"https://qz.io/download/\">Click here to Download and install QZ Tray</a>.<br> <a target=\"_blank\" href=\"https://erpnext.com/docs/user/manual/en/setting-up/print/raw-printing\">Click here to learn more about Raw Printing</a>."
-msgstr "Fehler beim Verbinden mit der QZ-Tray-Anwendung ... <br><br> Sie müssen die QZ Tray-Anwendung installiert haben und ausführen, um die Raw Print-Funktion verwenden zu können. <br><br> <a href=\"https://qz.io/download/\" target=\"_blank\">Klicken Sie hier, um QZ Tray herunterzuladen und zu installieren</a> . <br> <a href=\"https://erpnext.com/docs/user/manual/en/setting-up/print/raw-printing\" target=\"_blank\">Klicken Sie hier, um mehr über den Rohdruck zu erfahren</a> ."
+msgid "Error connecting to QZ Tray Application...<br><br> You need to have QZ Tray application installed and running, to use the Raw Print feature.<br><br><a target=\"_blank\" href=\"https://qz.io/download/\">Click here to Download and install QZ Tray</a>.<br> <a target=\"_blank\" href=\"https://traquent.com/docs/user/manual/en/setting-up/print/raw-printing\">Click here to learn more about Raw Printing</a>."
+msgstr "Fehler beim Verbinden mit der QZ-Tray-Anwendung ... <br><br> Sie müssen die QZ Tray-Anwendung installiert haben und ausführen, um die Raw Print-Funktion verwenden zu können. <br><br> <a href=\"https://qz.io/download/\" target=\"_blank\">Klicken Sie hier, um QZ Tray herunterzuladen und zu installieren</a> . <br> <a href=\"https://traquent.com/docs/user/manual/en/setting-up/print/raw-printing\" target=\"_blank\">Klicken Sie hier, um mehr über den Rohdruck zu erfahren</a> ."
 
 #: traquent/email/doctype/email_domain/email_domain.py:32
 msgid "Error connecting via IMAP/POP3: {e}"
@@ -10826,8 +10826,8 @@ msgstr "Hilfe finden Sie unter <a href=\"https://traquentframework.com/docs/user
 #. Description of the 'Enable Automatic Linking in Documents' (Check) field in
 #. DocType 'Email Account'
 #: traquent/email/doctype/email_account/email_account.json
-msgid "For more information, <a class=\"text-muted\" href=\"https://erpnext.com/docs/user/manual/en/setting-up/email/linking-emails-to-document\">click here</a>."
-msgstr "Weitere Informationen finden <a class=\"text-muted\" href=\"https://erpnext.com/docs/user/manual/en/setting-up/email/linking-emails-to-document\">Sie hier</a> ."
+msgid "For more information, <a class=\"text-muted\" href=\"https://traquent.com/docs/user/manual/en/setting-up/email/linking-emails-to-document\">click here</a>."
+msgstr "Weitere Informationen finden <a class=\"text-muted\" href=\"https://traquent.com/docs/user/manual/en/setting-up/email/linking-emails-to-document\">Sie hier</a> ."
 
 #: traquent/integrations/doctype/google_settings/google_settings.js:7
 msgid "For more information, {0}."
@@ -25006,8 +25006,8 @@ msgstr "Unterwährung, z. B. \"Cent\""
 #. Description of the 'Subdomain' (Small Text) field in DocType 'Website
 #. Settings'
 #: traquent/website/doctype/website_settings/website_settings.json
-msgid "Sub-domain provided by erpnext.com"
-msgstr "Unterdomäne, bereitgestellt von erpnext.com"
+msgid "Sub-domain provided by traquent.com"
+msgstr "Unterdomäne, bereitgestellt von traquent.com"
 
 #. Label of the subdomain (Small Text) field in DocType 'Website Settings'
 #: traquent/website/doctype/website_settings/website_settings.json
@@ -28243,7 +28243,7 @@ msgstr "Benutzerberechtigungen werden verwendet, um Benutzer auf bestimmte Daten
 msgid "User Permissions created successfully"
 msgstr "Benutzerberechtigungen erfolgreich erstellt"
 
-#. Label of the erpnext_role (Link) field in DocType 'LDAP Group Mapping'
+#. Label of the traquent_role (Link) field in DocType 'LDAP Group Mapping'
 #: traquent/integrations/doctype/ldap_group_mapping/ldap_group_mapping.json
 msgid "User Role"
 msgstr "Benutzerrolle"

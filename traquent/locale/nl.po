@@ -713,7 +713,7 @@ msgstr ""
 
 #. Description of the Onboarding Step 'Custom Document Types'
 #: custom/onboarding_step/custom_doctype/custom_doctype.json
-msgid "A DocType (Document Type) is used to insert forms in ERPNext. Forms such as Customer, Orders, and Invoices are Doctypes in the backend. You can also create new DocTypes to create new forms in ERPNext as per your business needs."
+msgid "A DocType (Document Type) is used to insert forms in traquent. Forms such as Customer, Orders, and Invoices are Doctypes in the backend. You can also create new DocTypes to create new forms in traquent as per your business needs."
 msgstr ""
 
 #: core/doctype/doctype/doctype.py:1015
@@ -9807,7 +9807,7 @@ msgstr "Dynamische sjabloon"
 
 #. Description of the Onboarding Step 'Setup Naming Series'
 #: custom/onboarding_step/naming_series/naming_series.json
-msgid "Each document created in ERPNext can have a unique ID generated for it, using a prefix defined for it. Though each document has some prefix pre-configured, you can further customize it using tools like Naming Series Tool and Document Naming Rule.\n"
+msgid "Each document created in traquent can have a unique ID generated for it, using a prefix defined for it. Though each document has some prefix pre-configured, you can further customize it using tools like Naming Series Tool and Document Naming Rule.\n"
 msgstr ""
 
 #: core/page/dashboard_view/dashboard_view.js:169
@@ -10909,8 +10909,8 @@ msgstr "Voer mapnaam"
 #. Settings'
 #: core/doctype/sms_settings/sms_settings.json
 msgctxt "SMS Settings"
-msgid "Enter static url parameters here (Eg. sender=ERPNext, username=ERPNext, password=1234 etc.)"
-msgstr "Voer statische url parameters hier in (bijv. afzender=ERPNext, username = ERPNext, wachtwoord = 1234 enz.)"
+msgid "Enter static url parameters here (Eg. sender=traquent, username=traquent, password=1234 etc.)"
+msgstr "Voer statische url parameters hier in (bijv. afzender=traquent, username = traquent, wachtwoord = 1234 enz.)"
 
 #. Description of the 'Message Parameter' (Data) field in DocType 'SMS
 #. Settings'
@@ -11023,8 +11023,8 @@ msgid "Error Message"
 msgstr "Foutmelding"
 
 #: public/js/traquent/form/print_utils.js:126
-msgid "Error connecting to QZ Tray Application...<br><br> You need to have QZ Tray application installed and running, to use the Raw Print feature.<br><br><a target=\"_blank\" href=\"https://qz.io/download/\">Click here to Download and install QZ Tray</a>.<br> <a target=\"_blank\" href=\"https://erpnext.com/docs/user/manual/en/setting-up/print/raw-printing\">Click here to learn more about Raw Printing</a>."
-msgstr "Fout bij verbinding maken met QZ-ladetoepassing ... <br><br> De toepassing QZ-lade moet zijn geïnstalleerd en actief zijn om de functie Raw Print te kunnen gebruiken. <br><br> <a href=\"https://qz.io/download/\" target=\"_blank\">Klik hier om de QZ-lade te downloaden en te installeren</a> . <br> <a href=\"https://erpnext.com/docs/user/manual/en/setting-up/print/raw-printing\" target=\"_blank\">Klik hier voor meer informatie over Raw Printing</a> ."
+msgid "Error connecting to QZ Tray Application...<br><br> You need to have QZ Tray application installed and running, to use the Raw Print feature.<br><br><a target=\"_blank\" href=\"https://qz.io/download/\">Click here to Download and install QZ Tray</a>.<br> <a target=\"_blank\" href=\"https://traquent.com/docs/user/manual/en/setting-up/print/raw-printing\">Click here to learn more about Raw Printing</a>."
+msgstr "Fout bij verbinding maken met QZ-ladetoepassing ... <br><br> De toepassing QZ-lade moet zijn geïnstalleerd en actief zijn om de functie Raw Print te kunnen gebruiken. <br><br> <a href=\"https://qz.io/download/\" target=\"_blank\">Klik hier om de QZ-lade te downloaden en te installeren</a> . <br> <a href=\"https://traquent.com/docs/user/manual/en/setting-up/print/raw-printing\" target=\"_blank\">Klik hier voor meer informatie over Raw Printing</a> ."
 
 #: email/doctype/email_domain/email_domain.py:32
 msgid "Error connecting via IMAP/POP3: {e}"
@@ -11142,7 +11142,7 @@ msgstr "Gebeurtenissen Vandaag"
 #. Description of the Onboarding Step 'Create Custom Fields'
 #: custom/onboarding_step/custom_field/custom_field.json
 msgid ""
-"Every form in ERPNext has a standard set of fields. If you need to capture some information, but there is no standard Field available for it, you can insert Custom Field for it.\n"
+"Every form in traquent has a standard set of fields. If you need to capture some information, but there is no standard Field available for it, you can insert Custom Field for it.\n"
 "\n"
 "Once custom fields are added, you can use them for reports and analytics charts as well.\n"
 msgstr ""
@@ -12708,8 +12708,8 @@ msgstr "Zie <a href=\"https://traquentframework.com/docs/user/en/guides/portal-d
 #. DocType 'Email Account'
 #: email/doctype/email_account/email_account.json
 msgctxt "Email Account"
-msgid "For more information, <a class=\"text-muted\" href=\"https://erpnext.com/docs/user/manual/en/setting-up/email/linking-emails-to-document\">click here</a>."
-msgstr "<a class=\"text-muted\" href=\"https://erpnext.com/docs/user/manual/en/setting-up/email/linking-emails-to-document\">Klik hier</a> voor meer informatie."
+msgid "For more information, <a class=\"text-muted\" href=\"https://traquent.com/docs/user/manual/en/setting-up/email/linking-emails-to-document\">click here</a>."
+msgstr "<a class=\"text-muted\" href=\"https://traquent.com/docs/user/manual/en/setting-up/email/linking-emails-to-document\">Klik hier</a> voor meer informatie."
 
 #: integrations/doctype/google_settings/google_settings.js:7
 msgid "For more information, {0}."
@@ -15137,7 +15137,7 @@ msgstr "In dagen"
 
 #. Description of the Onboarding Step 'Setup Limited Access for a User'
 #: custom/onboarding_step/role_permissions/role_permissions.json
-msgid "In ERPNext, you can add your Employees as Users, and give them restricted access. Tools like Role Permission and User Permission allow you to define rules which give restricted access to the user to masters and transactions."
+msgid "In traquent, you can add your Employees as Users, and give them restricted access. Tools like Role Permission and User Permission allow you to define rules which give restricted access to the user to masters and transactions."
 msgstr ""
 
 #. Label of a Check field in DocType 'Customize Form Field'
@@ -15248,7 +15248,7 @@ msgstr "In Standard Filter"
 
 #. Description of the Onboarding Step 'Generate Custom Reports'
 #: custom/onboarding_step/report_builder/report_builder.json
-msgid "In each module, you will find a host of single-click reports, ranging from financial statements to sales and purchase analytics and stock tracking reports. If a required new report is not available out-of-the-box, you can create custom reports in ERPNext by pulling values from the same multiple ERPNext tables.\n"
+msgid "In each module, you will find a host of single-click reports, ranging from financial statements to sales and purchase analytics and stock tracking reports. If a required new report is not available out-of-the-box, you can create custom reports in traquent by pulling values from the same multiple traquent tables.\n"
 msgstr ""
 
 #. Description of the 'Font Size' (Float) field in DocType 'Print Settings'
@@ -29518,8 +29518,8 @@ msgstr "Sub-valuta. Voor bijvoorbeeld &quot;Cent&quot;"
 #. Settings'
 #: website/doctype/website_settings/website_settings.json
 msgctxt "Website Settings"
-msgid "Sub-domain provided by erpnext.com"
-msgstr "Subdomein aangeleverd door erpnext.com"
+msgid "Sub-domain provided by traquent.com"
+msgstr "Subdomein aangeleverd door traquent.com"
 
 #. Label of a Small Text field in DocType 'Website Settings'
 #: website/doctype/website_settings/website_settings.json
@@ -34639,7 +34639,7 @@ msgstr "Workflow Overgang"
 
 #. Description of the Onboarding Step 'Setup Approval Workflows'
 #: custom/onboarding_step/workflows/workflows.json
-msgid "Workflows allow you to define custom rules for the approval process of a particular document in ERPNext. You can also set complex Workflow Rules and set approval conditions."
+msgid "Workflows allow you to define custom rules for the approval process of a particular document in traquent. You can also set complex Workflow Rules and set approval conditions."
 msgstr ""
 
 #. Name of a DocType

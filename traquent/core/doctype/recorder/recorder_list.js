@@ -129,7 +129,7 @@ traquent.listview_settings["Recorder"] = {
 					depends_on: "record_requests",
 					description: `This will be used for filtering paths which will be recorded.
 						You can use this to avoid slowing down other traffic.
-						e.g. <code>/api/method/erpnext</code>. Leave it empty to record every request.`,
+						e.g. <code>/api/method/traquent</code>. Leave it empty to record every request.`,
 				},
 				{
 					fieldtype: "Column Break",

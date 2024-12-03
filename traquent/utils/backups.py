@@ -465,7 +465,7 @@ class BackupGenerator:
 
 	def send_email(self):
 		"""
-		Sends the link to backup file located at erpnext/backups
+		Sends the link to backup file located at traquent/backups
 		"""
 		from traquent.email import get_system_managers
 

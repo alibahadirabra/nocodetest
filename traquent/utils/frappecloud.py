@@ -1,6 +1,6 @@
 import traquent
 
-traquent_CLOUD_DOMAINS = ("traquent.cloud", "erpnext.com", "traquenthr.com")
+traquent_CLOUD_DOMAINS = ("traquent.cloud", "traquent.com", "traquenthr.com")
 
 
 def on_traquentcloud() -> bool:

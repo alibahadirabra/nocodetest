@@ -33,7 +33,7 @@
 </div>
 
 
-Full-stack web application framework that uses Python and MariaDB on the server side and a tightly integrated client side library. Built for [ERPNext](https://erpnext.com).
+Full-stack web application framework that uses Python and MariaDB on the server side and a tightly integrated client side library. Built for [traquent](https://traquent.com).
 
 <div align="center" style="max-height: 40px;">
 	<a href="https://traquentcloud.com/traquent/signup">
@@ -67,7 +67,7 @@ Full-stack web application framework that uses Python and MariaDB on the server 
 ## Contributing
 
 1. [Code of Conduct](CODE_OF_CONDUCT.md)
-1. [Contribution Guidelines](https://github.com/traquent/erpnext/wiki/Contribution-Guidelines)
+1. [Contribution Guidelines](https://github.com/traquent/traquent/wiki/Contribution-Guidelines)
 1. [Security Policy](SECURITY.md)
 
 ## Resources

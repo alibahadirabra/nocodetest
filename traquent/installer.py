@@ -201,7 +201,7 @@ def find_org(org_repo: str) -> tuple[str, str]:
 
 	from traquent.exceptions import InvalidRemoteException
 
-	for org in ["traquent", "erpnext"]:
+	for org in ["traquent", "traquent"]:
 		response = requests.head(f"https://api.github.com/repos/{org}/{org_repo}")
 		if response.status_code == 400:
 			response = requests.head(f"https://github.com/{org}/{org_repo}")

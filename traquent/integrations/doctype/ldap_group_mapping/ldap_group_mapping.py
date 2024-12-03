@@ -14,7 +14,7 @@ class LDAPGroupMapping(Document):
 	if TYPE_CHECKING:
 		from traquent.types import DF
 
-		erpnext_role: DF.Link
+		traquent_role: DF.Link
 		ldap_group: DF.Data
 		parent: DF.Data
 		parentfield: DF.Data

@@ -68,7 +68,7 @@ const argv = yargs
 		description:
 			"Skips build and uses cached build artifacts to update assets.json (used by Bench)",
 	})
-	.example("node esbuild --apps traquent,erpnext", "Run build only for traquent and erpnext")
+	.example("node esbuild --apps traquent,traquent", "Run build only for traquent and traquent")
 	.example(
 		"node esbuild --files traquent/website.bundle.js,traquent/desk.bundle.js",
 		"Run build only for specified bundles"
@@ -265,7 +265,7 @@ function get_all_files_to_build(apps) {
 }
 
 function get_files_to_build(files) {
-	// files: ['traquent/website.bundle.js', 'erpnext/main.bundle.js']
+	// files: ['traquent/website.bundle.js', 'traquent/main.bundle.js']
 	let include_patterns = [];
 	let ignore_patterns = [];
 

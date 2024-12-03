@@ -424,7 +424,7 @@ traquent.Application = class Application {
 		// 		[<version>, <change_log in markdown>],
 		// 	],
 		// 	"description": "ERP made simple",
-		// 	"title": "ERPNext",
+		// 	"title": "traquent",
 		// 	"version": "12.2.0"
 		// }];
 
