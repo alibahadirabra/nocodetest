@@ -2,8 +2,8 @@
 add-test-cases:
 - all:
   - changed-files:
-    - any-glob-to-any-file: 'frappe/**/*.py'
-    - all-globs-to-all-files: '!frappe/**/test*.py'
+    - any-glob-to-any-file: 'traquent/**/*.py'
+    - all-globs-to-all-files: '!traquent/**/test*.py'
 
 # Add 'release' label to any PR that is opened against the `main` branch
 release:

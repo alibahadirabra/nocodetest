@@ -36,7 +36,7 @@ def fetch_pr_data(pr_number, repo, endpoint=""):
 	Fetch pull request data from GitHub API.
 
 	:param pr_number: Pull request number
-	:param repo: Repository name (e.g., "frappe/frappe")
+	:param repo: Repository name (e.g., "traquent/traquent")
 	:param endpoint: Additional API endpoint (e.g., "files")
 	:return: JSON response from GitHub API
 	"""
@@ -72,7 +72,7 @@ def req(url):
 			raise
 
 
-def get_files_list(pr_number, repo="frappe/frappe"):
+def get_files_list(pr_number, repo="traquent/traquent"):
 	"""
 	Get list of files changed in the pull request.
 
@@ -96,22 +96,22 @@ def get_output(command, shell=True):
 	return subprocess.check_output(command, shell=shell, encoding="utf8").strip()
 
 
-def has_skip_ci_label(pr_number, repo="frappe/frappe"):
+def has_skip_ci_label(pr_number, repo="traquent/traquent"):
 	"""Check if the PR has the 'Skip CI' label."""
 	return has_label(pr_number, "Skip CI", repo)
 
 
-def has_run_server_tests_label(pr_number, repo="frappe/frappe"):
+def has_run_server_tests_label(pr_number, repo="traquent/traquent"):
 	"""Check if the PR has the 'Run Server Tests' label."""
 	return has_label(pr_number, "Run Server Tests", repo)
 
 
-def has_run_ui_tests_label(pr_number, repo="frappe/frappe"):
+def has_run_ui_tests_label(pr_number, repo="traquent/traquent"):
 	"""Check if the PR has the 'Run UI Tests' label."""
 	return has_label(pr_number, "Run UI Tests", repo)
 
 
-def has_label(pr_number, label, repo="frappe/frappe"):
+def has_label(pr_number, label, repo="traquent/traquent"):
 	"""
 	Check if the pull request has a specific label.
 

@@ -1,0 +1,18 @@
+{% from "traquent/templates/includes/avatar_macro.html" import avatar %}
+
+<div class="my-5 comment-row media">
+	<div class="comment-avatar">
+		{{  avatar(user_id=(traquent.utils.strip_html(comment.comment_email or comment.sender)), size='avatar-medium') }}
+	</div>
+	<div class="comment-content">
+		<div class="mb-2 head">
+			<span class="mr-2 title font-weight-bold">
+				{{ traquent.utils.strip_html(comment.sender_full_name or comment.comment_by) | e }}
+			</span>
+			<span class="time small text-muted">
+				{{ traquent.utils.pretty_date(comment.creation) }}
+			</span>
+		</div>
+		<div id="{{ comment.name }}" class="content">{{ traquent.utils.strip_html(comment.content) | markdown }}</div>
+	</div>
+</div>

@@ -102,7 +102,7 @@ jobs:
 
       - name: Init Bench
         run: |
-          pip install frappe-bench
+          pip install traquent-bench
           bash ${GITHUB_WORKSPACE}/.github/helper/install_bench.sh
         env:
           TYPE: server
@@ -118,14 +118,14 @@ jobs:
 
       - name: Run Patch Tests
         run: |
-          cd ~/frappe-bench/
+          cd ~/traquent-bench/
           sed -i 's/^worker:/# worker:/g' Procfile
-          wget https://frappeframework.com/files/v13-frappe.sql.gz
-          bench --site test_site --force restore ~/frappe-bench/v13-frappe.sql.gz
+          wget https://traquentframework.com/files/v13-traquent.sql.gz
+          bench --site test_site --force restore ~/traquent-bench/v13-traquent.sql.gz
 
           source env/bin/activate
-          cd apps/frappe/
-          git remote set-url upstream https://github.com/frappe/frappe.git
+          cd apps/traquent/
+          git remote set-url upstream https://github.com/traquent/traquent.git
 
           function update_to_version() {
             version=$1
@@ -137,9 +137,9 @@ jobs:
 
             pgrep honcho | xargs kill
             sleep 3
-            rm -rf ~/frappe-bench/env
+            rm -rf ~/traquent-bench/env
             bench -v setup env
-            bench start &>> ~/frappe-bench/bench_start.log &
+            bench start &>> ~/traquent-bench/bench_start.log &
 
             bench --site test_site migrate
           }
@@ -150,17 +150,17 @@ jobs:
           echo "Updating to last commit"
           pgrep honcho | xargs kill
           sleep 3
-          rm -rf ~/frappe-bench/env
+          rm -rf ~/traquent-bench/env
           git checkout -q -f "$GITHUB_SHA"
           bench -v setup env
-          bench start &>> ~/frappe-bench/bench_start.log &
+          bench start &>> ~/traquent-bench/bench_start.log &
           bench --site test_site migrate
-          bench --site test_site execute frappe.tests.utils.check_orpahned_doctypes
+          bench --site test_site execute traquent.tests.utils.check_orpahned_doctypes
 
       - name: Show bench output
         if: ${{ always() }}
         run: |
-          cd ~/frappe-bench
+          cd ~/traquent-bench
           cat bench_start.log || true
           cd logs
           for f in ./*.log*; do

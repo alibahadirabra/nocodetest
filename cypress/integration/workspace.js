@@ -14,7 +14,7 @@ context("Workspace 2.0", () => {
 	it("Create Private Page", () => {
 		cy.intercept({
 			method: "POST",
-			url: "api/method/frappe.desk.doctype.workspace.workspace.new_page",
+			url: "api/method/traquent.desk.doctype.workspace.workspace.new_page",
 		}).as("new_page");
 
 		cy.get(".codex-editor__redactor .ce-block");
@@ -47,7 +47,7 @@ context("Workspace 2.0", () => {
 	it("Create Child Page", () => {
 		cy.intercept({
 			method: "POST",
-			url: "api/method/frappe.desk.doctype.workspace.workspace.new_page",
+			url: "api/method/traquent.desk.doctype.workspace.workspace.new_page",
 		}).as("new_page");
 
 		cy.get(".codex-editor__redactor .ce-block");

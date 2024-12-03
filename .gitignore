@@ -7,8 +7,8 @@
 *.egg-info
 dist/
 # build/
-frappe/docs/current
-frappe/public/dist
+traquent/docs/current
+traquent/public/dist
 .vscode
 .vs
 node_modules

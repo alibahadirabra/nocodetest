@@ -1,0 +1,98 @@
+@import "./website/index";
+body[data-path="me"],
+body[data-path^="update-profile"],
+body[data-path="update-password"],
+body[data-path="third_party_apps"] {
+	@include media-breakpoint-up(sm) {
+	  background-image: url("/assets/traquent/images/pattern.png");
+	  background-size: cover; /* Resmi sayfa boyutuna göre ayarlar */
+	  background-position: center; /* Resmi ortalar */
+	  background-repeat: no-repeat;
+	}
+	#page-update-password,
+	#page-third_party_apps,
+	#page-me{
+		.page-content-wrapper{
+			position: relative;
+			top: 120px;
+		}
+	}
+}
+body[data-path="me"] {
+	#page-me{
+		.page_content .portal-footer a{
+			height: 40px;
+			color: #fff;
+			border-radius: 5px;
+			padding: 10px 25px;
+			font-family: 'Lato', sans-serif;
+			font-weight: 500;
+			background: transparent;
+			cursor: pointer;
+			transition: all 0.3s ease;
+			position: relative;
+			display: inline-block;
+			 box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+			 7px 7px 20px 0px rgba(0,0,0,.1),
+			 4px 4px 5px 0px rgba(0,0,0,.1);
+			outline: none;
+			border: none;
+			background: #F800B5;
+  			background: linear-gradient(0deg, rgba(236,0,189) 0%, rgba(179,1,237) 100%);
+			  &:hover {
+				color: #F800B5;
+				background: transparent;
+				box-shadow:none;
+				svg{
+					stroke: #F800B5 !important;
+				}
+			  }
+			  &:before,
+			  &:after{
+				content:'';
+				position:absolute;
+				top:0;
+				right:0;
+				height:2px;
+				width:0;
+				background: #F800B5;
+				box-shadow:
+				 -1px -1px 5px 0px #fff,
+				 7px 7px 20px 0px #0003,
+				 4px 4px 5px 0px #0002;
+				transition:400ms ease all;
+			  }
+			  &:after{
+				right:inherit;
+				top:inherit;
+				left:0;
+				bottom:0;
+			  }
+			  &:hover:before,
+			  &:hover:after{
+				width:100%;
+				transition:800ms ease all;
+			  }
+				svg {
+					stroke: #fff;
+				}
+		}
+		
+		.page_content .portal-items{
+			border: none;
+			border-radius: 0;
+			.portal-section {
+				padding: 10px 20px;
+				border: 1px solid var(--border-color);
+				border-radius: 24px;
+				margin: 10px;
+				&:last-child {
+					border: 1px solid var(--border-color);
+				}
+			}
+			
+		}
+	}
+  }
+
+  

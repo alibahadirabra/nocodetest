@@ -3,11 +3,11 @@ const path = require("path");
 const fs = require("fs");
 const chalk = require("chalk");
 let bench_path;
-if (process.env.FRAPPE_BENCH_ROOT) {
-	bench_path = process.env.FRAPPE_BENCH_ROOT;
+if (process.env.traquent_BENCH_ROOT) {
+	bench_path = process.env.traquent_BENCH_ROOT;
 } else {
-	const frappe_path = path.resolve(__dirname, "..");
-	bench_path = path.resolve(frappe_path, "..", "..");
+	const traquent_path = path.resolve(__dirname, "..");
+	bench_path = path.resolve(traquent_path, "..", "..");
 }
 
 const apps_path = path.resolve(bench_path, "apps");
@@ -90,20 +90,20 @@ function get_apps_list() {
 
 function get_cloned_apps() {
 	/**
-	 * Returns frappe apps in the bench/apps folder
+	 * Returns traquent apps in the bench/apps folder
 	 */
 	const apps = [];
 	for (const app of fs.readdirSync(apps_path)) {
 		const app_path = path.resolve(apps_path, app);
-		if (is_frappe_app(app, app_path)) apps.push(app);
+		if (is_traquent_app(app, app_path)) apps.push(app);
 	}
 
 	return apps;
 }
 
-function is_frappe_app(app_name, app_path) {
+function is_traquent_app(app_name, app_path) {
 	/**
-	 * Same as the is_frappe_app check in frappe/bench
+	 * Same as the is_traquent_app check in traquent/bench
 	 */
 	if (!fs.lstatSync(app_path).isDirectory()) return false;
 

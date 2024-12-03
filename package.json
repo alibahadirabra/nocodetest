@@ -1,5 +1,5 @@
 {
-  "name": "frappe-framework",
+  "name": "traquent-framework",
   "scripts": {
     "build": "node esbuild",
     "production": "node esbuild --production",
@@ -8,20 +8,20 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/frappe/frappe.git"
+    "url": "git+https://github.com/traquent/traquent.git"
   },
-  "author": "Frappe Technologies Pvt. Ltd.",
+  "author": "traquent Technologies Pvt. Ltd.",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/frappe/frappe/issues"
+    "url": "https://github.com/traquent/traquent/issues"
   },
   "engines": {
     "node": ">=18"
   },
-  "homepage": "https://frappeframework.com",
+  "homepage": "https://traquentframework.com",
   "dependencies": {
     "@editorjs/editorjs": "^2.28.2",
-    "@frappe/esbuild-plugin-postcss2": "^0.1.3",
+    "@traquent/esbuild-plugin-postcss2": "^0.1.3",
     "@fullcalendar/core": "^6.1.11",
     "@fullcalendar/daygrid": "^6.1.11",
     "@fullcalendar/interaction": "^6.1.11",
@@ -36,7 +36,7 @@
     "@vue/component-compiler": "^4.2.4",
     "@vueuse/core": "^9.5.0",
     "ace-builds": "^1.4.8",
-    "air-datepicker": "git+https://github.com/frappe/air-datepicker",
+    "air-datepicker": "git+https://github.com/traquent/air-datepicker",
     "autoprefixer": "10",
     "awesomplete": "^1.1.5",
     "bootstrap": "4.6.2",
@@ -51,9 +51,9 @@
     "esbuild-plugin-vue3": "^0.3.0",
     "fast-deep-equal": "^2.0.1",
     "fast-glob": "^3.2.5",
-    "frappe-charts": "2.0.0-rc22",
-    "frappe-datatable": "1.17.16",
-    "frappe-gantt": "^0.6.0",
+    "traquent-charts": "2.0.0-rc22",
+    "traquent-datatable": "1.17.16",
+    "traquent-gantt": "^0.6.0",
     "highlight.js": "^10.4.1",
     "html5-qrcode": "^2.3.8",
     "jquery": "3.7.0",

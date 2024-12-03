@@ -1,7 +1,7 @@
 const WEBSITE_ROOM = "website";
 const SITE_ROOM = "all";
 
-function frappe_handlers(socket) {
+function traquent_handlers(socket) {
 	socket.join(user_room(socket.user));
 	socket.join(WEBSITE_ROOM);
 
@@ -12,7 +12,7 @@ function frappe_handlers(socket) {
 	socket.has_permission = (doctype, name) => {
 		return new Promise((resolve) => {
 			socket
-				.frappe_request("/api/method/frappe.realtime.has_permission", {
+				.traquent_request("/api/method/traquent.realtime.has_permission", {
 					doctype,
 					name: name || "",
 				})
@@ -147,4 +147,4 @@ const user_room = (user) => "user:" + user;
 const doctype_room = (doctype) => "doctype:" + doctype;
 const task_room = (task_id) => "task_progress:" + task_id;
 
-module.exports = frappe_handlers;
+module.exports = traquent_handlers;

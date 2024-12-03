@@ -135,4 +135,4 @@ jobs:
           DB: mariadb
 
       - name: Run Tests
-        run: 'cd ~/frappe-bench/ && bench --site test_site run-tests --app frappe --module ${{ matrix.test }}'
+        run: 'cd ~/traquent-bench/ && bench --site test_site run-tests --app traquent --module ${{ matrix.test }}'

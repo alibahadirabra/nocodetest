@@ -4,7 +4,7 @@ const fs = require("fs");
 module.exports = defineConfig({
 	projectId: "92odwv",
 	adminPassword: "admin",
-	testUser: "frappe@example.com",
+	testUser: "traquent@example.com",
 	defaultCommandTimeout: 20000,
 	pageLoadTimeout: 15000,
 	video: true,

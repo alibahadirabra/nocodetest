@@ -40,21 +40,21 @@ flags:
 
 profiling:
    critical_files_paths:
-      - /frappe/api.py
-      - /frappe/app.py
-      - /frappe/auth.py
-      - /frappe/boot.py
-      - /frappe/client.py
-      - /frappe/handler.py
-      - /frappe/migrate.py
-      - /frappe/sessions.py
-      - /frappe/utils/*
-      - /frappe/desk/reportview.py
-      - /frappe/desk/form/*
-      - /frappe/model/*
-      - /frappe/core/doctype/doctype/*
-      - /frappe/core/doctype/data_import/*
-      - /frappe/core/doctype/user/*
-      - /frappe/core/doctype/user/*
-      - /frappe/query_builder/*
-      - /frappe/database/*
+      - /traquent/api.py
+      - /traquent/app.py
+      - /traquent/auth.py
+      - /traquent/boot.py
+      - /traquent/client.py
+      - /traquent/handler.py
+      - /traquent/migrate.py
+      - /traquent/sessions.py
+      - /traquent/utils/*
+      - /traquent/desk/reportview.py
+      - /traquent/desk/form/*
+      - /traquent/model/*
+      - /traquent/core/doctype/doctype/*
+      - /traquent/core/doctype/data_import/*
+      - /traquent/core/doctype/user/*
+      - /traquent/core/doctype/user/*
+      - /traquent/query_builder/*
+      - /traquent/database/*

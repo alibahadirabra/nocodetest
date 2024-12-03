@@ -1,5 +1,5 @@
 module.exports = {
-	name: "frappe-ignore-asset",
+	name: "traquent-ignore-asset",
 	setup(build) {
 		build.onResolve({ filter: /^\/assets\// }, (args) => {
 			return {

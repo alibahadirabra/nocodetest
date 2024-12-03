@@ -1,6 +1,6 @@
 context("Kanban Board", () => {
 	before(() => {
-		cy.login("frappe@example.com");
+		cy.login("traquent@example.com");
 		cy.visit("/app");
 	});
 
@@ -21,7 +21,7 @@ context("Kanban Board", () => {
 	it("Create ToDo from kanban", () => {
 		cy.intercept({
 			method: "POST",
-			url: "api/method/frappe.client.save",
+			url: "api/method/traquent.client.save",
 		}).as("save-todo");
 
 		cy.click_listview_primary_button("Add ToDo");
@@ -37,11 +37,11 @@ context("Kanban Board", () => {
 
 		cy.intercept(
 			"POST",
-			"/api/method/frappe.desk.doctype.kanban_board.kanban_board.save_settings"
+			"/api/method/traquent.desk.doctype.kanban_board.kanban_board.save_settings"
 		).as("save-kanban");
 		cy.intercept(
 			"POST",
-			"/api/method/frappe.desk.doctype.kanban_board.kanban_board.update_order"
+			"/api/method/traquent.desk.doctype.kanban_board.kanban_board.update_order"
 		).as("update-order");
 
 		cy.get(".page-actions .menu-btn-group > .btn").click();
@@ -56,7 +56,7 @@ context("Kanban Board", () => {
 
 		cy.get(".modal-footer .btn-primary").last().click();
 
-		cy.get(".frappe-control .label-area").contains("Show Labels").click();
+		cy.get(".traquent-control .label-area").contains("Show Labels").click();
 		cy.click_modal_primary_button("Save");
 
 		cy.wait("@save-kanban");
@@ -81,12 +81,12 @@ context("Kanban Board", () => {
 			.click();
 		cy.get_open_dialog()
 			.find(
-				'.frappe-control[data-fieldname="fields_html"] div[data-label="ID"] .remove-field'
+				'.traquent-control[data-fieldname="fields_html"] div[data-label="ID"] .remove-field'
 			)
 			.click();
 
 		cy.wait("@update-order");
-		cy.get_open_dialog().find(".frappe-control .label-area").contains("Show Labels").click();
+		cy.get_open_dialog().find(".traquent-control .label-area").contains("Show Labels").click();
 		cy.get(".modal-footer .btn-primary").last().click();
 
 		cy.wait("@save-kanban");
@@ -101,12 +101,12 @@ context("Kanban Board", () => {
 		cy.switch_to_user("Administrator");
 
 		const not_system_manager = "nosysmanager@example.com";
-		cy.call("frappe.tests.ui_test_helpers.create_test_user", {
+		cy.call("traquent.tests.ui_test_helpers.create_test_user", {
 			username: not_system_manager,
 		});
 		cy.remove_role(not_system_manager, "System Manager");
-		cy.call("frappe.tests.ui_test_helpers.create_todo", { description: "Frappe User ToDo" });
-		cy.call("frappe.tests.ui_test_helpers.create_admin_kanban");
+		cy.call("traquent.tests.ui_test_helpers.create_todo", { description: "traquent User ToDo" });
+		cy.call("traquent.tests.ui_test_helpers.create_admin_kanban");
 
 		cy.switch_to_user(not_system_manager);
 
@@ -125,7 +125,7 @@ context("Kanban Board", () => {
 		cy.get(".kanban .column-options").should("have.length", 0);
 
 		cy.switch_to_user("Administrator");
-		cy.call("frappe.client.delete", { doctype: "User", name: not_system_manager });
+		cy.call("traquent.client.delete", { doctype: "User", name: not_system_manager });
 	});
 
 	after(() => {
