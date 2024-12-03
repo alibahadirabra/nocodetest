@@ -1,26 +1,26 @@
 #!/bin/bash
 set -e
-cd ~/frappe-bench || exit
+cd ~/traquent-bench || exit
 
 echo "::group::Create Test Site"
-mkdir ~/frappe-bench/sites/test_site
-cp "${GITHUB_WORKSPACE}/.github/helper/db/$DB.json" ~/frappe-bench/sites/test_site/site_config.json
+mkdir ~/traquent-bench/sites/test_site
+cp "${GITHUB_WORKSPACE}/.github/helper/db/$DB.json" ~/traquent-bench/sites/test_site/site_config.json
 
 if [ "$DB" == "mariadb" ]
 then
   mariadb --host 127.0.0.1 --port 3306 -u root -ptravis -e "SET GLOBAL character_set_server = 'utf8mb4'";
   mariadb --host 127.0.0.1 --port 3306 -u root -ptravis -e "SET GLOBAL collation_server = 'utf8mb4_unicode_ci'";
 
-  mariadb --host 127.0.0.1 --port 3306 -u root -ptravis -e "CREATE DATABASE test_frappe";
-  mariadb --host 127.0.0.1 --port 3306 -u root -ptravis -e "CREATE USER 'test_frappe'@'localhost' IDENTIFIED BY 'test_frappe'";
-  mariadb --host 127.0.0.1 --port 3306 -u root -ptravis -e "GRANT ALL PRIVILEGES ON \`test_frappe\`.* TO 'test_frappe'@'localhost'";
+  mariadb --host 127.0.0.1 --port 3306 -u root -ptravis -e "CREATE DATABASE test_traquent";
+  mariadb --host 127.0.0.1 --port 3306 -u root -ptravis -e "CREATE USER 'test_traquent'@'localhost' IDENTIFIED BY 'test_traquent'";
+  mariadb --host 127.0.0.1 --port 3306 -u root -ptravis -e "GRANT ALL PRIVILEGES ON \`test_traquent\`.* TO 'test_traquent'@'localhost'";
 
   mariadb --host 127.0.0.1 --port 3306 -u root -ptravis -e "FLUSH PRIVILEGES";
 fi
 if [ "$DB" == "postgres" ]
 then
-  echo "travis" | psql -h 127.0.0.1 -p 5432 -c "CREATE DATABASE test_frappe" -U postgres;
-  echo "travis" | psql -h 127.0.0.1 -p 5432 -c "CREATE USER test_frappe WITH PASSWORD 'test_frappe'" -U postgres;
+  echo "travis" | psql -h 127.0.0.1 -p 5432 -c "CREATE DATABASE test_traquent" -U postgres;
+  echo "travis" | psql -h 127.0.0.1 -p 5432 -c "CREATE USER test_traquent WITH PASSWORD 'test_traquent'" -U postgres;
 fi
 echo "::endgroup::"
 
@@ -40,12 +40,12 @@ then
 fi
 echo "::endgroup::"
 
-bench start &> ~/frappe-bench/bench_start.log &
+bench start &> ~/traquent-bench/bench_start.log &
 
 echo "::group::Install site"
 if [ "$TYPE" == "server" ]
 then
-  CI=Yes bench build --app frappe &
+  CI=Yes bench build --app traquent &
   build_pid=$!
 fi
 

@@ -1,7 +1,7 @@
 """
 Code Coverage and Parallel Test Runner Script
 
-This script is designed to run parallel tests for Frappe applications with optional code coverage.
+This script is designed to run parallel tests for traquent applications with optional code coverage.
 It sets up the test environment, handles code coverage configuration, and executes tests using
 either a local parallel test runner or an orchestrator-based runner.
 
@@ -16,7 +16,7 @@ This script is typically run as part of a CI/CD pipeline or for local developmen
 It can be configured using environment variables such as SITE, ORCHESTRATOR_URL, WITH_COVERAGE, etc.
 """
 
-# Copyright (c) 2022, Frappe Technologies Pvt. Ltd. and Contributors
+# Copyright (c) 2022, traquent Technologies Pvt. Ltd. and Contributors
 # MIT License. See LICENSE
 
 import json
@@ -44,26 +44,26 @@ STANDARD_EXCLUSIONS = [
 
 # Files that are tested via command line interface
 TESTED_VIA_CLI = [
-	"*/frappe/installer.py",
-	"*/frappe/utils/install.py",
-	"*/frappe/utils/scheduler.py",
-	"*/frappe/utils/doctor.py",
-	"*/frappe/build.py",
-	"*/frappe/database/__init__.py",
-	"*/frappe/database/db_manager.py",
-	"*/frappe/database/**/setup_db.py",
+	"*/traquent/installer.py",
+	"*/traquent/utils/install.py",
+	"*/traquent/utils/scheduler.py",
+	"*/traquent/utils/doctor.py",
+	"*/traquent/build.py",
+	"*/traquent/database/__init__.py",
+	"*/traquent/database/db_manager.py",
+	"*/traquent/database/**/setup_db.py",
 ]
 
-# Additional exclusions specific to the Frappe app
-FRAPPE_EXCLUSIONS = [
+# Additional exclusions specific to the traquent app
+traquent_EXCLUSIONS = [
 	"*/tests/*",
 	"*/commands/*",
-	"*/frappe/change_log/*",
-	"*/frappe/exceptions*",
-	"*/frappe/desk/page/setup_wizard/setup_wizard.py",
-	"*/frappe/coverage.py",
-	"*frappe/setup.py",
-	"*/frappe/hooks.py",
+	"*/traquent/change_log/*",
+	"*/traquent/exceptions*",
+	"*/traquent/desk/page/setup_wizard/setup_wizard.py",
+	"*/traquent/coverage.py",
+	"*traquent/setup.py",
+	"*/traquent/hooks.py",
 	"*/doctype/*/*_dashboard.py",
 	"*/patches/*",
 	"*/.github/helper/ci.py",
@@ -86,7 +86,7 @@ class CodeCoverage:
 
 	def __init__(self, with_coverage, app):
 		self.with_coverage = with_coverage
-		self.app = app or "frappe"
+		self.app = app or "traquent"
 
 	def __enter__(self):
 		if self.with_coverage:
@@ -98,8 +98,8 @@ class CodeCoverage:
 			print(f"Source path: {source_path}")
 			omit = STANDARD_EXCLUSIONS[:]
 
-			if self.app == "frappe":
-				omit.extend(FRAPPE_EXCLUSIONS)
+			if self.app == "traquent":
+				omit.extend(traquent_EXCLUSIONS)
 
 			self.coverage = Coverage(source=[source_path], omit=omit, include=STANDARD_INCLUSIONS)
 			self.coverage.start()
@@ -113,7 +113,7 @@ class CodeCoverage:
 
 if __name__ == "__main__":
 	# Configuration
-	app = "frappe"
+	app = "traquent"
 	site = os.environ.get("SITE") or "test_site"
 	use_orchestrator = bool(os.environ.get("ORCHESTRATOR_URL"))
 	with_coverage = json.loads(os.environ.get("WITH_COVERAGE", "true").lower())
@@ -135,11 +135,11 @@ if __name__ == "__main__":
 	with CodeCoverage(with_coverage=with_coverage, app=app):
 		# Add ASCII banner at the end
 		if use_orchestrator:
-			from frappe.parallel_test_runner import ParallelTestWithOrchestrator
+			from traquent.parallel_test_runner import ParallelTestWithOrchestrator
 
 			runner = ParallelTestWithOrchestrator(app, site=site)
 		else:
-			from frappe.parallel_test_runner import ParallelTestRunner
+			from traquent.parallel_test_runner import ParallelTestRunner
 
 			runner = ParallelTestRunner(app, site=site, build_number=build_number, total_builds=total_builds)
 

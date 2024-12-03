@@ -6,7 +6,7 @@ verbosity="${BENCH_VERBOSITY_FLAG:-}"
 
 start_time=$(date +%s)
 echo "::group::Install Bench"
-pip install frappe-bench
+pip install traquent-bench
 echo "::endgroup::"
 end_time=$(date +%s)
 echo "Time taken to Install Bench: $((end_time - start_time)) seconds"
@@ -15,13 +15,13 @@ git config --global init.defaultBranch main
 git config --global advice.detachedHead false
 
 start_time=$(date +%s)
-echo "::group::Init Bench & Install Frappe"
-bench $verbosity init frappe-bench --skip-assets --python "$(which python)" --frappe-path "${GITHUB_WORKSPACE}"
+echo "::group::Init Bench & Install traquent"
+bench $verbosity init traquent-bench --skip-assets --python "$(which python)" --traquent-path "${GITHUB_WORKSPACE}"
 echo "::endgroup::"
 end_time=$(date +%s)
-echo "Time taken to Init Bench & Install Frappe: $((end_time - start_time)) seconds"
+echo "Time taken to Init Bench & Install traquent: $((end_time - start_time)) seconds"
 
-cd ~/frappe-bench || exit
+cd ~/traquent-bench || exit
 
 start_time=$(date +%s)
 echo "::group::Install App Requirements"

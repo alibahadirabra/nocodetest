@@ -6,10 +6,10 @@ const vue = require("esbuild-plugin-vue3");
 const yargs = require("yargs");
 const cliui = require("cliui")();
 const chalk = require("chalk");
-const html_plugin = require("./frappe-html");
-const vue_style_plugin = require("./frappe-vue-style");
+const html_plugin = require("./traquent-html");
+const vue_style_plugin = require("./traquent-vue-style");
 const rtlcss = require("rtlcss");
-const postCssPlugin = require("@frappe/esbuild-plugin-postcss2").default;
+const postCssPlugin = require("@traquent/esbuild-plugin-postcss2").default;
 const ignore_assets = require("./ignore-assets");
 const sass_options = require("./sass_options");
 const build_cleanup_plugin = require("./build-cleanup");
@@ -33,9 +33,9 @@ const argv = yargs
 		type: "string",
 		description: "Run build for specific apps",
 	})
-	.option("skip_frappe", {
+	.option("skip_traquent", {
 		type: "boolean",
-		description: "Skip building frappe assets",
+		description: "Skip building traquent assets",
 	})
 	.option("files", {
 		type: "string",
@@ -68,15 +68,15 @@ const argv = yargs
 		description:
 			"Skips build and uses cached build artifacts to update assets.json (used by Bench)",
 	})
-	.example("node esbuild --apps frappe,erpnext", "Run build only for frappe and erpnext")
+	.example("node esbuild --apps traquent,erpnext", "Run build only for traquent and erpnext")
 	.example(
-		"node esbuild --files frappe/website.bundle.js,frappe/desk.bundle.js",
+		"node esbuild --files traquent/website.bundle.js,traquent/desk.bundle.js",
 		"Run build only for specified bundles"
 	)
 	.version(false).argv;
 
 const APPS = (!argv.apps ? app_list : argv.apps.split(",")).filter(
-	(app) => !(argv.skip_frappe && app == "frappe")
+	(app) => !(argv.skip_traquent && app == "traquent")
 );
 const FILES_TO_BUILD = argv.files ? argv.files.split(",") : [];
 const WATCH_MODE = Boolean(argv.watch);
@@ -265,7 +265,7 @@ function get_all_files_to_build(apps) {
 }
 
 function get_files_to_build(files) {
-	// files: ['frappe/website.bundle.js', 'erpnext/main.bundle.js']
+	// files: ['traquent/website.bundle.js', 'erpnext/main.bundle.js']
 	let include_patterns = [];
 	let ignore_patterns = [];
 
@@ -503,7 +503,7 @@ function run_build_command_for_apps(apps) {
 	let { execSync } = require("child_process");
 
 	for (let app of apps) {
-		if (app === "frappe") continue;
+		if (app === "traquent") continue;
 
 		let root_app_path = path.resolve(apps_path, app);
 		let package_json = path.resolve(root_app_path, "package.json");

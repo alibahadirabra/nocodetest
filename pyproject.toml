@@ -1,7 +1,7 @@
 [project]
-name = "frappe"
+name = "traquent"
 authors = [
-    { name = "Frappe Technologies Pvt Ltd", email = "developers@frappe.io"}
+    { name = "traquent Technologies Pvt Ltd", email = "developers@traquent.io"}
 ]
 description = "Metadata driven, full-stack low code web framework"
 requires-python = ">=3.10,<3.13"
@@ -92,9 +92,9 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage = "https://frappeframework.com/"
-Repository = "https://github.com/frappe/frappe.git"
-"Bug Reports" = "https://github.com/frappe/frappe/issues"
+Homepage = "https://traquentframework.com/"
+Repository = "https://github.com/traquent/traquent.git"
+"Bug Reports" = "https://github.com/traquent/traquent/issues"
 
 [build-system]
 requires = ["flit_core >=3.4,<4"]
@@ -146,7 +146,7 @@ ignore = [
     "UP032", # Use f-string instead of `format` call (translations)
     "UP030", # Use implicit references for positional format fields (translations)
 ]
-typing-modules = ["frappe.types.DF"]
+typing-modules = ["traquent.types.DF"]
 
 [tool.ruff.format]
 quote-style = "double"

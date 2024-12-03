@@ -19,7 +19,7 @@ for _file in files_to_scan:
 		print(f"Checking: {_file}")
 		file_lines = f.readlines()
 		for line_number, line in enumerate(file_lines, 1):
-			if "frappe-lint: disable-translate" in line:
+			if "traquent-lint: disable-translate" in line:
 				continue
 
 			if start_matches := start_pattern.search(line):
@@ -54,7 +54,7 @@ for _file in files_to_scan:
 
 if errors_encounter > 0:
 	print(
-		'\nVisit "https://frappeframework.com/docs/user/en/translations" to learn about valid translation strings.'
+		'\nVisit "https://traquentframework.com/docs/user/en/translations" to learn about valid translation strings.'
 	)
 	sys.exit(1)
 else:

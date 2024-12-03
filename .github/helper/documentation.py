@@ -5,12 +5,12 @@ import requests
 
 WEBSITE_REPOS = [
 	"erpnext_com",
-	"frappe_io",
+	"traquent_io",
 ]
 
 DOCUMENTATION_DOMAINS = [
 	"docs.erpnext.com",
-	"frappeframework.com",
+	"traquentframework.com",
 ]
 
 
@@ -29,7 +29,7 @@ def is_documentation_link(word: str) -> bool:
 
 	if parsed_url.netloc == "github.com":
 		parts = parsed_url.path.split("/")
-		if len(parts) == 5 and parts[1] == "frappe" and parts[2] in WEBSITE_REPOS:
+		if len(parts) == 5 and parts[1] == "traquent" and parts[2] in WEBSITE_REPOS:
 			return True
 
 	return False
@@ -40,7 +40,7 @@ def contains_documentation_link(body: str) -> bool:
 
 
 def check_pull_request(number: str) -> "tuple[int, str]":
-	response = requests.get(f"https://api.github.com/repos/frappe/frappe/pulls/{number}")
+	response = requests.get(f"https://api.github.com/repos/traquent/traquent/pulls/{number}")
 	if not response.ok:
 		return 1, "Pull Request Not Found! ⚠️"
 

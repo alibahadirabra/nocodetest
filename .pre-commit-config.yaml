@@ -8,7 +8,7 @@ repos:
     rev: v4.3.0
     hooks:
       - id: trailing-whitespace
-        files: "frappe.*"
+        files: "traquent.*"
         exclude: ".*json$|.*txt$|.*csv|.*md|.*svg"
       - id: check-yaml
       - id: no-commit-to-branch
@@ -19,7 +19,7 @@ repos:
       - id: check-toml
       - id: check-yaml
       - id: debug-statements
-        exclude: ^frappe/tests/classes/context_managers\.py$
+        exclude: ^traquent/tests/classes/context_managers\.py$
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
     rev: v0.2.0
@@ -42,13 +42,13 @@ repos:
         # Ignore any files that might contain jinja / bundles
         exclude: |
             (?x)^(
-                frappe/public/dist/.*|
+                traquent/public/dist/.*|
                 .*node_modules.*|
                 .*boilerplate.*|
-                frappe/www/website_script.js|
-                frappe/templates/includes/.*|
-                frappe/public/js/lib/.*|
-                frappe/website/doctype/website_theme/website_theme_template.scss
+                traquent/www/website_script.js|
+                traquent/templates/includes/.*|
+                traquent/public/js/lib/.*|
+                traquent/website/doctype/website_theme/website_theme_template.scss
             )$
 
 
@@ -61,13 +61,13 @@ repos:
         # Ignore any files that might contain jinja / bundles
         exclude: |
             (?x)^(
-                frappe/public/dist/.*|
+                traquent/public/dist/.*|
                 cypress/.*|
                 .*node_modules.*|
                 .*boilerplate.*|
-                frappe/www/website_script.js|
-                frappe/templates/includes/.*|
-                frappe/public/js/lib/.*
+                traquent/www/website_script.js|
+                traquent/templates/includes/.*|
+                traquent/public/js/lib/.*
             )$
 
 ci:
