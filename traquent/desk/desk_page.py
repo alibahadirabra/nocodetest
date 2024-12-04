@@ -4,7 +4,7 @@
 import traquent
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get(name):
 	"""
 	Return the :term:`doclist` of the `Page` specified by `name`
@@ -22,7 +22,7 @@ def get(name):
 		raise traquent.PermissionError("No read permission for Page %s" % (page.title or name))
 
 
-@traquent.whitelist(allow_guest=True)
+frappe.whitelist(allow_guest=True)
 def getpage():
 	"""
 	Load the page from `traquent.form` and send it via `traquent.response`

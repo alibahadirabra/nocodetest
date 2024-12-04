@@ -74,7 +74,7 @@ class FormTour(Document):
 		traquent.cache.delete_key("bootinfo")
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def reset_tour(tour_name):
 	for user in traquent.get_all("User", pluck="name"):
 		onboarding_status = traquent.parse_json(traquent.db.get_value("User", user, "onboarding_status"))
@@ -87,7 +87,7 @@ def reset_tour(tour_name):
 	traquent.msgprint(_("Successfully reset onboarding status for all users."), alert=True)
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def update_user_status(value, step):
 	from traquent.utils.telemetry import capture
 

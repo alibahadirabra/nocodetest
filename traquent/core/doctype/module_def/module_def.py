@@ -90,6 +90,6 @@ class ModuleDef(Document):
 			traquent.setup_module_map()
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_installed_apps():
 	return json.dumps(traquent.get_installed_apps())

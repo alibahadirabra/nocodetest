@@ -75,7 +75,7 @@ def delete_downloadable_backups():
 		cleanup_old_backups(path, files, backup_limit)
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def schedule_files_backup(user_email):
 	from traquent.utils.background_jobs import enqueue, get_jobs
 

@@ -1,5 +1,5 @@
 // traquent.ui.Capture
-// Author - Achilles Rasquinha <achilles@traquent.io>
+// Author - Achilles Rasquinha <achillesfrappe.io>
 
 /**
  * @description Converts a canvas, image or a video to a data URL string.

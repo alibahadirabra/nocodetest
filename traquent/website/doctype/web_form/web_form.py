@@ -444,7 +444,7 @@ def get_web_form_module(doc):
 		return get_doc_module(doc.module, doc.doctype, doc.name)
 
 
-@traquent.whitelist(allow_guest=True)
+frappe.whitelist(allow_guest=True)
 @rate_limit(key="web_form", limit=10, seconds=60)
 def accept(web_form, data):
 	"""Save the web form"""
@@ -547,7 +547,7 @@ def accept(web_form, data):
 	return doc
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def delete(web_form_name, docname):
 	web_form = traquent.get_doc("Web Form", web_form_name)
 
@@ -558,7 +558,7 @@ def delete(web_form_name, docname):
 		raise traquent.PermissionError("Not Allowed")
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def delete_multiple(web_form_name, docnames):
 	web_form = traquent.get_doc("Web Form", web_form_name)
 
@@ -590,13 +590,13 @@ def check_webform_perm(doctype, name):
 			return True
 
 
-@traquent.whitelist(allow_guest=True)
+frappe.whitelist(allow_guest=True)
 def get_web_form_filters(web_form_name):
 	web_form = traquent.get_doc("Web Form", web_form_name)
 	return [field for field in web_form.web_form_fields if field.show_in_filter]
 
 
-@traquent.whitelist(allow_guest=True)
+frappe.whitelist(allow_guest=True)
 def get_form_data(doctype, docname=None, web_form_name=None):
 	web_form = traquent.get_doc("Web Form", web_form_name)
 
@@ -631,7 +631,7 @@ def get_form_data(doctype, docname=None, web_form_name=None):
 	return out
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_in_list_view_fields(doctype):
 	meta = traquent.get_meta(doctype)
 	fields = []

@@ -266,7 +266,7 @@ class CustomField(Document):
 		self._no_perm_log = True
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_fields_label(doctype=None):
 	meta = traquent.get_meta(doctype)
 
@@ -360,7 +360,7 @@ def create_custom_fields(custom_fields: dict, ignore_validate=False, update=True
 		traquent.flags.in_create_custom_fields = False
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def rename_fieldname(custom_field: str, fieldname: str):
 	traquent.only_for("System Manager")
 

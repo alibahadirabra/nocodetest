@@ -71,7 +71,7 @@ def get_report_result(report, filters):
 	return res
 
 
-@traquent.read_only()
+frappe.read_only()
 def generate_report_result(
 	report, filters=None, user=None, custom_columns=None, is_tree=False, parent_field=None
 ):
@@ -139,7 +139,7 @@ def normalize_result(result, columns):
 	return data
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_script(report_name):
 	report = get_report_doc(report_name)
 	module = report.module or traquent.db.get_value("DocType", report.ref_doctype, "module")
@@ -183,8 +183,8 @@ def get_reference_report(report):
 	return get_reference_report(reference_report)
 
 
-@traquent.whitelist()
-@traquent.read_only()
+frappe.whitelist()
+frappe.read_only()
 def run(
 	report_name,
 	filters=None,
@@ -305,7 +305,7 @@ def get_prepared_report_result(report, filters, dn="", user=None):
 	return report_data | {"prepared_report": True, "doc": doc}
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def export_query():
 	"""export from query reports"""
 	from traquent.desk.utils import get_csv_bytes, pop_csv_params, provide_binary_file
@@ -513,7 +513,7 @@ def add_total_row(result, columns, meta=None, is_tree=False, parent_field=None):
 	return result
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_data_for_custom_field(doctype, field, names=None):
 	if not traquent.has_permission(doctype, "read"):
 		traquent.throw(_("Not Permitted to read {0}").format(doctype), traquent.PermissionError)
@@ -551,7 +551,7 @@ def get_data_for_custom_report(columns, result):
 	return doc_field_value_map
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def save_report(reference_report, report_name, columns, filters):
 	report_doc = get_report_doc(reference_report)
 

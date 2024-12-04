@@ -54,7 +54,7 @@ class DropboxSettings(Document):
 			traquent.throw(_("Number of DB backups cannot be less than 1"))
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def take_backup():
 	"""Enqueue longjob for taking backup to dropbox"""
 	enqueue(
@@ -319,7 +319,7 @@ def delete_older_backups(dropbox_client, folder_path, to_keep):
 		dropbox_client.files_delete(os.path.join(folder_path, f.name))
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_dropbox_authorize_url():
 	app_details = get_dropbox_settings(redirect_uri=True)
 	dropbox_oauth_flow = dropbox.DropboxOAuth2Flow(
@@ -336,7 +336,7 @@ def get_dropbox_authorize_url():
 	return {"auth_url": auth_url, "args": parse_qs(urlparse(auth_url).query)}
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def dropbox_auth_finish():
 	app_details = get_dropbox_settings(redirect_uri=True)
 	callback = traquent.form_dict

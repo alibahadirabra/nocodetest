@@ -211,7 +211,7 @@ class Contact(Document):
 		return vcard
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def download_vcard(contact: str):
 	"""Download vCard for the contact"""
 	contact = traquent.get_doc("Contact", contact)
@@ -225,7 +225,7 @@ def download_vcard(contact: str):
 	traquent.response["type"] = "binary"
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def download_vcards(contacts: str):
 	"""Download vCard for the contact"""
 	import json
@@ -279,7 +279,7 @@ def get_default_contact(doctype, name):
 		return None
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def invite_user(contact: str):
 	contact = traquent.get_doc("Contact", contact)
 	contact.check_permission()
@@ -301,7 +301,7 @@ def invite_user(contact: str):
 	return user.name
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_contact_details(contact):
 	contact = traquent.get_doc("Contact", contact)
 	contact.check_permission()
@@ -329,8 +329,8 @@ def update_contact(doc, method):
 		contact.save(ignore_permissions=True)
 
 
-@traquent.whitelist()
-@traquent.validate_and_sanitize_search_inputs
+frappe.whitelist()
+frappe.validate_and_sanitize_search_inputs
 def contact_query(doctype, txt, searchfield, start, page_len, filters):
 	from traquent.desk.reportview import get_match_cond
 
@@ -368,7 +368,7 @@ def contact_query(doctype, txt, searchfield, start, page_len, filters):
 	)
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def address_query(links):
 	import json
 

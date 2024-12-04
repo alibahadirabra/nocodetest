@@ -28,7 +28,7 @@ def get_all():
 	return all_data
 
 
-@traquent.whitelist(allow_guest=True)
+frappe.whitelist(allow_guest=True)
 def get_country_timezone_info():
 	return _get_country_timezone_info()
 

@@ -28,7 +28,7 @@ class RouteHistory(Document):
 		traquent.db.delete(table, filters=(table.creation < (Now() - Interval(days=days))))
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def deferred_insert(routes):
 	routes = [
 		{
@@ -42,7 +42,7 @@ def deferred_insert(routes):
 	_deferred_insert("Route History", routes)
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def frequently_visited_links():
 	return traquent.get_all(
 		"Route History",

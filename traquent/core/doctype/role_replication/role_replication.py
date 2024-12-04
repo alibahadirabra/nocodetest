@@ -19,7 +19,7 @@ class RoleReplication(Document):
 		new_role: DF.Data | None
 	# end: auto-generated types
 
-	@traquent.whitelist()
+	frappe.whitelist()
 	def replicate_role(self):
 		traquent.only_for("System Manager")
 

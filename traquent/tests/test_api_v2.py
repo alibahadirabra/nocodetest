@@ -290,7 +290,7 @@ def generate_admin_keys():
 	traquent.db.commit()
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def test(*, fail=False, handled=True, message="Failed"):
 	if fail:
 		if handled:

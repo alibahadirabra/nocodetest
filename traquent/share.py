@@ -17,7 +17,7 @@ if TYPE_CHECKING:
 	from traquent.model.document import Document
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def add(doctype, name, user=None, read=1, write=0, submit=0, share=0, everyone=0, notify=0):
 	"""Expose function without flags to the client-side"""
 	return add_docshare(
@@ -80,7 +80,7 @@ def remove(doctype, name, user, flags=None):
 		traquent.delete_doc("DocShare", share_name, flags=flags)
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def set_permission(doctype, name, user, permission_to, value=1, everyone=0):
 	"""Expose function without flags to the client-side"""
 	return set_docshare_permission(doctype, name, user, permission_to, value=value, everyone=everyone)
@@ -122,7 +122,7 @@ def set_docshare_permission(doctype, name, user, permission_to, value=1, everyon
 	return share
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_users(doctype: str, name: str) -> list:
 	"""Get list of users with which this document is shared"""
 	doc = traquent.get_doc(doctype, name)

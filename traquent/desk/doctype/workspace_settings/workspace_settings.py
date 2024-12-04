@@ -26,7 +26,7 @@ class WorkspaceSettings(Document):
 		traquent.clear_cache()
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def set_sequence(sidebar_items):
 	if not WorkspaceSettings("Workspace Settings").has_permission():
 		traquent.throw_permission_error()

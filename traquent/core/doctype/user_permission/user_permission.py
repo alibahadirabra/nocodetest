@@ -84,7 +84,7 @@ def send_user_permissions(bootinfo):
 	bootinfo.user["user_permissions"] = get_user_permissions()
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_user_permissions(user=None):
 	"""Get all users permissions for the user as a dict of doctype"""
 	# if this is called from client-side,
@@ -153,8 +153,8 @@ def user_permission_exists(user, allow, for_value, applicable_for=None):
 	)
 
 
-@traquent.whitelist()
-@traquent.validate_and_sanitize_search_inputs
+frappe.whitelist()
+frappe.validate_and_sanitize_search_inputs
 def get_applicable_for_doctype_list(doctype, txt, searchfield, start, page_len, filters):
 	linked_doctypes_map = get_linked_doctypes(doctype, True)
 
@@ -185,7 +185,7 @@ def get_permitted_documents(doctype):
 	return [d.get("doc") for d in user_perm_list if d.get("doc")]
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def check_applicable_doc_perm(user, doctype, docname):
 	traquent.only_for("System Manager")
 	applicable = []
@@ -217,7 +217,7 @@ def check_applicable_doc_perm(user, doctype, docname):
 	return applicable
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def clear_user_permissions(user, for_doctype):
 	traquent.only_for("System Manager")
 	total = traquent.db.count("User Permission", {"user": user, "allow": for_doctype})
@@ -235,7 +235,7 @@ def clear_user_permissions(user, for_doctype):
 	return total
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def add_user_permissions(data):
 	"""Add and update the user permissions"""
 	traquent.only_for("System Manager")

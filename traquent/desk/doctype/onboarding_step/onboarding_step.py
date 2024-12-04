@@ -49,7 +49,7 @@ class OnboardingStep(Document):
 		doc.is_skipped = 0
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_onboarding_steps(ob_steps):
 	steps = []
 	for s in json.loads(ob_steps):

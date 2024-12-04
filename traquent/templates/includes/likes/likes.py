@@ -8,7 +8,7 @@ from traquent.website.doctype.blog_settings.blog_settings import get_like_limit
 from traquent.website.utils import clear_cache
 
 
-@traquent.whitelist(allow_guest=True)
+frappe.whitelist(allow_guest=True)
 @rate_limit(key="reference_name", limit=get_like_limit, seconds=60 * 60)
 def like(reference_doctype, reference_name, like, route=""):
 	like = traquent.parse_json(like)

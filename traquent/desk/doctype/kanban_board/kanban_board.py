@@ -65,7 +65,7 @@ def has_permission(doc, ptype, user):
 	return False
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_kanban_boards(doctype):
 	"""Get Kanban Boards for doctype to show in List View"""
 	return traquent.get_list(
@@ -75,7 +75,7 @@ def get_kanban_boards(doctype):
 	)
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def add_column(board_name, column_title):
 	"""Adds new column to Kanban Board"""
 	doc = traquent.get_doc("Kanban Board", board_name)
@@ -88,7 +88,7 @@ def add_column(board_name, column_title):
 	return doc.columns
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def archive_restore_column(board_name, column_title, status):
 	"""Set column's status to status"""
 	doc = traquent.get_doc("Kanban Board", board_name)
@@ -100,7 +100,7 @@ def archive_restore_column(board_name, column_title, status):
 	return doc.columns
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def update_order(board_name, order):
 	"""Save the order of cards in columns"""
 	board = traquent.get_doc("Kanban Board", board_name)
@@ -128,7 +128,7 @@ def update_order(board_name, order):
 	return board.save(ignore_permissions=True), updated_cards
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def update_order_for_single_card(board_name, docname, from_colname, to_colname, old_index, new_index):
 	"""Save the order of cards in columns"""
 	board = traquent.get_doc("Kanban Board", board_name)
@@ -170,7 +170,7 @@ def get_kanban_column_order_and_index(board, colname):
 	return col_order, col_idx
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def add_card(board_name, docname, colname):
 	board = traquent.get_doc("Kanban Board", board_name)
 
@@ -184,7 +184,7 @@ def add_card(board_name, docname, colname):
 	return board.save(ignore_permissions=True)
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def quick_kanban_board(doctype, board_name, field_name, project=None):
 	"""Create new KanbanBoard quickly with default options"""
 
@@ -227,7 +227,7 @@ def get_order_for_column(board, colname):
 	return traquent.as_json(traquent.get_list(board.reference_doctype, filters=filters, pluck="name"))
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def update_column_order(board_name, order):
 	"""Set the order of columns in Kanban Board"""
 	board = traquent.get_doc("Kanban Board", board_name)
@@ -259,7 +259,7 @@ def update_column_order(board_name, order):
 	return board
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def set_indicator(board_name, column_name, indicator):
 	"""Set the indicator color of column"""
 	board = traquent.get_doc("Kanban Board", board_name)
@@ -272,7 +272,7 @@ def set_indicator(board_name, column_name, indicator):
 	return board
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def save_settings(board_name: str, settings: str) -> Document:
 	settings = json.loads(settings)
 	doc = traquent.get_doc("Kanban Board", board_name)

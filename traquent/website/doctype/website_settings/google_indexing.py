@@ -11,7 +11,7 @@ from traquent import _
 from traquent.integrations.google_oauth import GoogleOAuth
 
 
-@traquent.whitelist(methods=["POST"])
+frappe.whitelist(methods=["POST"])
 def authorize_access(reauthorize=False, code=None):
 	"""If no Authorization code get it from Google and then request for Refresh Token."""
 

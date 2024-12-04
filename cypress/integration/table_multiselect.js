@@ -13,19 +13,19 @@ context("Table MultiSelect", () => {
 		cy.fill_field("assign_condition", 'status=="Open"', "Code");
 		cy.get('input[data-fieldname="users"]').focus().as("input");
 		cy.get('input[data-fieldname="users"] + ul').should("be.visible");
-		cy.get("@input").type("test@traquent", { delay: 100 });
+		cy.get("@input").type("testfrappe", { delay: 100 });
 		cy.wait(500);
 		cy.get("@input").type("{enter}");
 		cy.get(
 			'.traquent-control[data-fieldname="users"] .form-control .tb-selected-value .btn-link-to-form'
 		).as("selected-value");
-		cy.get("@selected-value").should("contain", "test@traquent.com");
+		cy.get("@selected-value").should("contain", "testfrappe.com");
 
 		cy.intercept("POST", "/api/method/traquent.desk.form.save.savedocs").as("save_form");
 		// trigger save
 		cy.get(".primary-action").click();
 		cy.wait("@save_form").its("response.statusCode").should("eq", 200);
-		cy.get("@selected-value").should("contain", "test@traquent.com");
+		cy.get("@selected-value").should("contain", "testfrappe.com");
 	});
 
 	it("delete value using backspace", () => {

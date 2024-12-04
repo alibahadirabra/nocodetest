@@ -530,7 +530,7 @@ def _get_tables(doctypes: list[str], existing_tables: list[str]) -> list[str]:
 	return tables
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def fetch_latest_backups(partial=False) -> dict:
 	"""Fetch paths of the latest backup taken in the last 30 days.
 
@@ -675,7 +675,7 @@ def get_backup_path():
 	return traquent.utils.get_site_path(conf.get("backup_path", "private/backups"))
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_backup_encryption_key():
 	traquent.only_for("System Manager")
 	return get_or_generate_backup_encryption_key()

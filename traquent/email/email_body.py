@@ -375,7 +375,7 @@ def get_formatted_html(
 	return inline_style_in_html(html)
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_email_html(template, args, subject, header=None, with_container=False):
 	import json
 

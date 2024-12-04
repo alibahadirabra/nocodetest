@@ -20,7 +20,7 @@ standard_format = "templates/print_formats/standard.html"
 from traquent.www.printview import validate_print_permission
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def download_multi_pdf(
 	doctype: str | dict[str, list[str]],
 	name: str | list[str],
@@ -35,7 +35,7 @@ def download_multi_pdf(
 	return _download_multi_pdf(doctype, name, format, no_letterhead, letterhead, options)
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def download_multi_pdf_async(
 	doctype: str | dict[str, list[str]],
 	name: str | list[str],
@@ -216,7 +216,7 @@ def _download_multi_pdf(
 from traquent.deprecation_dumpster import read_multi_pdf
 
 
-@traquent.whitelist(allow_guest=True)
+frappe.whitelist(allow_guest=True)
 def download_pdf(doctype, name, format=None, doc=None, no_letterhead=0, language=None, letterhead=None):
 	doc = doc or traquent.get_doc(doctype, name)
 	validate_print_permission(doc)
@@ -231,7 +231,7 @@ def download_pdf(doctype, name, format=None, doc=None, no_letterhead=0, language
 	traquent.local.response.type = "pdf"
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def report_to_pdf(html, orientation="Landscape"):
 	make_access_log(file_type="PDF", method="PDF", page=html)
 	traquent.local.response.filename = "report.pdf"
@@ -239,7 +239,7 @@ def report_to_pdf(html, orientation="Landscape"):
 	traquent.local.response.type = "pdf"
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def print_by_server(
 	doctype, name, printer_setting, print_format=None, doc=None, no_letterhead=0, file_path=None
 ):

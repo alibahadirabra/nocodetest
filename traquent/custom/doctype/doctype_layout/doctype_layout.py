@@ -31,7 +31,7 @@ class DocTypeLayout(Document):
 		if not self.route:
 			self.route = slug(self.name)
 
-	@traquent.whitelist()
+	frappe.whitelist()
 	def sync_fields(self):
 		doctype_fields = traquent.get_meta(self.document_type, cached=False).fields
 

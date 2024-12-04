@@ -216,7 +216,7 @@ class ServerScript(Document):
 			return locals["conditions"]
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_autocompletion_items():
 	"""Generate a list of autocompletion strings from the context dict
 	that is used while executing a Server Script.
@@ -279,7 +279,7 @@ def execute_api_server_script(script: ServerScript, *args, **kwargs):
 	return _globals.traquent.flags
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def enabled() -> bool | None:
 	if traquent.has_permission("Server Script"):
 		return is_safe_exec_enabled()

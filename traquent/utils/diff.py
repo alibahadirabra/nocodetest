@@ -6,7 +6,7 @@ from traquent.utils import pretty_date
 from traquent.utils.data import cstr
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_version_diff(from_version: int | str, to_version: int | str, fieldname: str = "script") -> list[str]:
 	before, before_timestamp = _get_value_from_version(from_version, fieldname)
 	after, after_timestamp = _get_value_from_version(to_version, fieldname)
@@ -42,8 +42,8 @@ def _get_value_from_version(version_name: int | str, fieldname: str):
 	return None, None
 
 
-@traquent.whitelist()
-@traquent.validate_and_sanitize_search_inputs
+frappe.whitelist()
+frappe.validate_and_sanitize_search_inputs
 def version_query(doctype, txt, searchfield, start, page_len, filters):
 	version_filters = {
 		"docname": filters["docname"],

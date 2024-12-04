@@ -12,7 +12,7 @@ from traquent.desk.form.document_follow import follow_document
 from traquent.utils import get_link_to_form
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def toggle_like(doctype, name, add=False):
 	"""Adds / removes the current user in the `__liked_by` property of the given document.
 	If column does not exist, will add it in the database.

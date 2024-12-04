@@ -203,7 +203,7 @@ def update_last_reset_password_date():
 	)
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def load():
 	from traquent.utils.momentjs import get_all_timezones
 

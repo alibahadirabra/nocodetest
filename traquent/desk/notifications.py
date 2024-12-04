@@ -18,8 +18,8 @@ from traquent.desk.doctype.notification_settings.notification_settings import (
 from traquent.utils import get_fullname
 
 
-@traquent.whitelist()
-@traquent.read_only()
+frappe.whitelist()
+frappe.read_only()
 def get_notifications():
 	out = {
 		"open_count_doctype": {},
@@ -177,7 +177,7 @@ def clear_doctype_notifications(doc, method=None, *args, **kwargs):
 		return
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_notification_info():
 	config = get_notification_config()
 	out = get_notifications()
@@ -239,8 +239,8 @@ def get_filters_for(doctype):
 	return None if isinstance(doctype_config, str) else doctype_config
 
 
-@traquent.whitelist()
-@traquent.read_only()
+frappe.whitelist()
+frappe.read_only()
 def get_open_count(doctype: str, name: str, items=None):
 	"""Get count for internal and external links for given transactions
 

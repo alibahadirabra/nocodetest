@@ -1136,17 +1136,17 @@ class Document(BaseDocument):
 		self.name = rename_doc(doc=self, new=name, merge=merge, force=force, validate=validate_rename)
 		self.reload()
 
-	@traquent.whitelist()
+	frappe.whitelist()
 	def submit(self):
 		"""Submit the document. Sets `docstatus` = 1, then saves."""
 		return self._submit()
 
-	@traquent.whitelist()
+	frappe.whitelist()
 	def cancel(self):
 		"""Cancel the document. Sets `docstatus` = 2, then saves."""
 		return self._cancel()
 
-	@traquent.whitelist()
+	frappe.whitelist()
 	def discard(self):
 		"""Discard the draft document. Sets `docstatus` = 2 with db_set."""
 		self._action = "discard"
@@ -1165,7 +1165,7 @@ class Document(BaseDocument):
 		delattr(self, "_action")
 		self.run_method("on_discard")
 
-	@traquent.whitelist()
+	frappe.whitelist()
 	def rename(self, name: str, merge=False, force=False, validate_rename=True):
 		"""Rename the document to `name`. This transforms the current object."""
 		return self._rename(name=name, merge=merge, force=force, validate_rename=validate_rename)
@@ -1505,7 +1505,7 @@ class Document(BaseDocument):
 		"""Return Desk URL for this document."""
 		return get_absolute_url(self.doctype, self.name)
 
-	@traquent.whitelist()
+	frappe.whitelist()
 	def add_comment(
 		self,
 		comment_type="Comment",
@@ -1854,7 +1854,7 @@ def _document_values_generator(
 		yield tuple(doc_values.get(col) for col in columns)
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def unlock_document(doctype: str, name: str):
 	traquent.get_doc(doctype, name).unlock()
 	traquent.msgprint(traquent._("Document Unlocked"), alert=True)

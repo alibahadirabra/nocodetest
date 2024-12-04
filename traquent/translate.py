@@ -879,7 +879,7 @@ def deduplicate_messages(messages):
 	return [next(g) for k, g in itertools.groupby(messages, op)]
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def update_translations_for_source(source=None, translation_dict=None):
 	if not (source and translation_dict):
 		return
@@ -914,7 +914,7 @@ def update_translations_for_source(source=None, translation_dict=None):
 	return translation_records
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_translations(source_text):
 	if is_html(source_text):
 		source_text = strip_html_tags(source_text)
@@ -926,7 +926,7 @@ def get_translations(source_text):
 	)
 
 
-@traquent.whitelist(allow_guest=True)
+frappe.whitelist(allow_guest=True)
 def get_all_languages(with_language_name: bool = False) -> list:
 	"""Return all enabled language codes ar, ch etc."""
 

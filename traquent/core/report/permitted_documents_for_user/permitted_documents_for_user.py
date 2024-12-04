@@ -41,8 +41,8 @@ def get_columns_and_fields(doctype):
 	return columns, fields
 
 
-@traquent.whitelist()
-@traquent.validate_and_sanitize_search_inputs
+frappe.whitelist()
+frappe.validate_and_sanitize_search_inputs
 def query_doctypes(doctype, txt, searchfield, start, page_len, filters):
 	user = filters.get("user")
 	user_perms = traquent.utils.user.UserPermissions(user)

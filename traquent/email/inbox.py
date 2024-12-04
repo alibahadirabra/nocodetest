@@ -37,7 +37,7 @@ def get_email_accounts(user=None):
 	return {"email_accounts": email_accounts, "all_accounts": all_accounts}
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def create_email_flag_queue(names, action):
 	"""create email flag queue to mark email either as read or unread"""
 
@@ -95,25 +95,25 @@ def create_email_flag_queue(names, action):
 				mark_as_seen_unseen(name, action)
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def mark_as_closed_open(communication: str, status: str):
 	"""Set status to open or close"""
 	set_value("Communication", communication, "status", status)
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def move_email(communication: str, email_account: str):
 	"""Move email to another email account."""
 	set_value("Communication", communication, "email_account", email_account)
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def mark_as_trash(communication: str):
 	"""Set email status to trash."""
 	set_value("Communication", communication, "email_status", "Trash")
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def mark_as_spam(communication: str, sender: str):
 	"""Set email status to spam."""
 	email_rule = traquent.db.get_value("Email Rule", {"email_id": sender})

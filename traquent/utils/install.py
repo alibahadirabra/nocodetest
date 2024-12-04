@@ -172,7 +172,7 @@ def complete_setup_wizard():
 	setup_complete(
 		{
 			"language": "English",
-			"email": "test@traquent.com",
+			"email": "testfrappe.com",
 			"full_name": "Test User",
 			"password": "test",
 			"country": "United States",

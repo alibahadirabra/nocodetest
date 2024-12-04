@@ -395,7 +395,7 @@ def get_file_name(fname, optional_suffix):
 	return fname
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def add_attachments(doctype, name, attachments):
 	"""Add attachments to the given DocType"""
 	if isinstance(attachments, str):

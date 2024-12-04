@@ -426,7 +426,7 @@ class SendMailContext:
 		file.insert()
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def retry_sending(queues: str | list[str]):
 	if not traquent.has_permission("Email Queue", throw=True):
 		return
@@ -445,7 +445,7 @@ def retry_sending(queues: str | list[str]):
 	).where(email_queue.name.isin(queues) & email_queue.status == "Error").run()
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def send_now(name):
 	record = EmailQueue.find(name)
 	if record:
@@ -453,7 +453,7 @@ def send_now(name):
 		record.send()
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def toggle_sending(enable):
 	traquent.only_for("System Manager")
 	traquent.db.set_default("suspend_email_queue", 0 if sbool(enable) else 1)

@@ -46,7 +46,7 @@ class Note(Document):
 		self.append("seen_by", {"user": user})
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def mark_as_seen(note: str):
 	note: Note = traquent.get_doc("Note", note)
 	note.mark_seen_by(traquent.session.user)

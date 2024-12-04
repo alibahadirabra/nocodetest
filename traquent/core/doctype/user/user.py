@@ -208,7 +208,7 @@ class User(Document):
 			self.send_me_a_copy = 0
 			self.allowed_in_mentions = 0
 
-	@traquent.whitelist()
+	frappe.whitelist()
 	def populate_role_profile_roles(self):
 		if not self.role_profiles:
 			return
@@ -817,14 +817,14 @@ class User(Document):
 		)
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_timezones():
 	import pytz
 
 	return {"timezones": pytz.all_timezones}
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_all_roles():
 	"""return all roles"""
 	active_domains = traquent.get_active_domains()
@@ -842,13 +842,13 @@ def get_all_roles():
 	return sorted([role.get("name") for role in roles])
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_roles(arg=None):
 	"""get roles for a user"""
 	return traquent.get_roles(traquent.form_dict["uid"])
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_perm_info(role):
 	"""get permission info"""
 	from traquent.permissions import get_all_perms
@@ -856,7 +856,7 @@ def get_perm_info(role):
 	return get_all_perms(role)
 
 
-@traquent.whitelist(allow_guest=True, methods=["POST"])
+frappe.whitelist(allow_guest=True, methods=["POST"])
 def update_password(
 	new_password: str, logout_all_sessions: int = 0, key: str | None = None, old_password: str | None = None
 ):
@@ -907,7 +907,7 @@ def update_password(
 		return redirect_url or get_default_path() or get_home_page()
 
 
-@traquent.whitelist(allow_guest=True)
+frappe.whitelist(allow_guest=True)
 def test_password_strength(new_password: str, key=None, old_password=None, user_data: tuple | None = None):
 	from traquent.utils.password_strength import test_password_strength as _test_password_strength
 
@@ -944,12 +944,12 @@ def test_password_strength(new_password: str, key=None, old_password=None, user_
 		return result
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def has_email_account(email: str):
 	return traquent.get_list("Email Account", filters={"email_id": email})
 
 
-@traquent.whitelist(allow_guest=False)
+frappe.whitelist(allow_guest=False)
 def get_email_awaiting(user):
 	return traquent.get_all(
 		"User Email",
@@ -1007,12 +1007,12 @@ def reset_user_data(user):
 	return user_doc, redirect_url
 
 
-@traquent.whitelist(methods=["POST"])
+frappe.whitelist(methods=["POST"])
 def verify_password(password):
 	traquent.local.login_manager.check_password(traquent.session.user, password)
 
 
-@traquent.whitelist(allow_guest=True)
+frappe.whitelist(allow_guest=True)
 def sign_up(email: str, full_name: str, redirect_to: str) -> tuple[int, str]:
 	if is_signup_disabled():
 		traquent.throw(_("Sign Up is disabled"), title=_("Not Allowed"))
@@ -1063,7 +1063,7 @@ def sign_up(email: str, full_name: str, redirect_to: str) -> tuple[int, str]:
 			return 2, _("Please ask your administrator to verify your sign-up")
 
 
-@traquent.whitelist(allow_guest=True, methods=["POST"])
+frappe.whitelist(allow_guest=True, methods=["POST"])
 @rate_limit(limit=get_password_reset_limit, seconds=60 * 60)
 def reset_password(user: str) -> str:
 	try:
@@ -1086,8 +1086,8 @@ def reset_password(user: str) -> str:
 		return "not found"
 
 
-@traquent.whitelist()
-@traquent.validate_and_sanitize_search_inputs
+frappe.whitelist()
+frappe.validate_and_sanitize_search_inputs
 def user_query(doctype, txt, searchfield, start, page_len, filters):
 	from traquent.desk.reportview import get_filters_cond, get_match_cond
 
@@ -1249,7 +1249,7 @@ def throttle_user_creation():
 		traquent.throw(_("Throttled"))
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_module_profile(module_profile: str):
 	module_profile = traquent.get_doc("Module Profile", {"module_profile_name": module_profile})
 	return module_profile.get("block_modules")
@@ -1329,7 +1329,7 @@ def get_restricted_ip_list(user):
 	return [i.strip() for i in user.restrict_ip.split(",")]
 
 
-@traquent.whitelist(methods=["POST"])
+frappe.whitelist(methods=["POST"])
 def generate_keys(user: str):
 	"""
 	generate api key and api secret
@@ -1349,7 +1349,7 @@ def generate_keys(user: str):
 	return {"api_secret": api_secret}
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def switch_theme(theme):
 	if theme in ["Dark", "Light", "Automatic"]:
 		traquent.db.set_value("User", traquent.session.user, "desk_theme", theme)
@@ -1363,7 +1363,7 @@ def get_enabled_users():
 	return traquent.cache.get_value("enabled_users", _get_enabled_users)
 
 
-@traquent.whitelist(methods=["POST"])
+frappe.whitelist(methods=["POST"])
 def impersonate(user: str, reason: str):
 	# Note: For now we only allow admins, we MIGHT allow system manager in future.
 	# All the impersonation code doesn't assume anything about user.

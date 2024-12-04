@@ -121,7 +121,7 @@ class PersonalDataDeletionRequest(Document):
 		if self.status != "Pending Approval":
 			traquent.throw(_("This request has not yet been approved by the user."))
 
-	@traquent.whitelist()
+	frappe.whitelist()
 	def trigger_data_deletion(self):
 		"""Redact user data defined in current site's hooks under `user_data_fields`"""
 		self.validate_data_anonymization()
@@ -345,7 +345,7 @@ class PersonalDataDeletionRequest(Document):
 			{"name": self.full_name, "email": self.email},
 		)
 
-	@traquent.whitelist()
+	frappe.whitelist()
 	def put_on_hold(self):
 		self.db_set("status", "On Hold")
 
@@ -380,7 +380,7 @@ def remove_unverified_record():
 	)
 
 
-@traquent.whitelist(allow_guest=True)
+frappe.whitelist(allow_guest=True)
 def confirm_deletion(email, name, host_name):
 	if not verify_request():
 		return

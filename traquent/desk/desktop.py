@@ -1,6 +1,6 @@
 # Copyright (c) 2020, traquent Technologies Pvt. Ltd. and Contributors
 # License: MIT. See LICENSE
-# Author - Shivam Mishra <shivam@traquent.io>
+# Author - Shivam Mishra <shivamfrappe.io>
 
 from functools import wraps
 from json import JSONDecodeError, dumps, loads
@@ -382,8 +382,8 @@ class Workspace:
 		return all_custom_blocks
 
 
-@traquent.whitelist()
-@traquent.read_only()
+frappe.whitelist()
+frappe.read_only()
 def get_desktop_page(page):
 	"""Apply permissions, customizations and return the configuration for a page on desk.
 
@@ -410,7 +410,7 @@ def get_desktop_page(page):
 		return {}
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_workspace_sidebar_items():
 	"""Get list of sidebar items for desk"""
 
@@ -690,7 +690,7 @@ def prepare_widget(config, doctype, parentfield):
 	return prepare_widget_list
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def update_onboarding_step(name, field, value):
 	"""Update status of onboaridng step
 

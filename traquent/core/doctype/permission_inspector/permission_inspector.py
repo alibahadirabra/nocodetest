@@ -37,7 +37,7 @@ class PermissionInspector(Document):
 		user: DF.Link
 	# end: auto-generated types
 
-	@traquent.whitelist()
+	frappe.whitelist()
 	def debug(self):
 		if not (self.ref_doctype and self.user):
 			return

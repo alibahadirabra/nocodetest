@@ -44,7 +44,7 @@ class AddressTemplate(Document):
 		return traquent.db.get_value("Address Template", {"is_default": 1, "name": ("!=", self.name)})
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_default_address_template() -> str:
 	"""Return the default address template."""
 	from pathlib import Path

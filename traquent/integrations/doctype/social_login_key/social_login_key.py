@@ -104,7 +104,7 @@ class SocialLoginKey(Document):
 			icon_file = icon_map[self.provider_name]
 			self.icon = f"/assets/traquent/icons/social/{icon_file}"
 
-	@traquent.whitelist()
+	frappe.whitelist()
 	def get_social_login_provider(self, provider, initialize=False):
 		providers = {}
 

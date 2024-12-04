@@ -181,7 +181,7 @@ class ScheduledJobType(Document):
 		traquent.db.delete("Scheduled Job Log", {"scheduled_job_type": self.name})
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def execute_event(doc: str):
 	traquent.only_for("System Manager")
 	doc = json.loads(doc)

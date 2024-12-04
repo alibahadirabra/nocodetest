@@ -11,7 +11,7 @@ app_logo_url = "/assets/traquent/images/traquent-framework-logo.svg"
 develop_version = "15.x.x-develop"
 app_home = "/app/build"
 
-app_email = "developers@traquent.io"
+app_email = "developersfrappe.io"
 
 before_install = "traquent.utils.install.before_install"
 after_install = "traquent.utils.install.after_install"

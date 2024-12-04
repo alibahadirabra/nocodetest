@@ -475,7 +475,7 @@ def generate_admin_keys():
 	traquent.db.commit()
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def test(*, fail=False, handled=True, message="Failed"):
 	if fail:
 		if handled:
@@ -486,6 +486,6 @@ def test(*, fail=False, handled=True, message="Failed"):
 		traquent.msgprint(message)
 
 
-@traquent.whitelist(allow_guest=True)
+frappe.whitelist(allow_guest=True)
 def test_array(data):
 	return data

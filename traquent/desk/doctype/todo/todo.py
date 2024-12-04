@@ -172,6 +172,6 @@ def has_permission(doc, ptype="read", user=None):
 		return doc.allocated_to == user or doc.assigned_by == user
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def new_todo(description):
 	traquent.get_doc({"doctype": "ToDo", "description": description}).insert()

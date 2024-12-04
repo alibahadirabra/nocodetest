@@ -121,7 +121,7 @@ def process_workflow_actions(doc, state):
 		)
 
 
-@traquent.whitelist(allow_guest=True)
+frappe.whitelist(allow_guest=True)
 def apply_action(action, doctype, docname, current_state, user=None, last_modified=None):
 	if not verify_request():
 		return
@@ -141,7 +141,7 @@ def apply_action(action, doctype, docname, current_state, user=None, last_modifi
 		return_link_expired_page(doc, doc_workflow_state)
 
 
-@traquent.whitelist(allow_guest=True)
+frappe.whitelist(allow_guest=True)
 def confirm_action(doctype, docname, user, action):
 	if not verify_request():
 		return
@@ -287,7 +287,7 @@ def get_next_possible_transitions(workflow_name, state, doc=None):
 def get_users_next_action_data(transitions, doc):
 	user_data_map = {}
 
-	@traquent.request_cache
+	frappe.request_cache
 	def user_has_permission(user: str) -> bool:
 		from traquent.permissions import has_permission
 

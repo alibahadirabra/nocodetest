@@ -6,14 +6,14 @@ from traquent.core.doctype.file.utils import setup_folder_path
 from traquent.utils import cint, cstr
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def unzip_file(name: str):
 	"""Unzip the given file and make file records for each of the extracted files"""
 	file: File = traquent.get_doc("File", name)
 	return file.unzip()
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_attached_images(doctype: str, names: list[str] | str) -> traquent._dict:
 	"""Return list of image urls attached in form `{name: ['image.jpg', 'image.png']}`."""
 
@@ -38,7 +38,7 @@ def get_attached_images(doctype: str, names: list[str] | str) -> traquent._dict:
 	return out
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_files_in_folder(folder: str, start: int = 0, page_length: int = 20) -> dict:
 	attachment_folder = traquent.db.get_value(
 		"File",
@@ -61,7 +61,7 @@ def get_files_in_folder(folder: str, start: int = 0, page_length: int = 20) -> d
 	return {"files": files[:page_length], "has_more": len(files) > page_length}
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_files_by_search_text(text: str) -> list[dict]:
 	if not text:
 		return []
@@ -81,7 +81,7 @@ def get_files_by_search_text(text: str) -> list[dict]:
 	)
 
 
-@traquent.whitelist(allow_guest=True)
+frappe.whitelist(allow_guest=True)
 def get_max_file_size() -> int:
 	return (
 		cint(traquent.get_system_settings("max_file_size")) * 1024 * 1024
@@ -90,7 +90,7 @@ def get_max_file_size() -> int:
 	)
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def create_new_folder(file_name: str, folder: str) -> File:
 	"""create new folder under current parent folder"""
 	file = traquent.new_doc("File")
@@ -101,7 +101,7 @@ def create_new_folder(file_name: str, folder: str) -> File:
 	return file
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def move_file(file_list: list[File | dict] | str, new_parent: str, old_parent: str) -> None:
 	if isinstance(file_list, str):
 		file_list = json.loads(file_list)
@@ -115,7 +115,7 @@ def move_file(file_list: list[File | dict] | str, new_parent: str, old_parent: s
 	traquent.get_doc("File", new_parent).save()
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def zip_files(files: str):
 	files = traquent.parse_json(files)
 	traquent.response["filename"] = "files.zip"

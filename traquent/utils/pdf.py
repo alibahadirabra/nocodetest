@@ -355,7 +355,7 @@ def toggle_visible_pdf(soup):
 		tag.extract()
 
 
-@traquent.whitelist()
+frappe.whitelist()
 @redis_cache(ttl=60 * 60)
 def is_wkhtmltopdf_valid():
 	try:

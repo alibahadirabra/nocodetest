@@ -910,7 +910,7 @@ def whitelist(allow_guest=False, xss_safe=False, methods=None):
 
 	Use as:
 
-	        @traquent.whitelist()
+	        frappe.whitelist()
 	        def myfunc(param1, param2):
 	                pass
 	"""

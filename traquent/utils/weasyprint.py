@@ -7,7 +7,7 @@ import traquent
 from traquent import _
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def download_pdf(doctype, name, print_format, letterhead=None):
 	doc = traquent.get_doc(doctype, name)
 	doc.check_permission("print")

@@ -22,7 +22,7 @@ class DiscussionTopic(Document):
 	pass
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def submit_discussion(doctype, docname, reply, title, topic_name=None, reply_name=None):
 	if reply_name:
 		doc = traquent.get_doc("Discussion Reply", reply_name)

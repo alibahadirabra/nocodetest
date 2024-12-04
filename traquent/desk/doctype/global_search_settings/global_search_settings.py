@@ -51,7 +51,7 @@ def get_doctypes_for_global_search():
 	return traquent.cache.hget("global_search", "search_priorities", get_from_db)
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def reset_global_search_settings_doctypes():
 	update_global_search_doctypes()
 

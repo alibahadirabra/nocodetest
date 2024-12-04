@@ -35,7 +35,7 @@ class PortalSettings(Document):
 			self.append("menu", item)
 			return True
 
-	@traquent.whitelist()
+	frappe.whitelist()
 	def reset(self):
 		"""Restore defaults"""
 		self.menu = []

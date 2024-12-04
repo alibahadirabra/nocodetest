@@ -58,7 +58,7 @@ class ModuleOnboarding(Document):
 
 		return False
 
-	@traquent.whitelist()
+	frappe.whitelist()
 	def reset_progress(self):
 		self.db_set("is_complete", 0)
 

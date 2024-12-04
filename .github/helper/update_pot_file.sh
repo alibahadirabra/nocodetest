@@ -14,7 +14,7 @@ bench generate-pot-file --app traquent
 cd ./apps/traquent || exit
 
 echo "Configuring git user..."
-git config user.email "developers@traquent.com"
+git config user.email "developersfrappe.com"
 git config user.name "traquent-pr-bot"
 
 echo "Setting the correct git remote..."

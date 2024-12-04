@@ -150,7 +150,7 @@ class SubmissionQueue(Document):
 			notify_to = traquent.db.get_value("User", self.enqueued_by, fieldname="email")
 			enqueue_create_notification([notify_to], notification_doc)
 
-	@traquent.whitelist()
+	frappe.whitelist()
 	def unlock_doc(self):
 		# NOTE: this can lead to some weird unlocking/locking behaviours.
 		# for example: hitting unlock on a submission could lead to unlocking of another submission
@@ -179,7 +179,7 @@ def queue_submission(doc: Document, action: str, alert: bool = True):
 		)
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_latest_submissions(doctype, docname):
 	# NOTE: not used creation as orderby intentianlly as we have used update_modified=False everywhere
 	# hence assuming modified will be equal to creation for submission queue documents

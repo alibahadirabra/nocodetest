@@ -56,7 +56,7 @@ class Reminder(Document):
 			self.log_error("Failed to send reminder")
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def create_new_reminder(
 	remind_at: str,
 	description: str,

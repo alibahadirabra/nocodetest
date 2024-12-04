@@ -55,7 +55,7 @@ class BlogPost(WebsiteGenerator):
 		title: DF.Data
 	# end: auto-generated types
 
-	@traquent.whitelist()
+	frappe.whitelist()
 	def make_route(self):
 		if not self.route:
 			return (

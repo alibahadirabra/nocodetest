@@ -277,7 +277,7 @@ class AutoEmailReport(Document):
 		return self.dynamic_date_period and self.from_date_field and self.to_date_field
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def download(name):
 	"""Download report locally"""
 	auto_email_report = traquent.get_doc("Auto Email Report", name)
@@ -293,7 +293,7 @@ def download(name):
 	traquent.local.response.filename = auto_email_report.get_file_name()
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def send_now(name):
 	"""Send Auto Email report now"""
 	auto_email_report = traquent.get_doc("Auto Email Report", name)

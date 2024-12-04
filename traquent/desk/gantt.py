@@ -6,7 +6,7 @@ import json
 import traquent
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def update_task(args, field_map):
 	"""Updates Doc (called via gantt) based on passed `field_map`"""
 	args = traquent._dict(json.loads(args))

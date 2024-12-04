@@ -150,7 +150,7 @@ def get_desktop_icons(user=None):
 	return user_icons
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def add_user_icon(_doctype, _report=None, label=None, link=None, type="link", standard=0):
 	"""Add a new user desktop icon to the desktop"""
 
@@ -229,7 +229,7 @@ def add_user_icon(_doctype, _report=None, label=None, link=None, type="link", st
 	return icon_name
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def set_order(new_order, user=None):
 	"""set new order by duplicating user icons (if user is set) or set global order"""
 	if isinstance(new_order, str):
@@ -436,7 +436,7 @@ def sync_from_app(app):
 	return modules_list
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def update_icons(hidden_list, user=None):
 	"""update modules"""
 	if not user:
@@ -458,7 +458,7 @@ def get_context(context):
 		)
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_module_icons(user=None):
 	if user != traquent.session.user:
 		traquent.only_for("System Manager")
@@ -558,7 +558,7 @@ palette = (
 )
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def hide(name, user=None):
 	if not user:
 		user = traquent.session.user

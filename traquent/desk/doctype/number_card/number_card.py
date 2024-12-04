@@ -124,7 +124,7 @@ def has_permission(doc, ptype, user):
 	return False
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_result(doc, filters, to_date=None):
 	doc = traquent.parse_json(doc)
 	fields = []
@@ -159,7 +159,7 @@ def get_result(doc, filters, to_date=None):
 	return flt(number)
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_percentage_difference(doc, filters, result):
 	doc = traquent.parse_json(doc)
 	result = traquent.parse_json(result)
@@ -195,7 +195,7 @@ def calculate_previous_result(doc, filters):
 	return get_result(doc, filters, previous_date)
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def create_number_card(args):
 	args = traquent.parse_json(args)
 	doc = traquent.new_doc("Number Card")
@@ -205,8 +205,8 @@ def create_number_card(args):
 	return doc
 
 
-@traquent.whitelist()
-@traquent.validate_and_sanitize_search_inputs
+frappe.whitelist()
+frappe.validate_and_sanitize_search_inputs
 def get_cards_for_user(doctype, txt, searchfield, start, page_len, filters):
 	meta = traquent.get_meta(doctype)
 	searchfields = meta.get_search_fields()
@@ -233,7 +233,7 @@ def get_cards_for_user(doctype, txt, searchfield, start, page_len, filters):
 	).run()
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def create_report_number_card(args):
 	card = create_number_card(args)
 	args = traquent.parse_json(args)
@@ -242,7 +242,7 @@ def create_report_number_card(args):
 		add_card_to_dashboard(traquent.as_json(args))
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def add_card_to_dashboard(args):
 	args = traquent.parse_json(args)
 

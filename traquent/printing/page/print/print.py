@@ -1,7 +1,7 @@
 import traquent
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_print_settings_to_show(doctype, docname):
 	doc = traquent.get_doc(doctype, docname)
 	print_settings = traquent.get_single("Print Settings")

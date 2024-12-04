@@ -25,7 +25,7 @@ class GoogleSettings(Document):
 	pass
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_file_picker_settings():
 	"""Return all the data FileUploader needs to start the Google Drive Picker."""
 	google_settings = traquent.get_single("Google Settings")

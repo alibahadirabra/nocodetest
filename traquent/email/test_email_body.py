@@ -186,8 +186,8 @@ w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-From: test1_@traquent.com
-Reply-To: test2_@traquent.com
+From: test1_frappe.com
+Reply-To: test2_frappe.com
 """
 			+ text_content_bytes
 		)

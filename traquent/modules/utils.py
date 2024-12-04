@@ -50,7 +50,7 @@ def get_doc_module(module: str, doctype: str, name: str) -> "ModuleType":
 	return traquent.get_module(module_name)
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def export_customizations(
 	module: str, doctype: str, sync_on_migrate: bool = False, with_permissions: bool = False
 ):

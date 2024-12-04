@@ -39,7 +39,7 @@ class InstalledApplications(Document):
 		self.save()
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def update_installed_apps_order(new_order: list[str] | str):
 	"""Change the ordering of `installed_apps` global
 
@@ -80,7 +80,7 @@ def _create_version_log_for_change(old, new):
 	version.insert()
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_installed_app_order() -> list[str]:
 	traquent.only_for("System Manager")
 

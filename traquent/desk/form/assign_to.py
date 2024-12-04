@@ -39,7 +39,7 @@ def get(args=None):
 	)
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def add(args=None, *, ignore_permissions=False):
 	"""add in someone's to do list
 	args = {
@@ -138,7 +138,7 @@ def add(args=None, *, ignore_permissions=False):
 	return get(args)
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def add_multiple(args=None):
 	if not args:
 		args = traquent.local.form_dict
@@ -172,12 +172,12 @@ def close_all_assignments(doctype, name, ignore_permissions=False):
 	return True
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def remove(doctype, name, assign_to, ignore_permissions=False):
 	return set_status(doctype, name, "", assign_to, status="Cancelled", ignore_permissions=ignore_permissions)
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def remove_multiple(doctype, names, ignore_permissions=False):
 	docname_list = json.loads(names)
 
@@ -191,7 +191,7 @@ def remove_multiple(doctype, names, ignore_permissions=False):
 			remove(doctype, name, assignment.get("owner"), ignore_permissions)
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def close(doctype: str, name: str, assign_to: str, ignore_permissions=False):
 	if assign_to != traquent.session.user:
 		traquent.throw(_("Only the assignee can complete this to-do."))

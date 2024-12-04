@@ -20,7 +20,7 @@ class NetworkPrinterSettings(Document):
 		server_ip: DF.Data
 	# end: auto-generated types
 
-	@traquent.whitelist()
+	frappe.whitelist()
 	def get_printers_list(self, ip="127.0.0.1", port=631):
 		printer_list = []
 		try:
@@ -49,6 +49,6 @@ class NetworkPrinterSettings(Document):
 		return printer_list
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_network_printer_settings():
 	return traquent.db.get_list("Network Printer Settings", pluck="name")

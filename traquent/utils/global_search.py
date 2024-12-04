@@ -462,7 +462,7 @@ def delete_for_document(doc):
 	traquent.db.delete("__global_search", {"doctype": doc.doctype, "name": doc.name})
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def search(text, start=0, limit=20, doctype=""):
 	"""
 	Search for given text in __global_search
@@ -525,7 +525,7 @@ def search(text, start=0, limit=20, doctype=""):
 	return sorted_results
 
 
-@traquent.whitelist(allow_guest=True)
+frappe.whitelist(allow_guest=True)
 def web_search(text: str, scope: str | None = None, start: int = 0, limit: int = 20):
 	"""
 	Search for given text in __global_search where published = 1

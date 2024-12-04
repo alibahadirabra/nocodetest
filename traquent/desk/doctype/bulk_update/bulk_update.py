@@ -25,7 +25,7 @@ class BulkUpdate(Document):
 		update_value: DF.SmallText
 	# end: auto-generated types
 
-	@traquent.whitelist()
+	frappe.whitelist()
 	def bulk_update(self):
 		self.check_permission("write")
 		limit = self.limit if self.limit and cint(self.limit) < 500 else 500
@@ -45,7 +45,7 @@ class BulkUpdate(Document):
 		)
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def submit_cancel_or_update_docs(doctype, docnames, action="submit", data=None, task_id=None):
 	if isinstance(docnames, str):
 		docnames = traquent.parse_json(docnames)

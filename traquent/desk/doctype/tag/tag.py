@@ -32,7 +32,7 @@ def check_user_tags(dt):
 			DocTags(dt).setup()
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def add_tag(tag, dt, dn, color=None):
 	"adds a new tag to a record, and creates the Tag master"
 	DocTags(dt).add(dn, tag)
@@ -40,7 +40,7 @@ def add_tag(tag, dt, dn, color=None):
 	return tag
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def add_tags(tags, dt, docs, color=None):
 	"adds a new tag to a record, and creates the Tag master"
 	tags = traquent.parse_json(tags)
@@ -50,20 +50,20 @@ def add_tags(tags, dt, docs, color=None):
 			DocTags(dt).add(doc, tag)
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def remove_tag(tag, dt, dn):
 	"removes tag from the record"
 	DocTags(dt).remove(dn, tag)
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_tagged_docs(doctype, tag):
 	traquent.has_permission(doctype, throw=True)
 	doctype = DocType(doctype)
 	return (traquent.qb.from_(doctype).where(doctype._user_tags.like(tag)).select(doctype.name)).run()
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_tags(doctype, txt):
 	tag = traquent.get_list("Tag", filters=[["name", "like", f"%{txt}%"]])
 	tags = [t.name for t in tag]
@@ -177,7 +177,7 @@ def update_tags(doc, tags):
 		traquent.db.delete("Tag Link", {"document_type": doc.doctype, "document_name": doc.name, "tag": tag})
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_documents_for_tag(tag):
 	"""Search for given text in Tag Link.
 
@@ -200,6 +200,6 @@ def get_documents_for_tag(tag):
 	]
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_tags_list_for_awesomebar():
 	return traquent.get_list("Tag", pluck="name", order_by=None)

@@ -26,7 +26,7 @@ def get_context(context, **dict_params):
 	context.update(get(**traquent.local.form_dict))
 
 
-@traquent.whitelist(allow_guest=True)
+frappe.whitelist(allow_guest=True)
 def get(doctype, txt=None, limit_start=0, limit=20, pathname=None, **kwargs):
 	"""Return processed HTML page for a standard listing."""
 	limit_start = cint(limit_start)
@@ -74,7 +74,7 @@ def get(doctype, txt=None, limit_start=0, limit=20, pathname=None, **kwargs):
 	}
 
 
-@traquent.whitelist(allow_guest=True)
+frappe.whitelist(allow_guest=True)
 def get_list_data(
 	doctype, txt=None, limit_start=0, fields=None, cmd=None, limit=20, web_form_name=None, **kwargs
 ):

@@ -20,8 +20,8 @@ from traquent.utils import add_user_info, cint, format_duration
 from traquent.utils.data import sbool
 
 
-@traquent.whitelist()
-@traquent.read_only()
+frappe.whitelist()
+frappe.read_only()
 def get():
 	args = get_form_params()
 	# If virtual doctype, get data from controller get_list method
@@ -33,8 +33,8 @@ def get():
 	return data
 
 
-@traquent.whitelist()
-@traquent.read_only()
+frappe.whitelist()
+frappe.read_only()
 def get_list():
 	args = get_form_params()
 
@@ -48,8 +48,8 @@ def get_list():
 	return data
 
 
-@traquent.whitelist()
-@traquent.read_only()
+frappe.whitelist()
+frappe.read_only()
 def get_count() -> int:
 	args = get_form_params()
 
@@ -295,7 +295,7 @@ def compress(data, args=None):
 	return {"keys": keys, "values": values, "user_info": user_info}
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def save_report(name, doctype, report_settings):
 	"""Save reports of type Report Builder from Report View"""
 
@@ -325,7 +325,7 @@ def save_report(name, doctype, report_settings):
 	return report.name
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def delete_report(name):
 	"""Delete reports of type Report Builder from Report View"""
 
@@ -347,8 +347,8 @@ def delete_report(name):
 	)
 
 
-@traquent.whitelist()
-@traquent.read_only()
+frappe.whitelist()
+frappe.read_only()
 def export_query():
 	"""export from report builder"""
 	from traquent.desk.utils import get_csv_bytes, pop_csv_params, provide_binary_file
@@ -523,7 +523,7 @@ def parse_field(field: str) -> tuple[str | None, str]:
 	return None, key.strip("`")
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def delete_items():
 	"""delete selected items"""
 	import json
@@ -573,8 +573,8 @@ def delete_bulk(doctype, items):
 		)
 
 
-@traquent.whitelist()
-@traquent.read_only()
+frappe.whitelist()
+frappe.read_only()
 def get_sidebar_stats(stats, doctype, filters=None):
 	if filters is None:
 		filters = []
@@ -589,8 +589,8 @@ def get_sidebar_stats(stats, doctype, filters=None):
 	return {"stats": data}
 
 
-@traquent.whitelist()
-@traquent.read_only()
+frappe.whitelist()
+frappe.read_only()
 def get_stats(stats, doctype, filters=None):
 	"""get tag info"""
 	import json
@@ -648,7 +648,7 @@ def get_stats(stats, doctype, filters=None):
 	return results
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_filter_dashboard_data(stats, doctype, filters=None):
 	"""get tags info"""
 	import json

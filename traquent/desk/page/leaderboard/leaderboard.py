@@ -3,7 +3,7 @@
 import traquent
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_leaderboard_config():
 	leaderboard_config = traquent._dict()
 	leaderboard_hooks = traquent.get_hooks("leaderboards")

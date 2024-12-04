@@ -163,7 +163,7 @@ def get_email_header(doc, language: str | None = None):
 	return header_map[doc.type or "Default"]
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_notification_logs(limit=20):
 	notification_logs = traquent.db.get_list(
 		"Notification Log", fields=["*"], limit=limit, order_by="creation desc"
@@ -179,7 +179,7 @@ def get_notification_logs(limit=20):
 	return {"notification_logs": notification_logs, "user_info": user_info}
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def mark_all_as_read():
 	unread_docs_list = traquent.get_all(
 		"Notification Log", filters={"read": 0, "for_user": traquent.session.user}
@@ -190,7 +190,7 @@ def mark_all_as_read():
 		traquent.db.set_value("Notification Log", filters, "read", 1, update_modified=False)
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def mark_as_read(docname: str):
 	if traquent.flags.read_only:
 		return
@@ -199,7 +199,7 @@ def mark_as_read(docname: str):
 		traquent.db.set_value("Notification Log", str(docname), "read", 1, update_modified=False)
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def trigger_indicator_hide():
 	traquent.publish_realtime("indicator_hide", user=traquent.session.user)
 

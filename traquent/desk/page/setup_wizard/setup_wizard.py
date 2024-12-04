@@ -41,7 +41,7 @@ def get_setup_stages(args):  # nosemgrep
 	return stages
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def setup_complete(args):
 	"""Calls hooks for `setup_wizard_complete`, sets home page as `desktop`
 	and clears cache. If wizard breaks, calls `setup_wizard_exception` hook"""
@@ -61,7 +61,7 @@ def setup_complete(args):
 		return process_setup_stages(stages, args)
 
 
-@traquent.task()
+frappe.task()
 def process_setup_stages(stages, user_input, is_background_task=False):
 	from traquent.utils.telemetry import capture
 
@@ -277,7 +277,7 @@ def disable_future_access():
 	traquent.db.set_single_value("System Settings", "setup_complete", 1)
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def load_messages(language):
 	"""Load translation messages for given language from all `setup_wizard_requires`
 	javascript files"""
@@ -290,7 +290,7 @@ def load_messages(language):
 	return traquent.local.lang
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def load_languages():
 	language_codes = traquent.db.sql(
 		"select language_code, language_name from tabLanguage order by name", as_dict=True
@@ -306,14 +306,14 @@ def load_languages():
 	}
 
 
-@traquent.whitelist(allow_guest=True)
+frappe.whitelist(allow_guest=True)
 def load_country():
 	from traquent.sessions import get_geo_ip_country
 
 	return get_geo_ip_country(traquent.local.request_ip) if traquent.local.request_ip else None
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def load_user_details():
 	return {
 		"full_name": traquent.cache.hget("full_name", "signup"),

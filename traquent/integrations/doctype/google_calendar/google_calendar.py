@@ -122,7 +122,7 @@ class GoogleCalendar(Document):
 		return r.get("access_token")
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def authorize_access(g_calendar, reauthorize=None):
 	"""
 	If no Authorization code get it from Google and then request for Refresh Token.
@@ -177,7 +177,7 @@ def get_authentication_url(client_id=None, redirect_uri=None):
 	}
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def google_callback(code=None):
 	"""
 	Authorization code is sent to callback as per the API configuration
@@ -189,7 +189,7 @@ def google_callback(code=None):
 	authorize_access(google_calendar)
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def sync(g_calendar=None):
 	filters = {"enable": 1}
 

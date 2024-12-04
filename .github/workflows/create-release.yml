@@ -28,7 +28,7 @@ jobs:
           GH_TOKEN: ${{ secrets.RELEASE_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
           GIT_AUTHOR_NAME: "traquent PR Bot"
-          GIT_AUTHOR_EMAIL: "developers@traquent.io"
+          GIT_AUTHOR_EMAIL: "developersfrappe.io"
           GIT_COMMITTER_NAME: "traquent PR Bot"
-          GIT_COMMITTER_EMAIL: "developers@traquent.io"
+          GIT_COMMITTER_EMAIL: "developersfrappe.io"
         run: npx semantic-release

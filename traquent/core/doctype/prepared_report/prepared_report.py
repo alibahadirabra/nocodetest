@@ -151,7 +151,7 @@ def update_job_id(prepared_report):
 	traquent.db.commit()
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def make_prepared_report(report_name, filters=None):
 	"""run reports in background"""
 	prepared_report = traquent.get_doc(
@@ -176,7 +176,7 @@ def process_filters_for_prepared_report(filters: dict[str, Any] | str) -> str:
 	return traquent.as_json(filters, indent=None, separators=(",", ":"))
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_reports_in_queued_state(report_name, filters):
 	return traquent.get_all(
 		"Prepared Report",
@@ -216,7 +216,7 @@ def expire_stalled_report():
 	)
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def delete_prepared_reports(reports):
 	reports = traquent.parse_json(reports)
 	for report in reports:
@@ -248,7 +248,7 @@ def create_json_gz_file(data, dt, dn, report_name):
 	_file.save(ignore_permissions=True)
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def download_attachment(dn):
 	pr = traquent.get_doc("Prepared Report", dn)
 	if not pr.has_permission("read"):

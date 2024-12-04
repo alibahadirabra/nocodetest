@@ -45,7 +45,7 @@ def validate_receiver_nos(receiver_list):
 	return validated_receiver_list
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_contact_number(contact_name, ref_doctype, ref_name):
 	"Return mobile number of the given contact."
 	number = traquent.db.sql(
@@ -61,7 +61,7 @@ def get_contact_number(contact_name, ref_doctype, ref_name):
 	return number and (number[0][0] or number[0][1]) or ""
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def send_sms(receiver_list, msg, sender_name="", success_msg=True):
 	import json
 

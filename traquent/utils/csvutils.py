@@ -100,7 +100,7 @@ def read_csv_content(fcontent):
 		raise
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def send_csv_to_client(args):
 	if isinstance(args, str):
 		args = json.loads(args)

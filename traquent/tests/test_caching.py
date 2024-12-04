@@ -21,14 +21,14 @@ def request_specific_api(a: list | tuple | dict | int, b: int) -> int:
 	return a**b * todays_value
 
 
-@traquent.whitelist(allow_guest=True)
+frappe.whitelist(allow_guest=True)
 @site_cache
 def ping() -> str:
 	register_with_external_service(traquent.local.site)
 	return traquent.local.site
 
 
-@traquent.whitelist(allow_guest=True)
+frappe.whitelist(allow_guest=True)
 @site_cache(ttl=CACHE_TTL)
 def ping_with_ttl() -> str:
 	register_with_external_service(traquent.local.site)

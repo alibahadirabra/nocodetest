@@ -37,7 +37,7 @@ class AccessLog(Document):
 		traquent.db.delete(table, filters=(table.creation < (Now() - Interval(days=days))))
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def make_access_log(
 	doctype=None,
 	document=None,
@@ -60,7 +60,7 @@ def make_access_log(
 	)
 
 
-@traquent.write_only()
+frappe.write_only()
 @retry(
 	stop=stop_after_attempt(3),
 	retry=retry_if_exception_type(traquent.DuplicateEntryError),

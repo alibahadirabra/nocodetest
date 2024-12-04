@@ -5,7 +5,7 @@ import traquent
 from traquent import _
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_all_nodes(doctype, label, parent, tree_method, **filters):
 	"""Recursively gets all data from tree nodes"""
 
@@ -35,7 +35,7 @@ def get_all_nodes(doctype, label, parent, tree_method, **filters):
 	return out
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_children(doctype, parent="", include_disabled=False, **filters):
 	if isinstance(include_disabled, str):
 		include_disabled = traquent.sbool(include_disabled)
@@ -63,7 +63,7 @@ def _get_children(doctype, parent="", ignore_permissions=False, include_disabled
 	)
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def add_node():
 	args = make_tree_args(**traquent.form_dict)
 	doc = traquent.get_doc(args)

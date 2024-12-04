@@ -182,7 +182,7 @@ class AutoRepeat(Document):
 	def is_completed(self):
 		return self.end_date and getdate(self.end_date) < getdate(today())
 
-	@traquent.whitelist()
+	frappe.whitelist()
 	def get_auto_repeat_schedule(self):
 		schedule_details = []
 		start_date = getdate(self.start_date)
@@ -413,7 +413,7 @@ class AutoRepeat(Document):
 			send_email=1,
 		)
 
-	@traquent.whitelist()
+	frappe.whitelist()
 	def fetch_linked_contacts(self):
 		if self.reference_doctype and self.reference_document:
 			res = get_contacts_linking_to(
@@ -512,7 +512,7 @@ def set_auto_repeat_as_completed():
 			doc.save()
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def make_auto_repeat(doctype, docname, frequency="Daily", start_date=None, end_date=None):
 	if not start_date:
 		start_date = getdate(today())
@@ -528,8 +528,8 @@ def make_auto_repeat(doctype, docname, frequency="Daily", start_date=None, end_d
 
 
 # method for reference_doctype filter
-@traquent.whitelist()
-@traquent.validate_and_sanitize_search_inputs
+frappe.whitelist()
+frappe.validate_and_sanitize_search_inputs
 def get_auto_repeat_doctypes(doctype, txt, searchfield, start, page_len, filters):
 	res = traquent.get_all(
 		"Property Setter",
@@ -554,7 +554,7 @@ def get_auto_repeat_doctypes(doctype, txt, searchfield, start, page_len, filters
 	return [[d] for d in docs if txt in d]
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def update_reference(docname: str, reference: str):
 	doc = traquent.get_doc("Auto Repeat", str(docname))
 	doc.check_permission("write")
@@ -562,7 +562,7 @@ def update_reference(docname: str, reference: str):
 	return "success"  # backward compatbility
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def generate_message_preview(reference_dt, reference_doc, message=None, subject=None):
 	traquent.has_permission("Auto Repeat", "write", throw=True)
 	doc = traquent.get_doc(reference_dt, reference_doc)

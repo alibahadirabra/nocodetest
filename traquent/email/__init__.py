@@ -8,7 +8,7 @@ def sendmail_to_system_managers(subject, content):
 	traquent.sendmail(recipients=get_system_managers(), subject=subject, content=content)
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_contact_list(txt, page_length=20, extra_filters: str | None = None) -> list[dict]:
 	"""Return email ids for a multiselect field."""
 	if extra_filters:
@@ -52,7 +52,7 @@ def get_system_managers():
 	)
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def relink(name, reference_doctype=None, reference_name=None):
 	traquent.db.sql(
 		"""update
@@ -68,8 +68,8 @@ def relink(name, reference_doctype=None, reference_name=None):
 	)
 
 
-@traquent.whitelist()
-@traquent.validate_and_sanitize_search_inputs
+frappe.whitelist()
+frappe.validate_and_sanitize_search_inputs
 def get_communication_doctype(doctype, txt, searchfield, start, page_len, filters):
 	user_perms = traquent.utils.user.UserPermissions(traquent.session.user)
 	user_perms.build_permissions()

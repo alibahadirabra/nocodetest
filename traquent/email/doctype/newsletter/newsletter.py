@@ -61,7 +61,7 @@ class Newsletter(WebsiteGenerator):
 			self._recipients = self.get_recipients()
 		return self._recipients
 
-	@traquent.whitelist()
+	frappe.whitelist()
 	def get_sending_status(self):
 		count_by_status = traquent.get_all(
 			"Email Queue",
@@ -85,13 +85,13 @@ class Newsletter(WebsiteGenerator):
 		)
 		return {"sent": sent, "error": error, "total": total, "emails_queued": emails_queued}
 
-	@traquent.whitelist()
+	frappe.whitelist()
 	def send_test_email(self, email):
 		test_emails = traquent.utils.validate_email_address(email, throw=True)
 		self.send_newsletter(emails=test_emails, test_email=True)
 		traquent.msgprint(_("Test email sent to {0}").format(email), alert=True)
 
-	@traquent.whitelist()
+	frappe.whitelist()
 	def find_broken_links(self):
 		import requests
 		from bs4 import BeautifulSoup
@@ -111,7 +111,7 @@ class Newsletter(WebsiteGenerator):
 				broken_links.append(url)
 		return broken_links
 
-	@traquent.whitelist()
+	frappe.whitelist()
 	def send_emails(self):
 		"""queue sending emails to recipients"""
 		self.schedule_sending = False
@@ -298,7 +298,7 @@ def confirmed_unsubscribe(email, group):
 		doc.save(ignore_permissions=True)
 
 
-@traquent.whitelist(allow_guest=True)
+frappe.whitelist(allow_guest=True)
 @rate_limit(limit=10, seconds=60 * 60)
 def subscribe(email, email_group=None):
 	"""API endpoint to subscribe an email to a particular email group. Triggers a confirmation email."""
@@ -344,7 +344,7 @@ def subscribe(email, email_group=None):
 	)
 
 
-@traquent.whitelist(allow_guest=True)
+frappe.whitelist(allow_guest=True)
 def confirm_subscription(email, email_group=None):
 	"""API endpoint to confirm email subscription.
 	This endpoint is called when user clicks on the link sent to their mail.
@@ -421,7 +421,7 @@ def send_scheduled_email():
 			traquent.db.commit()
 
 
-@traquent.whitelist(allow_guest=True)
+frappe.whitelist(allow_guest=True)
 def newsletter_email_read(recipient_email=None, reference_doctype=None, reference_name=None):
 	if not (recipient_email and reference_name):
 		return

@@ -7,7 +7,7 @@ import traquent
 from traquent import _
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_apps():
 	apps = traquent.get_installed_apps()
 	app_list = []
@@ -69,7 +69,7 @@ def get_default_path():
 	return "/apps"
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def set_app_as_default(app_name):
 	if traquent.db.get_value("User", traquent.session.user, "default_app") == app_name:
 		traquent.db.set_value("User", traquent.session.user, "default_app", "")

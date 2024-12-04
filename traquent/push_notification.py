@@ -264,7 +264,7 @@ class PushNotification:
 
 
 # Webhook which will be called by the central relay server for authentication
-@traquent.whitelist(allow_guest=True, methods=["GET"])
+frappe.whitelist(allow_guest=True, methods=["GET"])
 def auth_webhook():
 	url = urlparse(traquent.utils.get_url()).hostname
 	token = traquent.cache().get_value(f"{url}:push_relay_registration_token")
@@ -282,13 +282,13 @@ def auth_webhook():
 
 
 # Subscribe and Unsubscribe API
-@traquent.whitelist(methods=["GET"])
+frappe.whitelist(methods=["GET"])
 def subscribe(fcm_token: str, project_name: str) -> dict:
 	success, message = PushNotification(project_name).add_token(traquent.session.user, fcm_token)
 	return {"success": success, "message": message}
 
 
-@traquent.whitelist(methods=["GET"])
+frappe.whitelist(methods=["GET"])
 def unsubscribe(fcm_token: str, project_name: str) -> dict:
 	success, message = PushNotification(project_name).remove_token(traquent.session.user, fcm_token)
 	return {"success": success, "message": message}

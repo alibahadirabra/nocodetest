@@ -19,7 +19,7 @@ if typing.TYPE_CHECKING:
 	from traquent.model.document import Document
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def getdoc(doctype, name, user=None):
 	"""
 	Loads a doclist for a given document. This method is called directly from the client.
@@ -56,7 +56,7 @@ def getdoc(doctype, name, user=None):
 	traquent.response.docs.append(doc)
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def getdoctype(doctype, with_parent=False, cached_timestamp=None):
 	"""load doctype"""
 
@@ -89,7 +89,7 @@ def get_meta_bundle(doctype):
 	return bundle
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_docinfo(doc=None, doctype=None, name=None):
 	from traquent.share import _get_users as get_docshares
 
@@ -217,7 +217,7 @@ def get_webhook_request_log_exists(doc: "Document") -> bool:
 	return False
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_communications(doctype, name, start=0, limit=20):
 	from traquent.utils import cint
 
@@ -494,7 +494,7 @@ def update_user_info(docinfo):
 	traquent.utils.add_user_info(users, docinfo.user_info)
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_user_info_for_viewers(users):
 	user_info = {}
 	for user in json.loads(users):

@@ -115,7 +115,7 @@ def serialize_request(request):
 	return request
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def add_indexes(indexes):
 	traquent.only_for("Administrator")
 	indexes = json.loads(indexes)
@@ -143,7 +143,7 @@ def _add_index(table, column):
 	)
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def optimize(recorder_id: str):
 	traquent.only_for("Administrator")
 	traquent.enqueue(_optimize, recorder_id=recorder_id, queue="long")

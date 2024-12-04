@@ -138,7 +138,7 @@ class PrintFormat(Document):
 			traquent.clear_cache(doctype=self.doc_type)
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def make_default(name):
 	"""Set print format as default"""
 	traquent.has_permission("Print Format", "write")

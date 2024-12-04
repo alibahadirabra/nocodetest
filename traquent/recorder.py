@@ -310,14 +310,14 @@ def administrator_only(function):
 	return wrapper
 
 
-@traquent.whitelist()
+frappe.whitelist()
 @do_not_record
 @administrator_only
 def status(*args, **kwargs):
 	return bool(traquent.cache.get_value(RECORDER_INTERCEPT_FLAG))
 
 
-@traquent.whitelist()
+frappe.whitelist()
 @do_not_record
 @administrator_only
 def start(
@@ -345,7 +345,7 @@ def start(
 	traquent.cache.set_value(RECORDER_INTERCEPT_FLAG, 1, expires_in_sec=RECORDER_AUTO_DISABLE)
 
 
-@traquent.whitelist()
+frappe.whitelist()
 @do_not_record
 @administrator_only
 def stop(*args, **kwargs):
@@ -353,7 +353,7 @@ def stop(*args, **kwargs):
 	traquent.enqueue(post_process, now=traquent.flags.in_test)
 
 
-@traquent.whitelist()
+frappe.whitelist()
 @do_not_record
 @administrator_only
 def get(uuid=None, *args, **kwargs):
@@ -364,14 +364,14 @@ def get(uuid=None, *args, **kwargs):
 	return result
 
 
-@traquent.whitelist()
+frappe.whitelist()
 @do_not_record
 @administrator_only
 def export_data(*args, **kwargs):
 	return list(traquent.cache.hgetall(RECORDER_REQUEST_HASH).values())
 
 
-@traquent.whitelist()
+frappe.whitelist()
 @do_not_record
 @administrator_only
 def delete(*args, **kwargs):
@@ -396,7 +396,7 @@ def record_queries(func: Callable):
 	return wrapped
 
 
-@traquent.whitelist()
+frappe.whitelist()
 @do_not_record
 @administrator_only
 def import_data(file: str) -> None:

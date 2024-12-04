@@ -8,47 +8,47 @@ import traquent.utils
 from traquent.utils.oauth import login_via_oauth2, login_via_oauth2_id_token
 
 
-@traquent.whitelist(allow_guest=True)
+frappe.whitelist(allow_guest=True)
 def login_via_google(code: str, state: str):
 	login_via_oauth2("google", code, state, decoder=decoder_compat)
 
 
-@traquent.whitelist(allow_guest=True)
+frappe.whitelist(allow_guest=True)
 def login_via_github(code: str, state: str):
 	login_via_oauth2("github", code, state)
 
 
-@traquent.whitelist(allow_guest=True)
+frappe.whitelist(allow_guest=True)
 def login_via_facebook(code: str, state: str):
 	login_via_oauth2("facebook", code, state, decoder=decoder_compat)
 
 
-@traquent.whitelist(allow_guest=True)
+frappe.whitelist(allow_guest=True)
 def login_via_traquent(code: str, state: str):
 	login_via_oauth2("traquent", code, state, decoder=decoder_compat)
 
 
-@traquent.whitelist(allow_guest=True)
+frappe.whitelist(allow_guest=True)
 def login_via_office365(code: str, state: str):
 	login_via_oauth2_id_token("office_365", code, state, decoder=decoder_compat)
 
 
-@traquent.whitelist(allow_guest=True)
+frappe.whitelist(allow_guest=True)
 def login_via_salesforce(code: str, state: str):
 	login_via_oauth2("salesforce", code, state, decoder=decoder_compat)
 
 
-@traquent.whitelist(allow_guest=True)
+frappe.whitelist(allow_guest=True)
 def login_via_fairlogin(code: str, state: str):
 	login_via_oauth2("fairlogin", code, state, decoder=decoder_compat)
 
 
-@traquent.whitelist(allow_guest=True)
+frappe.whitelist(allow_guest=True)
 def login_via_keycloak(code: str, state: str):
 	login_via_oauth2("keycloak", code, state, decoder=decoder_compat)
 
 
-@traquent.whitelist(allow_guest=True)
+frappe.whitelist(allow_guest=True)
 def custom(code: str, state: str):
 	"""
 	Callback for processing code and state for user added providers
