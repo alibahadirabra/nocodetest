@@ -1,7 +1,7 @@
 [project]
 name = "traquent"
 authors = [
-    { name = "traquent Technologies Pvt Ltd", email = "developers@traquent.io"}
+    { name = "traquent Technologies Pvt Ltd", email = "developersfrappe.io"}
 ]
 description = "Metadata driven, full-stack low code web framework"
 requires-python = ">=3.10,<3.13"

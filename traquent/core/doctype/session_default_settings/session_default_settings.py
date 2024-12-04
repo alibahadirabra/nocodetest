@@ -24,7 +24,7 @@ class SessionDefaultSettings(Document):
 	pass
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_session_default_values():
 	settings = traquent.get_single("Session Default Settings")
 	fields = []
@@ -42,7 +42,7 @@ def get_session_default_values():
 	return json.dumps(fields)
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def set_session_default_values(default_values):
 	default_values = traquent.parse_json(default_values)
 	for entry in default_values:

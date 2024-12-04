@@ -15,14 +15,14 @@ if TYPE_CHECKING:
 	from traquent.core.doctype.comment.comment import Comment
 
 
-@traquent.whitelist(methods=["DELETE", "POST"])
+frappe.whitelist(methods=["DELETE", "POST"])
 def remove_attach():
 	"""remove attachment"""
 	fid = traquent.form_dict.get("fid")
 	traquent.delete_doc("File", fid)
 
 
-@traquent.whitelist(methods=["POST", "PUT"])
+frappe.whitelist(methods=["POST", "PUT"])
 def add_comment(
 	reference_doctype: str, reference_name: str, content: str, comment_email: str, comment_by: str
 ) -> "Comment":
@@ -49,7 +49,7 @@ def add_comment(
 	return comment
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def update_comment(name, content):
 	"""allow only owner to update comment"""
 	doc = traquent.get_doc("Comment", name)
@@ -68,7 +68,7 @@ def update_comment(name, content):
 	doc.save(ignore_permissions=True)
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_next(doctype, value, prev, filters=None, sort_order="desc", sort_field="creation"):
 	prev = int(prev)
 	if not filters:

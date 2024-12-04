@@ -115,7 +115,7 @@ class Webhook(Document):
 			except Exception:
 				traquent.throw(_("Invalid Webhook Secret"))
 
-	@traquent.whitelist()
+	frappe.whitelist()
 	def preview_meets_condition(self, preview_document):
 		if not self.condition:
 			return _("Yes")
@@ -127,7 +127,7 @@ class Webhook(Document):
 			return _("Failed to evaluate conditions: {}").format(e)
 		return _("Yes") if met_condition else _("No")
 
-	@traquent.whitelist()
+	frappe.whitelist()
 	def preview_request_body(self, preview_document):
 		try:
 			doc = traquent.get_cached_doc(self.webhook_doctype, preview_document)
@@ -244,7 +244,7 @@ def get_webhook_data(doc, webhook):
 	return data
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_all_queues():
 	"""Fetches all workers and returns a list of available queue names."""
 	traquent.only_for("System Manager")

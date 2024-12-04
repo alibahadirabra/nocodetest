@@ -43,7 +43,7 @@ class ErrorLog(Document):
 		traquent.db.delete(table, filters=(table.creation < (Now() - Interval(days=days))))
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def clear_error_logs():
 	"""Flush all Error Logs"""
 	traquent.only_for("System Manager")

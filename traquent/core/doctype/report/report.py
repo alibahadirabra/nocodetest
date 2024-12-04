@@ -101,7 +101,7 @@ class Report(Document):
 	def get_columns(self):
 		return [d.as_dict(no_default_fields=True, no_child_table_fields=True) for d in self.columns]
 
-	@traquent.whitelist()
+	frappe.whitelist()
 	def set_doctype_roles(self):
 		if not self.get("roles") and self.is_standard == "No":
 			meta = traquent.get_meta(self.ref_doctype)
@@ -375,7 +375,7 @@ class Report(Document):
 
 		return data
 
-	@traquent.whitelist()
+	frappe.whitelist()
 	def toggle_disable(self, disable: bool):
 		if not self.has_permission("write"):
 			traquent.throw(_("You are not allowed to edit the report."))

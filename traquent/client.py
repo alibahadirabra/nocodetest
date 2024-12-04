@@ -23,7 +23,7 @@ Requests via traquentClient are also handled here.
 """
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_list(
 	doctype,
 	fields=None,
@@ -66,12 +66,12 @@ def get_list(
 	return traquent.get_list(**args)
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_count(doctype, filters=None, debug=False, cache=False):
 	return traquent.db.count(doctype, get_safe_filters(filters), debug, cache)
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get(doctype, name=None, filters=None, parent=None):
 	"""Return a document by name or filters.
 
@@ -94,7 +94,7 @@ def get(doctype, name=None, filters=None, parent=None):
 	return doc.as_dict()
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_value(doctype, fieldname, filters=None, as_dict=True, debug=False, parent=None):
 	"""Return a value from a document.
 
@@ -144,7 +144,7 @@ def get_value(doctype, fieldname, filters=None, as_dict=True, debug=False, paren
 	return value[0] if len(fields) > 1 else value[0][0]
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_single_value(doctype, field):
 	if not traquent.has_permission(doctype):
 		traquent.throw(_("No permission for {0}").format(_(doctype)), traquent.PermissionError)
@@ -152,7 +152,7 @@ def get_single_value(doctype, field):
 	return traquent.db.get_single_value(doctype, field)
 
 
-@traquent.whitelist(methods=["POST", "PUT"])
+frappe.whitelist(methods=["POST", "PUT"])
 def set_value(doctype, name, fieldname, value=None):
 	"""Set a value using get_doc, group of values
 
@@ -189,7 +189,7 @@ def set_value(doctype, name, fieldname, value=None):
 	return doc.as_dict()
 
 
-@traquent.whitelist(methods=["POST", "PUT"])
+frappe.whitelist(methods=["POST", "PUT"])
 def insert(doc=None):
 	"""Insert a document
 
@@ -200,7 +200,7 @@ def insert(doc=None):
 	return insert_doc(doc).as_dict()
 
 
-@traquent.whitelist(methods=["POST", "PUT"])
+frappe.whitelist(methods=["POST", "PUT"])
 def insert_many(docs=None):
 	"""Insert multiple documents
 
@@ -214,7 +214,7 @@ def insert_many(docs=None):
 	return [insert_doc(doc).name for doc in docs]
 
 
-@traquent.whitelist(methods=["POST", "PUT"])
+frappe.whitelist(methods=["POST", "PUT"])
 def save(doc):
 	"""Update (save) an existing document
 
@@ -228,7 +228,7 @@ def save(doc):
 	return doc.as_dict()
 
 
-@traquent.whitelist(methods=["POST", "PUT"])
+frappe.whitelist(methods=["POST", "PUT"])
 def rename_doc(doctype, old_name, new_name, merge=False):
 	"""Rename document
 
@@ -239,7 +239,7 @@ def rename_doc(doctype, old_name, new_name, merge=False):
 	return new_name
 
 
-@traquent.whitelist(methods=["POST", "PUT"])
+frappe.whitelist(methods=["POST", "PUT"])
 def submit(doc):
 	"""Submit a document
 
@@ -253,7 +253,7 @@ def submit(doc):
 	return doc.as_dict()
 
 
-@traquent.whitelist(methods=["POST", "PUT"])
+frappe.whitelist(methods=["POST", "PUT"])
 def cancel(doctype, name):
 	"""Cancel a document
 
@@ -265,7 +265,7 @@ def cancel(doctype, name):
 	return wrapper.as_dict()
 
 
-@traquent.whitelist(methods=["DELETE", "POST"])
+frappe.whitelist(methods=["DELETE", "POST"])
 def delete(doctype, name):
 	"""Delete a remote document
 
@@ -274,7 +274,7 @@ def delete(doctype, name):
 	delete_doc(doctype, name)
 
 
-@traquent.whitelist(methods=["POST", "PUT"])
+frappe.whitelist(methods=["POST", "PUT"])
 def bulk_update(docs):
 	"""Bulk update documents
 
@@ -293,7 +293,7 @@ def bulk_update(docs):
 	return {"failed_docs": failed_docs}
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def has_permission(doctype, docname, perm_type="read"):
 	"""Return a JSON with data whether the document has the requested permission.
 
@@ -304,7 +304,7 @@ def has_permission(doctype, docname, perm_type="read"):
 	return {"has_permission": traquent.has_permission(doctype, perm_type.lower(), docname)}
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_doc_permissions(doctype, docname):
 	"""Return an evaluated document permissions dict like `{"read":1, "write":1}`.
 
@@ -315,7 +315,7 @@ def get_doc_permissions(doctype, docname):
 	return {"permissions": traquent.permissions.get_doc_permissions(doc)}
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_password(doctype, name, fieldname):
 	"""Return a password type property. Only applicable for System Managers
 
@@ -332,13 +332,13 @@ from traquent.deprecation_dumpster import get_js as _get_js
 get_js = traquent.whitelist()(_get_js)
 
 
-@traquent.whitelist(allow_guest=True)
+frappe.whitelist(allow_guest=True)
 def get_time_zone():
 	"""Return the default time zone."""
 	return {"time_zone": traquent.defaults.get_defaults().get("time_zone")}
 
 
-@traquent.whitelist(methods=["POST", "PUT"])
+frappe.whitelist(methods=["POST", "PUT"])
 def attach_file(
 	filename=None,
 	filedata=None,
@@ -384,7 +384,7 @@ def attach_file(
 	return file
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def is_document_amended(doctype, docname):
 	if traquent.permissions.has_permission(doctype):
 		try:
@@ -395,7 +395,7 @@ def is_document_amended(doctype, docname):
 	return False
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def validate_link(doctype: str, docname: str, fields=None):
 	if not isinstance(doctype, str):
 		traquent.throw(_("DocType must be a string"))

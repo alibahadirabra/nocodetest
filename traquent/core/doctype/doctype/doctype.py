@@ -1042,7 +1042,7 @@ class DocType(Document):
 
 		validate_route_conflict(self.doctype, self.name)
 
-	@traquent.whitelist()
+	frappe.whitelist()
 	def check_pending_migration(self) -> bool:
 		"""Checks if all migrations are applied on doctype."""
 		if self.is_new() or self.custom:
@@ -1957,7 +1957,7 @@ def get_field(doc, fieldname):
 			return field
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_row_size_utilization(doctype: str) -> float:
 	"""Get row size utilization in percentage"""
 

@@ -411,7 +411,7 @@ class CookieManager:
 			response.set_cookie(key, "", expires=expires)
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_logged_user():
 	return traquent.session.user
 

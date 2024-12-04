@@ -84,7 +84,7 @@ def get_permission_query_conditions(user):
 	return f" `tabDashboard`.`module` in ({','.join(allowed_modules)}) or {module_not_set} "
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_permitted_charts(dashboard_name):
 	permitted_charts = []
 	dashboard = traquent.get_doc("Dashboard", dashboard_name)
@@ -100,7 +100,7 @@ def get_permitted_charts(dashboard_name):
 	return permitted_charts
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_permitted_cards(dashboard_name):
 	dashboard = traquent.get_doc("Dashboard", dashboard_name)
 	return [card for card in dashboard.cards if traquent.has_permission("Number Card", doc=card.card)]

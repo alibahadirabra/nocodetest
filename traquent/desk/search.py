@@ -33,7 +33,7 @@ class LinkSearchResults(TypedDict):
 
 
 # this is called by the Link Field
-@traquent.whitelist()
+frappe.whitelist()
 def search_link(
 	doctype: str,
 	txt: str,
@@ -58,7 +58,7 @@ def search_link(
 
 
 # this is called by the search box
-@traquent.whitelist()
+frappe.whitelist()
 def search_widget(
 	doctype: str,
 	txt: str,
@@ -289,7 +289,7 @@ def relevance_sorter(key, query, as_dict):
 	return (cstr(value).casefold().startswith(query.casefold()) is not True, value)
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_names_for_mentions(search_term):
 	users_for_mentions = traquent.cache.get_value("users_for_mentions", get_users_for_mentions)
 	user_groups = traquent.cache.get_value("user_groups", get_user_groups)
@@ -325,7 +325,7 @@ def get_user_groups():
 	return traquent.get_all("User Group", fields=["name as id", "name as value"], update={"is_group": True})
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_link_title(doctype, docname):
 	meta = traquent.get_meta(doctype)
 

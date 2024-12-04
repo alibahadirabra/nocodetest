@@ -743,7 +743,7 @@ class File(Document):
 		if self.file_url:
 			self.is_private = cint(self.file_url.startswith("/private"))
 
-	@traquent.whitelist()
+	frappe.whitelist()
 	def optimize_file(self):
 		if self.is_folder:
 			raise TypeError("Folders cannot be optimized")

@@ -300,7 +300,7 @@ def convert_markdown(doc: "Document") -> None:
 				doc.set(field.fieldname, traquent.utils.md_to_html(value))
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_html_and_style(
 	doc: str,
 	name: str | None = None,
@@ -340,7 +340,7 @@ def get_html_and_style(
 	return {"html": html, "style": get_print_style(style=style, print_format=print_format)}
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_rendered_raw_commands(doc: str, name: str | None = None, print_format: str | None = None) -> dict:
 	"""Return Rendered Raw Commands of print format, used to send directly to printer."""
 

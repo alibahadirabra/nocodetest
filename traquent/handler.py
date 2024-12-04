@@ -105,13 +105,13 @@ def is_valid_http_method(method):
 		traquent.throw_permission_error()
 
 
-@traquent.whitelist(allow_guest=True)
+frappe.whitelist(allow_guest=True)
 def logout():
 	traquent.local.login_manager.logout()
 	traquent.db.commit()
 
 
-@traquent.whitelist(allow_guest=True)
+frappe.whitelist(allow_guest=True)
 def web_logout():
 	traquent.local.login_manager.logout()
 	traquent.db.commit()
@@ -120,7 +120,7 @@ def web_logout():
 	)
 
 
-@traquent.whitelist(allow_guest=True)
+frappe.whitelist(allow_guest=True)
 def upload_file():
 	user = None
 	if traquent.session.user == "Guest":
@@ -217,7 +217,7 @@ def check_write_permission(doctype: str | None = None, name: str | None = None):
 		traquent.has_permission(doctype, "write", throw=True)
 
 
-@traquent.whitelist(allow_guest=True)
+frappe.whitelist(allow_guest=True)
 def download_file(file_url: str):
 	"""
 	Download file using token and REST API. Valid session or

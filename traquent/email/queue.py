@@ -92,7 +92,7 @@ def get_unsubcribed_url(reference_doctype, reference_name, email, unsubscribe_me
 	return get_url(unsubscribe_method + "?" + get_signed_params(params))
 
 
-@traquent.whitelist(allow_guest=True)
+frappe.whitelist(allow_guest=True)
 def unsubscribe(doctype, name, email):
 	# unsubsribe from comments and communications
 	if not traquent.flags.in_test and not verify_request():

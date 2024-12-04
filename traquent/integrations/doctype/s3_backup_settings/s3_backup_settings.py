@@ -71,7 +71,7 @@ class S3BackupSettings(Document):
 			traquent.throw(msg)
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def take_backup():
 	"""Enqueue longjob for taking backup to s3"""
 	enqueue(
@@ -100,7 +100,7 @@ def take_backups_if(freq):
 			take_backups_s3()
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def take_backups_s3(retry_count=0):
 	try:
 		validate_file_size()

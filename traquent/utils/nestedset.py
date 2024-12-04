@@ -164,7 +164,7 @@ def update_move_node(doc: Document, parent_field: str):
 	).run()
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def rebuild_tree(doctype: str) -> None:
 	"""Call rebuild_node for all root nodes."""
 	# Check for perm if called from client-side

@@ -7,7 +7,7 @@ import traquent
 from traquent import _
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def update_event(args, field_map):
 	"""Updates Event (called via calendar) based on passed `field_map`"""
 	args = traquent._dict(json.loads(args))
@@ -28,7 +28,7 @@ def get_event_conditions(doctype, filters=None):
 	return get_filters_cond(doctype, filters, [], with_match_conditions=True)
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_events(doctype, start, end, field_map, filters=None, fields=None):
 	field_map = traquent._dict(json.loads(field_map))
 	fields = traquent.parse_json(fields)

@@ -19,7 +19,7 @@ if TYPE_CHECKING:
 	from traquent.model.meta import Meta
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def update_document_title(
 	*,
 	doctype: str,

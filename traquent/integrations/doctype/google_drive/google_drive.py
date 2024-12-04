@@ -60,7 +60,7 @@ class GoogleDrive(Document):
 		return r.get("access_token")
 
 
-@traquent.whitelist(methods=["POST"])
+frappe.whitelist(methods=["POST"])
 def authorize_access(reauthorize=False, code=None):
 	"""
 	If no Authorization code get it from Google and then request for Refresh Token.
@@ -142,7 +142,7 @@ def check_for_folder_in_google_drive():
 		_create_folder_in_google_drive(google_drive, account)
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def take_backup():
 	"""Enqueue longjob for taking backup to Google Drive"""
 	enqueue(

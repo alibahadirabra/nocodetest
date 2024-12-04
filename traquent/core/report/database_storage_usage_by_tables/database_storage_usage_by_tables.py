@@ -40,7 +40,7 @@ def execute(filters=None):
 	return COLUMNS, data
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def optimize_doctype(doctype_name: str):
 	traquent.only_for("System Manager")
 	traquent.enqueue(

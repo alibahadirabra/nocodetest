@@ -2,7 +2,7 @@ import traquent
 from traquent.model import no_value_fields, table_fields
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_preview_data(doctype, docname):
 	preview_fields = []
 	meta = traquent.get_meta(doctype)

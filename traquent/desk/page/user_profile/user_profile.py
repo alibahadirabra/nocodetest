@@ -6,7 +6,7 @@ from traquent.query_builder.functions import Date, Sum, UnixTimestamp
 from traquent.utils import getdate
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_energy_points_heatmap_data(user, date):
 	try:
 		date = getdate(date)
@@ -28,7 +28,7 @@ def get_energy_points_heatmap_data(user, date):
 	)
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_energy_points_percentage_chart_data(user, field):
 	result = traquent.get_all(
 		"Energy Point Log",
@@ -45,7 +45,7 @@ def get_energy_points_percentage_chart_data(user, field):
 	}
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_user_rank(user):
 	month_start = datetime.today().replace(day=1)
 	monthly_rank = traquent.get_all(
@@ -72,7 +72,7 @@ def get_user_rank(user):
 	}
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def update_profile_info(profile_info):
 	profile_info = traquent.parse_json(profile_info)
 	keys = ["location", "interest", "user_image", "bio"]
@@ -87,7 +87,7 @@ def update_profile_info(profile_info):
 	return user
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_energy_points_list(start, limit, user):
 	return traquent.db.get_list(
 		"Energy Point Log",

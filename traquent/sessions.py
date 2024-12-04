@@ -25,7 +25,7 @@ from traquent.utils.change_log import has_app_update_notifications
 from traquent.utils.data import add_to_date
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def clear():
 	traquent.local.session_obj.update(force=True)
 	traquent.local.db.commit()
@@ -183,7 +183,7 @@ def get():
 	return bootinfo
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_boot_assets_json():
 	return get_assets_json()
 

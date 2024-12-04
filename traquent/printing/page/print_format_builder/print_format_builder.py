@@ -1,7 +1,7 @@
 import traquent
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def create_custom_format(doctype, name, based_on="Standard", beta=False):
 	doc = traquent.new_doc("Print Format")
 	doc.doc_type = doctype

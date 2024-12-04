@@ -192,7 +192,7 @@ class Event(Document):
 			)
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def delete_communication(event, reference_doctype, reference_docname):
 	deleted_participant = traquent.get_doc(reference_doctype, reference_docname)
 	if isinstance(event, str):
@@ -262,7 +262,7 @@ def send_event_digest():
 			)
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_events(start, end, user=None, for_reminder=False, filters=None) -> list[traquent._dict]:
 	if not user:
 		user = traquent.session.user

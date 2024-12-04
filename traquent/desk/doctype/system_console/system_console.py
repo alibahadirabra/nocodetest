@@ -47,14 +47,14 @@ class SystemConsole(Document):
 		traquent.db.commit()
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def execute_code(doc):
 	console = traquent.get_doc(json.loads(doc))
 	console.run()
 	return console.as_dict()
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def show_processlist():
 	traquent.only_for("System Manager")
 	return _show_processlist()

@@ -25,7 +25,7 @@ class DashboardSettings(Document):
 	pass
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def create_dashboard_settings(user):
 	if not traquent.db.exists("Dashboard Settings", user):
 		doc = traquent.new_doc("Dashboard Settings")
@@ -42,7 +42,7 @@ def get_permission_query_conditions(user):
 	return f"""(`tabDashboard Settings`.name = {traquent.db.escape(user)})"""
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def save_chart_config(reset, config, chart_name):
 	reset = traquent.parse_json(reset)
 	doc = traquent.get_doc("Dashboard Settings", traquent.session.user)

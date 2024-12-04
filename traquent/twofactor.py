@@ -420,7 +420,7 @@ def disable():
 	traquent.db.set_single_value("System Settings", "enable_two_factor_auth", 0)
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def reset_otp_secret(user: str):
 	if traquent.session.user != user:
 		traquent.only_for("System Manager", message=True)

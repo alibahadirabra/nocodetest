@@ -13,7 +13,7 @@ from traquent.modules.export_file import export_to_files
 FOLDER_NAME = "dashboard_chart_source"
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_config(name: str) -> str:
 	doc: "DashboardChartSource" = traquent.get_doc("Dashboard Chart Source", name)
 	return doc.read_config()

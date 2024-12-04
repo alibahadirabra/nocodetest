@@ -86,7 +86,7 @@ def get_change_log_for_app(app, from_version, to_version):
 	return [[cstr(d[0]), d[1]] for d in app_change_log]
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def update_last_known_versions():
 	traquent.db.set_value(
 		"User",
@@ -97,7 +97,7 @@ def update_last_known_versions():
 	)
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_versions():
 	"""Get versions of all installed apps.
 
@@ -333,7 +333,7 @@ def add_message_to_redis(update_json):
 	traquent.cache.sadd("changelog-update-user-set", *system_managers)
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def show_update_popup():
 	if traquent.get_system_settings("disable_system_update_notification"):
 		return

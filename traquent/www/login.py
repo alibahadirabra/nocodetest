@@ -111,7 +111,7 @@ def get_context(context):
 	return context
 
 
-@traquent.whitelist(allow_guest=True)
+frappe.whitelist(allow_guest=True)
 def login_via_token(login_token: str):
 	sid = traquent.cache.get_value(f"login_token:{login_token}", expires=True)
 	if not sid:
@@ -126,7 +126,7 @@ def login_via_token(login_token: str):
 	)
 
 
-@traquent.whitelist(allow_guest=True)
+frappe.whitelist(allow_guest=True)
 @rate_limit(limit=5, seconds=60 * 60)
 def send_login_link(email: str):
 	if not traquent.get_system_settings("login_with_email_link"):
@@ -165,7 +165,7 @@ def get_login_with_email_link_ratelimit() -> int:
 	return traquent.get_system_settings("rate_limit_email_link_login") or 5
 
 
-@traquent.whitelist(allow_guest=True, methods=["GET"])
+frappe.whitelist(allow_guest=True, methods=["GET"])
 @rate_limit(limit=get_login_with_email_link_ratelimit, seconds=60 * 60)
 def login_via_key(key: str):
 	cache_key = f"one_time_login_key:{key}"

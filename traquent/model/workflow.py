@@ -35,7 +35,7 @@ def get_workflow_name(doctype):
 	return workflow_name
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_transitions(
 	doc: Union["Document", str, dict], workflow: "Workflow" = None, raise_exception: bool = False
 ) -> list[dict]:
@@ -95,7 +95,7 @@ def is_transition_condition_satisfied(transition, doc) -> bool:
 		return traquent.safe_eval(transition.condition, get_workflow_safe_globals(), dict(doc=doc.as_dict()))
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def apply_workflow(doc, action):
 	"""Allow workflow action on the current doc"""
 	doc = traquent.get_doc(traquent.parse_json(doc))
@@ -143,7 +143,7 @@ def apply_workflow(doc, action):
 	return doc
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def can_cancel_document(doctype):
 	workflow = get_workflow(doctype)
 	cancelling_states = [s.state for s in workflow.states if s.doc_status == "2"]
@@ -227,7 +227,7 @@ def get_workflow_field_value(workflow_name, field):
 	return traquent.get_cached_value("Workflow", workflow_name, field)
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def bulk_workflow_approval(docnames, doctype, action):
 	docnames = json.loads(docnames)
 	if len(docnames) < 20:
@@ -321,7 +321,7 @@ def print_workflow_log(messages, title, doctype, indicator):
 		)
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_common_transition_actions(docs, doctype):
 	common_actions = []
 	if isinstance(docs, str):

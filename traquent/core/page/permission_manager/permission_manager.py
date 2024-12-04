@@ -25,7 +25,7 @@ from traquent.utils.user import get_users_with_role as _get_user_with_role
 not_allowed_in_permission_manager = ["DocType", "Patch Log", "Module Def", "Transaction Log"]
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_roles_and_doctypes():
 	traquent.only_for("System Manager")
 
@@ -66,7 +66,7 @@ def get_roles_and_doctypes():
 	}
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_permissions(doctype: str | None = None, role: str | None = None):
 	traquent.only_for("System Manager")
 
@@ -102,13 +102,13 @@ def get_permissions(doctype: str | None = None, role: str | None = None):
 	return out
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def add(parent, role, permlevel):
 	traquent.only_for("System Manager")
 	add_permission(parent, role, permlevel)
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def update(doctype: str, role: str, permlevel: int, ptype: str, value=None, if_owner=0) -> str | None:
 	"""Update role permission params.
 
@@ -141,7 +141,7 @@ def update(doctype: str, role: str, permlevel: int, ptype: str, value=None, if_o
 	return "refresh" if out else None
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def remove(doctype, role, permlevel, if_owner=0):
 	traquent.only_for("System Manager")
 	setup_custom_perms(doctype)
@@ -158,20 +158,20 @@ def remove(doctype, role, permlevel, if_owner=0):
 	validate_permissions_for_doctype(doctype, for_remove=True, alert=True)
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def reset(doctype):
 	traquent.only_for("System Manager")
 	reset_perms(doctype)
 	clear_permissions_cache(doctype)
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_users_with_role(role):
 	traquent.only_for("System Manager")
 	return _get_user_with_role(role)
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_standard_permissions(doctype):
 	traquent.only_for("System Manager")
 	meta = traquent.get_meta(doctype)

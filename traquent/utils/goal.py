@@ -38,7 +38,7 @@ def get_monthly_results(
 	)
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_monthly_goal_graph_data(
 	title: str,
 	doctype: str,

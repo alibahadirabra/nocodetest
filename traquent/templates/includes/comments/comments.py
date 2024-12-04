@@ -15,7 +15,7 @@ URLS_COMMENT_PATTERN = re.compile(
 EMAIL_PATTERN = re.compile(r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)", re.IGNORECASE)
 
 
-@traquent.whitelist(allow_guest=True)
+frappe.whitelist(allow_guest=True)
 @rate_limit(key="reference_name", limit=get_comment_limit, seconds=60 * 60)
 def add_comment(comment, comment_email, comment_by, reference_doctype, reference_name, route):
 	if traquent.session.user == "Guest":

@@ -48,7 +48,7 @@ class GoogleContacts(Document):
 		return r.get("access_token")
 
 
-@traquent.whitelist(methods=["POST"])
+frappe.whitelist(methods=["POST"])
 def authorize_access(g_contact, reauthorize=False, code=None):
 	"""
 	If no Authorization code get it from Google and then request for Refresh Token.
@@ -87,7 +87,7 @@ def get_google_contacts_object(g_contact):
 	return google_contacts, account
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def sync(g_contact=None):
 	filters = {"enable": 1}
 

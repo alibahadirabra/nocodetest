@@ -220,7 +220,7 @@ def _get_last_creation_timestamp(doctype):
 		return get_datetime(timestamp)
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def activate_scheduler():
 	from traquent.installer import update_site_config
 
@@ -235,7 +235,7 @@ def activate_scheduler():
 		update_site_config("pause_scheduler", 0)
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_scheduler_status():
 	if is_scheduler_inactive():
 		return {"status": "inactive"}

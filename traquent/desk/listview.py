@@ -9,7 +9,7 @@ from traquent.query_builder.terms import SubQuery
 from traquent.query_builder.utils import DocType
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_list_settings(doctype):
 	try:
 		return traquent.get_cached_doc("List View Settings", doctype)
@@ -17,7 +17,7 @@ def get_list_settings(doctype):
 		traquent.clear_messages()
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def set_list_settings(doctype, values):
 	try:
 		doc = traquent.get_doc("List View Settings", doctype)
@@ -29,7 +29,7 @@ def set_list_settings(doctype, values):
 	doc.save()
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_group_by_count(doctype: str, current_filters: str, field: str) -> list[dict]:
 	current_filters = traquent.parse_json(current_filters)
 

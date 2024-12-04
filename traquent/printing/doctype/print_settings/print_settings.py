@@ -73,7 +73,7 @@ class PrintSettings(Document):
 		traquent.clear_cache()
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def is_print_server_enabled():
 	if not hasattr(traquent.local, "enable_print_server"):
 		traquent.local.enable_print_server = cint(

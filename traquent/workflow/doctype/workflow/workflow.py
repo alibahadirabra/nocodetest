@@ -119,7 +119,7 @@ class Workflow(Document):
 			)
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_workflow_state_count(doctype, workflow_state_field, states):
 	traquent.has_permission(doctype=doctype, ptype="read", throw=True)
 	states = traquent.parse_json(states)

@@ -12,7 +12,7 @@ from traquent.utils.scheduler import is_scheduler_inactive
 from traquent.utils.telemetry import capture_doc
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def savedocs(doc, action):
 	"""save / submit / update doclist"""
 	doc = traquent.get_doc(json.loads(doc))
@@ -46,7 +46,7 @@ def savedocs(doc, action):
 	traquent.msgprint(traquent._("Saved"), indicator="green", alert=True)
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def cancel(doctype=None, name=None, workflow_state_fieldname=None, workflow_state=None):
 	"""cancel a doclist"""
 	doc = traquent.get_doc(doctype, name)
@@ -59,7 +59,7 @@ def cancel(doctype=None, name=None, workflow_state_fieldname=None, workflow_stat
 	traquent.msgprint(traquent._("Cancelled"), indicator="red", alert=True)
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def discard(doctype: str, name: str | int):
 	"""discard a draft document"""
 	doc = traquent.get_doc(doctype, name)

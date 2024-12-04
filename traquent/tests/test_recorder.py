@@ -147,7 +147,7 @@ class TestRecorderDeco(IntegrationTestCase):
 	def test_recorder_flag(self):
 		traquent.recorder.delete()
 
-		@traquent.recorder.record_queries
+		frappe.recorder.record_queries
 		def test():
 			traquent.get_all("User")
 

@@ -85,7 +85,7 @@ def toggle_notifications(user: str, enable: bool = False, ignore_permissions=Fal
 		settings.save(ignore_permissions=ignore_permissions)
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_subscribed_documents():
 	if not traquent.session.user:
 		return []
@@ -131,7 +131,7 @@ def has_permission(doc, ptype="read", user=None):
 	return doc.name == user
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def set_seen_value(value, user):
 	if traquent.flags.read_only:
 		return

@@ -24,7 +24,7 @@ if TYPE_CHECKING:
 	from traquent.core.doctype.communication.communication import Communication
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def make(
 	doctype=None,
 	name=None,
@@ -270,7 +270,7 @@ def add_attachments(name: str, attachments: Iterable[str | dict]) -> None:
 		_file.save(ignore_permissions=True)
 
 
-@traquent.whitelist(allow_guest=True, methods=("GET",))
+frappe.whitelist(allow_guest=True, methods=("GET",))
 def mark_email_as_seen(name: str | None = None):
 	traquent.request.after_response.add(lambda: _mark_email_as_seen(name))
 	traquent.response.update(traquent.utils.get_imaginary_pixel_response())

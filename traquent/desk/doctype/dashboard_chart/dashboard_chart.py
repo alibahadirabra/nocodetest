@@ -86,7 +86,7 @@ def has_permission(doc, ptype, user):
 	return False
 
 
-@traquent.whitelist()
+frappe.whitelist()
 @cache_source
 def get(
 	chart_name=None,
@@ -138,7 +138,7 @@ def get(
 	return chart_config
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def create_dashboard_chart(args):
 	args = traquent.parse_json(args)
 	doc = traquent.new_doc("Dashboard Chart")
@@ -155,7 +155,7 @@ def create_dashboard_chart(args):
 	return doc
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def create_report_chart(args):
 	doc = create_dashboard_chart(args)
 	args = traquent.parse_json(args)
@@ -164,7 +164,7 @@ def create_report_chart(args):
 		add_chart_to_dashboard(json.dumps(args))
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def add_chart_to_dashboard(args):
 	args = traquent.parse_json(args)
 
@@ -324,8 +324,8 @@ def get_result(data, timegrain, from_date, to_date, chart_type):
 	return result
 
 
-@traquent.whitelist()
-@traquent.validate_and_sanitize_search_inputs
+frappe.whitelist()
+frappe.validate_and_sanitize_search_inputs
 def get_charts_for_user(doctype, txt, searchfield, start, page_len, filters):
 	or_filters = {"owner": traquent.session.user, "is_public": 1}
 	return traquent.db.get_list(
@@ -423,7 +423,7 @@ class DashboardChart(Document):
 				traquent.throw(_("Invalid json added in the custom options: {0}").format(error))
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_parent_doctypes(child_type: str) -> list[str]:
 	"""Get all parent doctypes that have the child doctype."""
 	assert isinstance(child_type, str)

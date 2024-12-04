@@ -346,7 +346,7 @@ class SystemHealthReport(Document):
 		raise NotImplementedError
 
 
-@traquent.whitelist()
+frappe.whitelist()
 @no_wait(get_redis_conn)
 def get_job_status(job_id: str | None = None):
 	traquent.only_for("System Manager")

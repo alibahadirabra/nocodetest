@@ -20,7 +20,7 @@ traquent.ui.misc.about = function () {
 					<p><i class='fa fa-twitter fa-fw'></i>
 						Twitter: <a href='https://twitter.com/traquenttech' target='_blank'>https://twitter.com/traquenttech</a></p>
 					<p><i class='fa fa-youtube fa-fw'></i>
-						YouTube: <a href='https://www.youtube.com/@traquenttech' target='_blank'>https://www.youtube.com/@traquenttech</a></p>
+						YouTube: <a href='https://www.youtube.com/frappetech' target='_blank'>https://www.youtube.com/frappetech</a></p>
 					<hr>
 					<h4>${__("Installed Apps")}</h4>
 					<div id='about-app-versions'>${__("Loading versions...")}</div>

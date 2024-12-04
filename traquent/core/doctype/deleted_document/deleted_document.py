@@ -37,7 +37,7 @@ class DeletedDocument(Document):
 		traquent.db.delete(table, filters=(table.creation < (Now() - Interval(days=days))))
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def restore(name, alert=True):
 	deleted = traquent.get_doc("Deleted Document", name)
 
@@ -68,7 +68,7 @@ def restore(name, alert=True):
 		traquent.msgprint(_("Document Restored"))
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def bulk_restore(docnames):
 	docnames = traquent.parse_json(docnames)
 	message = _("Restoring Deleted Document")

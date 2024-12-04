@@ -28,7 +28,7 @@ def get_data_keys():
 	)
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def export_data(
 	doctype=None,
 	parent_doctype=None,

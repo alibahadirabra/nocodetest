@@ -13,7 +13,7 @@ def get_leaderboards():
 	}
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_energy_point_leaderboard(date_range, company=None, field=None, limit=None):
 	users = traquent.get_list(
 		"User",

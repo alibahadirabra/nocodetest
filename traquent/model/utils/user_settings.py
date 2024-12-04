@@ -63,14 +63,14 @@ def sync_user_settings():
 		)
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def save(doctype, user_settings):
 	user_settings = json.loads(user_settings or "{}")
 	update_user_settings(doctype, user_settings)
 	return user_settings
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get(doctype):
 	return get_user_settings(doctype)
 

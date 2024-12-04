@@ -80,7 +80,7 @@ class ConnectedApp(Document):
 			scope=self.get_scopes(),
 		)
 
-	@traquent.whitelist()
+	frappe.whitelist()
 	def initiate_web_application_flow(self, user=None, success_uri=None):
 		"""Return an authorization URL for the user. Save state in Token Cache."""
 		user = user or traquent.session.user
@@ -172,7 +172,7 @@ class ConnectedApp(Document):
 		return token_cache
 
 
-@traquent.whitelist(methods=["GET"], allow_guest=True)
+frappe.whitelist(methods=["GET"], allow_guest=True)
 def callback(code=None, state=None):
 	"""Handle client's code.
 
@@ -211,7 +211,7 @@ def callback(code=None, state=None):
 	traquent.local.response["location"] = token_cache.get("success_uri") or connected_app.get_url()
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def has_token(connected_app, connected_user=None):
 	app = traquent.get_doc("Connected App", connected_app)
 	token_cache = app.get_token_cache(connected_user or traquent.session.user)

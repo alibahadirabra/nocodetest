@@ -118,7 +118,7 @@ def run_log_clean_up():
 	doc.clear_logs()
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def has_unseen_error_log():
 	if traquent.get_all("Error Log", filters={"seen": 0}, limit=1):
 		return {
@@ -129,8 +129,8 @@ def has_unseen_error_log():
 		}
 
 
-@traquent.whitelist()
-@traquent.validate_and_sanitize_search_inputs
+frappe.whitelist()
+frappe.validate_and_sanitize_search_inputs
 def get_log_doctypes(doctype, txt, searchfield, start, page_len, filters):
 	filters = filters or {}
 

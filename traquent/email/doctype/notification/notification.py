@@ -86,7 +86,7 @@ class Notification(Document):
 
 	# START: PreviewRenderer API
 
-	@traquent.whitelist()
+	frappe.whitelist()
 	def preview_meets_condition(self, preview_document):
 		if not self.condition:
 			return _("Yes")
@@ -98,7 +98,7 @@ class Notification(Document):
 			traquent.local.message_log = []
 			return _("Failed to evaluate conditions: {}").format(e)
 
-	@traquent.whitelist()
+	frappe.whitelist()
 	def preview_message(self, preview_document):
 		try:
 			doc = traquent.get_cached_doc(self.document_type, preview_document)
@@ -115,7 +115,7 @@ class Notification(Document):
 		except Exception as e:
 			return _("Failed to render message: {}").format(e)
 
-	@traquent.whitelist()
+	frappe.whitelist()
 	def preview_subject(self, preview_document):
 		try:
 			doc = traquent.get_cached_doc(self.document_type, preview_document)
@@ -643,7 +643,7 @@ def get_context(context):
 		traquent.cache.hdel("notifications", self.document_type)
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_documents_for_today(notification):
 	notification = traquent.get_doc("Notification", notification)
 	notification.check_permission("read")

@@ -13,7 +13,7 @@ from traquent.model.meta import is_single
 from traquent.modules import load_doctype_module
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_submitted_linked_docs(doctype: str, name: str) -> list[tuple]:
 	"""Get all the nested submitted documents those are present in referencing tables (dependent tables).
 
@@ -353,7 +353,7 @@ def get_referencing_documents(
 	return documents
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def cancel_all_linked_docs(docs, ignore_doctypes_on_cancel_all=None):
 	"""
 	Cancel all linked doctype, optionally ignore doctypes specified in a list.
@@ -504,14 +504,14 @@ def get_linked_docs(doctype: str, name: str, linkinfo: dict | None = None) -> di
 	return results
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get(doctype, docname):
 	traquent.has_permission(doctype, doc=docname)
 	linked_doctypes = get_linked_doctypes(doctype=doctype)
 	return get_linked_docs(doctype=doctype, name=docname, linkinfo=linked_doctypes)
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_linked_doctypes(doctype, without_ignore_user_permissions_enabled=False):
 	"""add list of doctypes this doctype is 'linked' with.
 

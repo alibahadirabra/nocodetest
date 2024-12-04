@@ -7,7 +7,7 @@ import functools
 import traquent
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_google_fonts():
 	return _get_google_fonts()
 

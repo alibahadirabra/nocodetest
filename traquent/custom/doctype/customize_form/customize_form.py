@@ -90,7 +90,7 @@ class CustomizeForm(Document):
 		traquent.db.delete("Singles", {"doctype": "Customize Form"})
 		traquent.db.delete("Customize Form Field")
 
-	@traquent.whitelist()
+	frappe.whitelist()
 	def fetch_to_customize(self):
 		self.clear_existing_doc()
 		if not self.doc_type:
@@ -217,7 +217,7 @@ class CustomizeForm(Document):
 		self.doc_type = doc_type
 		self.name = "Customize Form"
 
-	@traquent.whitelist()
+	frappe.whitelist()
 	def save_customization(self):
 		if not self.doc_type:
 			return
@@ -614,7 +614,7 @@ class CustomizeForm(Document):
 
 		self.flags.update_db = True
 
-	@traquent.whitelist()
+	frappe.whitelist()
 	def reset_to_defaults(self):
 		if not self.doc_type:
 			return
@@ -622,7 +622,7 @@ class CustomizeForm(Document):
 		reset_customization(self.doc_type)
 		self.fetch_to_customize()
 
-	@traquent.whitelist()
+	frappe.whitelist()
 	def reset_layout(self):
 		if not self.doc_type:
 			return
@@ -640,7 +640,7 @@ class CustomizeForm(Document):
 		traquent.clear_cache(doctype=self.doc_type)
 		self.fetch_to_customize()
 
-	@traquent.whitelist()
+	frappe.whitelist()
 	def trim_table(self):
 		"""Removes database fields that don't exist in the doctype.
 
@@ -665,7 +665,7 @@ class CustomizeForm(Document):
 		return any(map(in_field_group, ALLOWED_FIELDTYPE_CHANGE))
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_orphaned_columns(doctype: str):
 	traquent.only_for("System Manager")
 	traquent.db.begin(read_only=True)  # Avoid any potential bug from writing to db
@@ -701,7 +701,7 @@ def is_standard_or_system_generated_field(df):
 	return not df.get("is_custom_field") or df.get("is_system_generated")
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_link_filters_from_doc_without_customisations(doctype, fieldname):
 	"""Get the filters of a link field from a doc without customisations
 	In backend the customisations are not applied.

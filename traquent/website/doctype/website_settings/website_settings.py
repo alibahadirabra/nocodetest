@@ -295,6 +295,6 @@ def modify_header_footer_items(items: list):
 	return top_items
 
 
-@traquent.whitelist(allow_guest=True)
+frappe.whitelist(allow_guest=True)
 def get_auto_account_deletion():
 	return traquent.db.get_single_value("Website Settings", "auto_account_deletion")

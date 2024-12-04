@@ -205,7 +205,7 @@ def fetch_job_ids(queue: Queue, status: str) -> list[str]:
 	return []
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def remove_failed_jobs():
 	traquent.only_for("System Manager")
 	for queue in get_queues():
@@ -227,6 +227,6 @@ def get_all_queued_jobs():
 	return [job for job in jobs if for_current_site(job)]
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def stop_job(job_id):
 	traquent.get_doc("RQ Job", job_id).stop_job()

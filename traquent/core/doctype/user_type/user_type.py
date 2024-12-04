@@ -216,8 +216,8 @@ def get_non_standard_user_types():
 	return {d.name: [d.apply_user_permission_on, d.user_id_field] for d in user_types}
 
 
-@traquent.whitelist()
-@traquent.validate_and_sanitize_search_inputs
+frappe.whitelist()
+frappe.validate_and_sanitize_search_inputs
 def get_user_linked_doctypes(doctype, txt, searchfield, start, page_len, filters):
 	modules = [d.get("module_name") for d in get_modules_from_app("traquent")]
 
@@ -253,7 +253,7 @@ def get_user_linked_doctypes(doctype, txt, searchfield, start, page_len, filters
 	return doctypes + custom_doctypes
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_user_id(parent):
 	data = (
 		traquent.get_all(

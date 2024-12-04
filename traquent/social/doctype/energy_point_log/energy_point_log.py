@@ -81,7 +81,7 @@ class EnergyPointLog(Document):
 			reference_log.reverted = 0
 			reference_log.save()
 
-	@traquent.whitelist()
+	frappe.whitelist()
 	def revert(self, reason, ignore_permissions=False):
 		if not ignore_permissions:
 			traquent.only_for("System Manager")
@@ -230,19 +230,19 @@ def create_review_points_log(user, points, reason=None, doctype=None, docname=No
 	).insert(ignore_permissions=True)
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def add_review_points(user, points):
 	traquent.only_for("System Manager")
 	create_review_points_log(user, points)
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_energy_points(user):
 	points = get_user_energy_and_review_points(user)
 	return traquent._dict(points.get(user, {}))
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_user_energy_and_review_points(user=None, from_date=None, as_dict=True):
 	conditions = ""
 	given_points_condition = ""
@@ -285,7 +285,7 @@ def get_user_energy_and_review_points(user=None, from_date=None, as_dict=True):
 	return dict_to_return
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def review(doc, points, to_user, reason, review_type="Appreciation"):
 	current_review_points = get_energy_points(traquent.session.user).review_points
 	doc = doc.as_dict() if hasattr(doc, "as_dict") else traquent._dict(json.loads(doc))
@@ -317,7 +317,7 @@ def review(doc, points, to_user, reason, review_type="Appreciation"):
 	return review_doc
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_reviews(doctype, docname):
 	return traquent.get_all(
 		"Energy Point Log",

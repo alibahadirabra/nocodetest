@@ -29,7 +29,7 @@ class GeolocationSettings(Document):
 	pass
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def autocomplete(txt: str) -> list[dict]:
 	if not txt:
 		return []

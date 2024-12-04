@@ -164,7 +164,7 @@ def is_valid_access_token(access_token: str) -> bool:
 	return True
 
 
-@traquent.whitelist(methods=["GET"])
+frappe.whitelist(methods=["GET"])
 def callback(state: str, code: str | None = None, error: str | None = None) -> None:
 	"""Common callback for google integrations.
 	Invokes functions using `traquent.get_attr` and also adds required (keyworded) arguments

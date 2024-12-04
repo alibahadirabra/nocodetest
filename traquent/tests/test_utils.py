@@ -414,14 +414,14 @@ class TestValidationUtils(IntegrationTestCase):
 		self.assertFalse(validate_email_address(None))
 
 		# Valid addresses
-		self.assertTrue(validate_email_address("someone@traquent.com"))
-		self.assertTrue(validate_email_address("someone@traquent.com, anyone@traquent.io"))
-		self.assertTrue(validate_email_address("test%201@traquent.com"))
+		self.assertTrue(validate_email_address("someonefrappe.com"))
+		self.assertTrue(validate_email_address("someonefrappe.com, anyonefrappe.io"))
+		self.assertTrue(validate_email_address("test%201frappe.com"))
 
 		# Invalid address
 		self.assertFalse(validate_email_address("someone"))
 		self.assertFalse(validate_email_address("someone@----.com"))
-		self.assertFalse(validate_email_address("test 1@traquent.com"))
+		self.assertFalse(validate_email_address("test 1frappe.com"))
 		self.assertFalse(validate_email_address("test@example.com test2@example.com,undisclosed-recipient"))
 
 		# Invalid with throw
@@ -432,10 +432,10 @@ class TestValidationUtils(IntegrationTestCase):
 			throw=True,
 		)
 
-		self.assertEqual(validate_email_address("Some%20One@traquent.com"), "Some%20One@traquent.com")
+		self.assertEqual(validate_email_address("Some%20Onefrappe.com"), "Some%20Onefrappe.com")
 		self.assertEqual(
-			validate_email_address("erp+Job%20Applicant=JA00004@traquent.com"),
-			"erp+Job%20Applicant=JA00004@traquent.com",
+			validate_email_address("erp+Job%20Applicant=JA00004frappe.com"),
+			"erp+Job%20Applicant=JA00004frappe.com",
 		)
 
 	def test_valid_phone(self):
@@ -958,15 +958,15 @@ class TestLazyLoader(IntegrationTestCase):
 
 class TestIdenticon(IntegrationTestCase):
 	def test_get_gravatar(self):
-		# developers@traquent.io has a gravatar linked so str URL will be returned
+		# developersfrappe.io has a gravatar linked so str URL will be returned
 		traquent.flags.in_test = False
-		gravatar_url = get_gravatar("developers@traquent.io")
+		gravatar_url = get_gravatar("developersfrappe.io")
 		traquent.flags.in_test = True
 		self.assertIsInstance(gravatar_url, str)
 		self.assertTrue(gravatar_url.startswith("http"))
 
 		# random email will require Identicon to be generated, which will be a base64 string
-		gravatar_url = get_gravatar(f"developers{random_string(6)}@traquent.io")
+		gravatar_url = get_gravatar(f"developers{random_string(6)}frappe.io")
 		self.assertIsInstance(gravatar_url, str)
 		self.assertTrue(gravatar_url.startswith("data:image/png;base64,"))
 
@@ -1055,11 +1055,11 @@ class TestTypingValidations(IntegrationTestCase):
 	ERR_REGEX = "^Argument '.*' should be of type '.*' but got '.*' instead.$"
 
 	def test_validate_whitelisted_api(self):
-		@traquent.whitelist()
+		frappe.whitelist()
 		def simple(string: str, number: int):
 			return
 
-		@traquent.whitelist()
+		frappe.whitelist()
 		def varkw(string: str, **kwargs):
 			return
 

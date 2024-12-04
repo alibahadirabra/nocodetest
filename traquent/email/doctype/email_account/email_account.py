@@ -195,7 +195,7 @@ class EmailAccount(Document):
 					if folder.append_to not in valid_doctypes:
 						traquent.throw(_("Append To can be one of {0}").format(comma_or(valid_doctypes)))
 
-	@traquent.whitelist()
+	frappe.whitelist()
 	def validate_traquent_mail_settings(self):
 		if self.service == "traquent Mail":
 			traquent_mail_client = self.get_traquent_mail_client()
@@ -263,7 +263,7 @@ class EmailAccount(Document):
 				email_account.set(field, 0)
 				email_account.save()
 
-	@traquent.whitelist()
+	frappe.whitelist()
 	def get_domain_values(self, domain: str):
 		return traquent.db.get_value("Email Domain", domain, EMAIL_DOMAIN_FIELDS, as_dict=True)
 
@@ -789,7 +789,7 @@ class EmailAccount(Document):
 			return token
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_append_to(doctype=None, txt=None, searchfield=None, start=None, page_len=None, filters=None):
 	txt = txt if txt else ""
 
@@ -911,7 +911,7 @@ def pull(now=False):
 				)
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def pull_emails(email_account: str) -> None:
 	"""Pull emails from given email account."""
 	traquent.has_permission("Email Account", "read", throw=True)
@@ -1021,7 +1021,7 @@ def remove_user_email_inbox(email_account):
 		doc.save(ignore_permissions=True)
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def set_email_password(email_account, password):
 	account = traquent.get_doc("Email Account", email_account)
 	if account.awaiting_password and account.auth_method != "OAuth":

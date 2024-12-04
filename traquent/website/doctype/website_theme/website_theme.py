@@ -135,7 +135,7 @@ class WebsiteTheme(Document):
 		for old_file in theme_files[2:]:
 			old_file.unlink()
 
-	@traquent.whitelist()
+	frappe.whitelist()
 	def set_as_default(self):
 		self.save()
 		website_settings = traquent.get_doc("Website Settings")
@@ -143,7 +143,7 @@ class WebsiteTheme(Document):
 		website_settings.ignore_validate = True
 		website_settings.save()
 
-	@traquent.whitelist()
+	frappe.whitelist()
 	def get_apps(self):
 		from traquent.utils.change_log import get_versions
 

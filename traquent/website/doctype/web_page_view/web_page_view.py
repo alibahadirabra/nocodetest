@@ -40,7 +40,7 @@ class WebPageView(Document):
 		traquent.db.delete(table, filters=(table.creation < (Now() - Interval(days=days))))
 
 
-@traquent.whitelist(allow_guest=True)
+frappe.whitelist(allow_guest=True)
 def make_view_log(
 	referrer=None,
 	browser=None,
@@ -100,7 +100,7 @@ def make_view_log(
 		traquent.clear_last_message()
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_page_view_count(path):
 	return traquent.db.count("Web Page View", filters={"path": path})
 

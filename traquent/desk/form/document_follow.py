@@ -9,7 +9,7 @@ from traquent.query_builder import DocType
 from traquent.utils import get_url_to_form
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def update_follow(doctype: str, doc_name: str, following: bool):
 	if following:
 		return follow_document(doctype, doc_name, traquent.session.user) and True or False
@@ -17,7 +17,7 @@ def update_follow(doctype: str, doc_name: str, following: bool):
 		return unfollow_document(doctype, doc_name, traquent.session.user)
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def follow_document(doctype, doc_name, user):
 	"""
 	param:
@@ -66,7 +66,7 @@ def follow_document(doctype, doc_name, user):
 	return False
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def unfollow_document(doctype, doc_name, user):
 	doc = traquent.get_all(
 		"Document Follow",
@@ -239,7 +239,7 @@ def is_document_followed(doctype, doc_name, user):
 	)
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_follow_users(doctype, doc_name):
 	return traquent.get_all(
 		"Document Follow", filters={"ref_doctype": doctype, "ref_docname": doc_name}, fields=["user"]

@@ -48,7 +48,7 @@ class AuditTrail(Document):
 				)
 			)
 
-	@traquent.whitelist()
+	frappe.whitelist()
 	def compare_document(self):
 		self.validate()
 		amended_document_names = self.get_amended_documents()

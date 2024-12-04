@@ -4,7 +4,7 @@
 import traquent
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_coords(doctype, filters, type):
 	"""Get a geojson dict representing a doctype."""
 	filters_sql = get_coords_conditions(doctype, filters)[4:]

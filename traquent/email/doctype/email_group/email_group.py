@@ -75,7 +75,7 @@ class EmailGroup(Document):
 			self.name,
 		)[0][0]
 
-	@traquent.whitelist()
+	frappe.whitelist()
 	def preview_welcome_url(self, email: str | None = None) -> str | None:
 		"""Get Welcome URL for the email group."""
 		return self.get_welcome_url(email)
@@ -96,14 +96,14 @@ class EmailGroup(Document):
 			traquent.delete_doc("Email Group Member", d.name)
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def import_from(name, doctype):
 	nlist = traquent.get_doc("Email Group", name)
 	if nlist.has_permission("write"):
 		return nlist.import_from(doctype)
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def add_subscribers(name, email_list):
 	if not isinstance(email_list, list | tuple):
 		email_list = email_list.replace(",", "\n").split("\n")

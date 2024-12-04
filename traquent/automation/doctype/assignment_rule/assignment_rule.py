@@ -196,7 +196,7 @@ def get_assignments(doc) -> list[dict]:
 	)
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def bulk_apply(doctype, docnames):
 	docnames = traquent.parse_json(docnames)
 	background = len(docnames) > 5

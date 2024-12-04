@@ -25,7 +25,7 @@ class ListViewSettings(Document):
 	pass
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def save_listview_settings(doctype, listview_settings, removed_listview_fields):
 	listview_settings = traquent.parse_json(listview_settings)
 	removed_listview_fields = traquent.parse_json(removed_listview_fields)
@@ -83,7 +83,7 @@ def set_in_list_view_property(doctype, field, value):
 		)
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_default_listview_fields(doctype):
 	meta = traquent.get_meta(doctype)
 	path = traquent.get_module_path(

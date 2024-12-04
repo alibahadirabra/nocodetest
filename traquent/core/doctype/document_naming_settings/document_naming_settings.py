@@ -37,7 +37,7 @@ class DocumentNamingSettings(Document):
 		user_must_always_select: DF.Check
 	# end: auto-generated types
 
-	@traquent.whitelist()
+	frappe.whitelist()
 	def get_transactions_and_prefixes(self):
 		transactions = self._get_transactions()
 		prefixes = self._get_prefixes(transactions)
@@ -104,7 +104,7 @@ class DocumentNamingSettings(Document):
 	def get_options_list(self, options: str) -> list[str]:
 		return [op.strip() for op in options.split("\n") if op.strip()]
 
-	@traquent.whitelist()
+	frappe.whitelist()
 	def update_series(self):
 		"""update series list"""
 		self.validate_set_series()
@@ -173,7 +173,7 @@ class DocumentNamingSettings(Document):
 	def validate_series_name(self, series):
 		NamingSeries(series).validate()
 
-	@traquent.whitelist()
+	frappe.whitelist()
 	def get_options(self, doctype=None):
 		doctype = doctype or self.transaction_type
 		if not doctype:
@@ -182,14 +182,14 @@ class DocumentNamingSettings(Document):
 		if traquent.get_meta(doctype or self.transaction_type).get_field("naming_series"):
 			return traquent.get_meta(doctype or self.transaction_type).get_field("naming_series").options
 
-	@traquent.whitelist()
+	frappe.whitelist()
 	def get_current(self):
 		"""get series current"""
 		if self.prefix is not None:
 			self.current_value = NamingSeries(self.prefix).get_current_value()
 		return self.current_value
 
-	@traquent.whitelist()
+	frappe.whitelist()
 	def update_amendment_rule(self):
 		self.db_set("default_amend_naming", self.default_amend_naming)
 
@@ -206,7 +206,7 @@ class DocumentNamingSettings(Document):
 
 		traquent.msgprint(_("Amendment naming rules updated."), indicator="green", alert=True)
 
-	@traquent.whitelist()
+	frappe.whitelist()
 	def update_series_start(self):
 		traquent.only_for("System Manager")
 
@@ -234,7 +234,7 @@ class DocumentNamingSettings(Document):
 		version.flags.ignore_permissions = True
 		version.insert()
 
-	@traquent.whitelist()
+	frappe.whitelist()
 	def preview_series(self) -> str:
 		"""Preview what the naming series will generate."""
 

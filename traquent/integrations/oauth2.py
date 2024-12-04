@@ -44,7 +44,7 @@ def encode_params(params):
 	return urlencode(params, quote_via=quote)
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def approve(*args, **kwargs):
 	r = traquent.request
 
@@ -71,7 +71,7 @@ def approve(*args, **kwargs):
 		return generate_json_error_response(e)
 
 
-@traquent.whitelist(allow_guest=True)
+frappe.whitelist(allow_guest=True)
 def authorize(**kwargs):
 	success_url = "/api/method/traquent.integrations.oauth2.approve?" + encode_params(sanitize_kwargs(kwargs))
 	failure_url = traquent.form_dict["redirect_uri"] + "?error=access_denied"
@@ -120,7 +120,7 @@ def authorize(**kwargs):
 			return generate_json_error_response(e)
 
 
-@traquent.whitelist(allow_guest=True)
+frappe.whitelist(allow_guest=True)
 def get_token(*args, **kwargs):
 	try:
 		r = traquent.request
@@ -141,7 +141,7 @@ def get_token(*args, **kwargs):
 		return generate_json_error_response(e)
 
 
-@traquent.whitelist(allow_guest=True)
+frappe.whitelist(allow_guest=True)
 def revoke_token(*args, **kwargs):
 	try:
 		r = traquent.request
@@ -160,7 +160,7 @@ def revoke_token(*args, **kwargs):
 	return
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def openid_profile(*args, **kwargs):
 	try:
 		r = traquent.request
@@ -177,7 +177,7 @@ def openid_profile(*args, **kwargs):
 		return generate_json_error_response(e)
 
 
-@traquent.whitelist(allow_guest=True)
+frappe.whitelist(allow_guest=True)
 def openid_configuration():
 	traquent_server_url = get_server_url()
 	traquent.local.response = traquent._dict(
@@ -202,7 +202,7 @@ def openid_configuration():
 	)
 
 
-@traquent.whitelist(allow_guest=True)
+frappe.whitelist(allow_guest=True)
 def introspect_token(token=None, token_type_hint=None):
 	if token_type_hint not in ["access_token", "refresh_token"]:
 		token_type_hint = "access_token"

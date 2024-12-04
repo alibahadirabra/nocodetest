@@ -75,7 +75,7 @@ class DiscussionReply(Document):
 		)
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def delete_message(reply_name):
 	owner = traquent.db.get_value("Discussion Reply", reply_name, "owner")
 	if owner == traquent.session.user:

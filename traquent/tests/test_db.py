@@ -995,7 +995,7 @@ class TestReplicaConnections(IntegrationTestCase):
 			write_connection = db_id()
 			read_only_connection = None
 
-			@traquent.read_only()
+			frappe.read_only()
 			def outer():
 				nonlocal read_only_connection
 				read_only_connection = db_id()
@@ -1006,7 +1006,7 @@ class TestReplicaConnections(IntegrationTestCase):
 				# calling nested read only function shouldn't change connection
 				self.assertEqual(read_only_connection, db_id())
 
-			@traquent.read_only()
+			frappe.read_only()
 			def inner():
 				# calling nested read only function shouldn't change connection
 				self.assertEqual(read_only_connection, db_id())

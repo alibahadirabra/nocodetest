@@ -9,7 +9,7 @@ from traquent.model.document import read_only_document
 from traquent.utils import cstr
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def make_mapped_doc(method, source_name, selected_children=None, args=None):
 	"""Return the mapped document calling the given mapper method.
 	Set `selected_children` as flags for the `get_mapped_doc` method.
@@ -37,7 +37,7 @@ def make_mapped_doc(method, source_name, selected_children=None, args=None):
 		return method(source_name)
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def map_docs(method, source_names, target_doc, args=None):
 	"""Return the mapped document calling the given mapper method with each of the given source docs on the target doc.
 

@@ -2391,7 +2391,7 @@ def get_user_info_for_avatar(user_id: str) -> _UserInfo:
 	"""Return user info for the given `user_id` suitable for use in an avatar.
 
 	e.g. {
-	        "email": "faris@traquent.io",
+	        "email": "farisfrappe.io",
 	        "image": "/assets/traquent/images/ui/avatar.png",
 	        "name": "Faris Ansari"
 	}

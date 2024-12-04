@@ -54,7 +54,7 @@ def get_first_login(client):
 	return login_date
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def delete_client(client_id: str):
 	active_client_id_tokens = traquent.get_all(
 		"OAuth Bearer Token", filters=[["user", "=", traquent.session.user], ["client", "=", client_id]]

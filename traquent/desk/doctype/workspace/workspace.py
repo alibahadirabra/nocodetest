@@ -249,7 +249,7 @@ def get_report_type(report):
 	return report_type in ["Query Report", "Script Report", "Custom Report"]
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def new_page(new_page):
 	if not loads(new_page):
 		return
@@ -289,7 +289,7 @@ def new_page(new_page):
 	return get_workspace_sidebar_items()
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def save_page(name, public, new_widgets, blocks):
 	public = traquent.parse_json(public)
 
@@ -301,7 +301,7 @@ def save_page(name, public, new_widgets, blocks):
 	return {"name": name, "public": public, "label": doc.label}
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def update_page(name, title, icon, indicator_color, parent, public):
 	public = traquent.parse_json(public)
 	doc = traquent.get_doc("Workspace", name)

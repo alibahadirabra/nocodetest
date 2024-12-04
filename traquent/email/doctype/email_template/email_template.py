@@ -47,7 +47,7 @@ class EmailTemplate(Document):
 		}
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_email_template(template_name, doc):
 	"""Return the processed HTML of a email template with the given doc"""
 

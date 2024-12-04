@@ -82,7 +82,7 @@ class DataImport(Document):
 			payloads = i.import_file.get_payloads_for_import()
 			self.payload_count = len(payloads)
 
-	@traquent.whitelist()
+	frappe.whitelist()
 	def get_preview_from_template(self, import_file=None, google_sheets_url=None):
 		if import_file:
 			self.import_file = import_file
@@ -130,14 +130,14 @@ class DataImport(Document):
 		return Importer(self.reference_doctype, data_import=self)
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_preview_from_template(data_import, import_file=None, google_sheets_url=None):
 	return traquent.get_doc("Data Import", data_import).get_preview_from_template(
 		import_file, google_sheets_url
 	)
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def form_start_import(data_import: str):
 	return traquent.get_doc("Data Import", data_import).start_import()
 
@@ -161,7 +161,7 @@ def start_import(data_import):
 	traquent.publish_realtime("data_import_refresh", {"data_import": data_import.name})
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def download_template(doctype, export_fields=None, export_records=None, export_filters=None, file_type="CSV"):
 	"""
 	Download template from Exporter
@@ -187,19 +187,19 @@ def download_template(doctype, export_fields=None, export_records=None, export_f
 	e.build_response()
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def download_errored_template(data_import_name):
 	data_import = traquent.get_doc("Data Import", data_import_name)
 	data_import.export_errored_rows()
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def download_import_log(data_import_name):
 	data_import = traquent.get_doc("Data Import", data_import_name)
 	data_import.download_import_log()
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_import_status(data_import_name):
 	import_status = {}
 
@@ -226,7 +226,7 @@ def get_import_status(data_import_name):
 	return import_status
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def get_import_logs(data_import: str):
 	doc = traquent.get_doc("Data Import", data_import)
 	doc.check_permission("read")

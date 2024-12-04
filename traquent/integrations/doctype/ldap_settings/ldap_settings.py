@@ -398,7 +398,7 @@ class LDAPSettings(Document):
 		return data
 
 
-@traquent.whitelist(allow_guest=True)
+frappe.whitelist(allow_guest=True)
 def login():
 	# LDAP LOGIN LOGIC
 	args = traquent.form_dict
@@ -419,7 +419,7 @@ def login():
 	traquent.db.commit()
 
 
-@traquent.whitelist()
+frappe.whitelist()
 def reset_password(user, password, logout):
 	ldap: LDAPSettings = traquent.get_doc("LDAP Settings")
 	if not ldap.enabled:

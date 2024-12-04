@@ -113,7 +113,7 @@ def emit_via_redis(event, message, room):
 		)
 
 
-@traquent.whitelist(allow_guest=True)
+frappe.whitelist(allow_guest=True)
 def has_permission(doctype: str, name: str) -> bool:
 	if not traquent.has_permission(doctype=doctype, doc=name, ptype="read"):
 		raise traquent.PermissionError
@@ -121,7 +121,7 @@ def has_permission(doctype: str, name: str) -> bool:
 	return True
 
 
-@traquent.whitelist(allow_guest=True)
+frappe.whitelist(allow_guest=True)
 def get_user_info():
 	return {
 		"user": traquent.session.user,
